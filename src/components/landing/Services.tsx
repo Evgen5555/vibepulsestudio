@@ -103,7 +103,7 @@ export function Services() {
                 <h3 className="relative text-xl sm:text-2xl font-semibold tracking-tight">
                   {c.title}
                 </h3>
-                <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md">
+                <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md flex-1">
                   {c.desc}
                 </p>
               </motion.div>
