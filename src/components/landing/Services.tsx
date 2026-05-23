@@ -19,7 +19,7 @@ const cards: Card[] = [
     className: "md:col-span-2",
   },
   {
-    title: "AI - сайты",
+    title: "Вайб - кодинг",
     desc: "Сайты и воронки нового поколения: от дизайна до интеграции умных AI-сотрудников. Сборка за 3–7 дней.",
     icon: Workflow,
     tone: "cyan",
