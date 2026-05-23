@@ -79,7 +79,7 @@ export function Services() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.06, duration: 0.6 }}
                 whileHover={{ y: -4 }}
-                className={`group relative rounded-3xl bg-card/60 border border-border p-6 sm:p-8 overflow-hidden transition-shadow hover:border-transparent ${
+                className={`group relative h-full flex flex-col rounded-3xl bg-card/60 border border-border p-6 sm:p-8 overflow-hidden transition-shadow hover:border-transparent ${
                   violet ? "hover:shadow-neon-violet" : "hover:shadow-neon-cyan"
                 } ${c.className}`}
               >
