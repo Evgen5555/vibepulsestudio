@@ -51,12 +51,6 @@ export function Portfolio() {
               <span className="text-gradient-cv">приносит деньги</span>.
             </h2>
           </div>
-          <a
-            href="#cta"
-            className="inline-flex items-center gap-1.5 text-sm text-foreground/70 hover:text-foreground"
-          >
-            Запросить полный кейс-бук <ArrowUpRight className="size-4" />
-          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
