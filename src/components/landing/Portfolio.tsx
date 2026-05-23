@@ -48,7 +48,7 @@ export function Portfolio() {
             <p className="text-sm text-secondary mb-3">Портфолио</p>
             <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
               Проекты, где дизайн{" "}
-              <span className="text-gradient-cv">приносит деньги</span>.
+              <span className="text-gradient-cv">приносит деньги</span>
             </h2>
           </div>
         </div>
