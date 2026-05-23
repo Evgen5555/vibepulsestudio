@@ -135,12 +135,10 @@ export function Process() {
                 >
                   <div className="relative shrink-0">
                     {s.glow && (
-                      <div className="absolute -inset-6 rounded-full bg-primary/30 blur-2xl opacity-90" />
+                      <div className={`absolute -inset-6 rounded-full ${s.glowBgClass ?? "bg-primary/30"} blur-2xl opacity-90`} />
                     )}
                     <div
-                      className={`relative size-24 rounded-full glass border ${s.ringClass} flex items-center justify-center transition-shadow group-hover:${
-                        s.glow ?? "shadow-neon-violet"
-                      } ${s.glow ?? ""}`}
+                      className={`relative size-24 rounded-full glass border ${s.ringClass} flex items-center justify-center transition-shadow ${s.glow ?? ""}`}
                     >
                       <Icon className={`size-9 ${s.iconClass}`} />
                       <span
