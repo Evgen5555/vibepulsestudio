@@ -19,7 +19,7 @@ const cards: Card[] = [
     className: "md:col-span-2",
   },
   {
-    title: "Автоворонки",
+    title: "AI - сайты",
     desc: "Сквозные сценарии: лид → прогрев → сделка.",
     icon: Workflow,
     tone: "cyan",
