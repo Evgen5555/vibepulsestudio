@@ -68,7 +68,7 @@ export function Process() {
             Как мы <span className="text-gradient-cv">работаем</span>
           </h2>
           <p className="mt-5 text-muted-foreground text-base sm:text-lg">
-            Прозрачный процесс — от первой идеи до готового проекта.
+            Процесс без подводных камней — вы точно знаете, что получите и когда.
           </p>
         </div>
 
