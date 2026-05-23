@@ -17,7 +17,7 @@ export function Nav() {
       <div className="glass border-b border-border/60">
         <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
           <a href="#top" className="font-semibold tracking-tight text-lg">
-            <span className="text-gradient-cv">N</span>EXUS<span className="text-foreground/60">.studio</span>
+            <span className="text-gradient-cv">Vibe</span>Pulse<span className="text-foreground/60"> studio</span>
           </a>
 
           <ul className="hidden md:flex items-center gap-8 text-sm text-foreground/75">
