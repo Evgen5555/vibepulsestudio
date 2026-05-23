@@ -33,7 +33,7 @@ const cards: Card[] = [
     className: "",
   },
   {
-    title: "AI Видео & Клипы & Reels",
+    title: "AI Видео & Reels",
     desc: "Динамичные Shorts, Reels и промо-ролики нового поколения. Кинематографичный ИИ-продакшн и генерация клипов под ключ.",
     icon: Film,
     tone: "violet",
