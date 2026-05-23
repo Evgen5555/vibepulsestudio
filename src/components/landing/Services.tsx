@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bot, Code2, LineChart, Music, Palette, Rocket } from "lucide-react";
+import { Bot, Code2, Film, Music, Palette, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Card = {
@@ -35,7 +35,7 @@ const cards: Card[] = [
   {
     title: "AI Видео & Клипы & Reels",
     desc: "Динамичные Shorts, Reels и промо-ролики нового поколения. Кинематографичный ИИ-продакшн и генерация клипов под ключ.",
-    icon: LineChart,
+    icon: Film,
     tone: "violet",
     className: "",
   },
