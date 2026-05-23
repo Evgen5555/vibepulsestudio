@@ -32,7 +32,7 @@ export function CtaFooter() {
           transition={{ delay: 0.15 }}
           className="mt-6 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto"
         >
-          Напишите в Telegram — отвечу в течение часа и предложу первые шаги.
+          Расскажите о вашей задаче — мы разработаем индивидуальное решение, определим формат и рассчитаем точную стоимость.
         </motion.p>
 
         <motion.div
