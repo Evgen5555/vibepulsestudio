@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bot, LineChart, Palette, Rocket, Workflow } from "lucide-react";
+import { Bot, LineChart, Music, Palette, Rocket, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Card = {
@@ -37,6 +37,13 @@ const cards: Card[] = [
     desc: "Динамичные Shorts, Reels и промо-ролики нового поколения. Кинематографичный ИИ-продакшн и генерация клипов под ключ.",
     icon: LineChart,
     tone: "violet",
+    className: "",
+  },
+  {
+    title: "AI-Музыка & Песни",
+    desc: "Создание эксклюзивной музыки на любой жизненный случай: для себя, личного блога или в подарок близким с помощью ИИ. Полный цикл работы.",
+    icon: Music,
+    tone: "cyan",
     className: "",
   },
   {
