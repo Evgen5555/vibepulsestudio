@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { Cpu, Layers, Rocket, Sparkles } from "lucide-react";
+import { Check, Cpu, Layers, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Step = {
@@ -57,7 +57,7 @@ const steps: Step[] = [
     n: "4",
     title: "Результат",
     desc: "Сдаём готовый проект и поддерживаем после.",
-    icon: Rocket,
+    icon: Check,
     badgeClass:
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
     ringClass: "border-[var(--neon-pink)]/50",
