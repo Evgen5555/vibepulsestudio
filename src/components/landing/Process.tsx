@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Cpu, Layers, Rocket, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -13,6 +13,7 @@ type Step = {
   iconClass: string;
   glow?: string;
   glowBgClass?: string;
+  particleColor: string;
 };
 
 const steps: Step[] = [
@@ -26,6 +27,7 @@ const steps: Step[] = [
     iconClass: "text-secondary",
     glow: "shadow-neon-cyan",
     glowBgClass: "bg-secondary/30",
+    particleColor: "var(--neon-cyan)",
   },
   {
     n: "2",
@@ -37,6 +39,7 @@ const steps: Step[] = [
     iconClass: "text-[var(--neon-blue)]",
     glow: "shadow-neon-cyan",
     glowBgClass: "bg-[var(--neon-blue)]/30",
+    particleColor: "var(--neon-blue)",
   },
   {
     n: "3",
@@ -48,6 +51,7 @@ const steps: Step[] = [
     iconClass: "text-primary",
     glow: "shadow-neon-violet",
     glowBgClass: "bg-primary/30",
+    particleColor: "var(--neon-violet)",
   },
   {
     n: "4",
@@ -60,13 +64,54 @@ const steps: Step[] = [
     iconClass: "text-[var(--neon-pink)]",
     glow: "shadow-neon-pink",
     glowBgClass: "bg-[var(--neon-pink)]/30",
+    particleColor: "var(--neon-pink)",
   },
 ];
 
+// Approximate horizontal centers of each circle in the grid (4 equal columns).
+const CENTERS_PCT = [12.5, 37.5, 62.5, 87.5];
+
+const STEP_DURATION = 900; // ms — pulse glow duration before particle launches
+const TRAVEL_DURATION = 1100; // ms — particle travel duration
+const CYCLE_PAUSE = 2000; // ms — pause after the rocket receives the last particle
 
 export function Process() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-120px" });
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [particleFrom, setParticleFrom] = useState<number | null>(null);
+
+  // Sequential infinite loop: pulse step → fly particle → activate next → … → pause → restart
+  useEffect(() => {
+    if (!inView) return;
+    let cancelled = false;
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => setTimeout(resolve, ms));
+
+    const run = async () => {
+      while (!cancelled) {
+        for (let i = 0; i < steps.length; i++) {
+          if (cancelled) return;
+          setActiveStep(i);
+          await wait(STEP_DURATION);
+          if (cancelled) return;
+          if (i < steps.length - 1) {
+            setParticleFrom(i);
+            await wait(TRAVEL_DURATION);
+            if (cancelled) return;
+            setParticleFrom(null);
+          }
+        }
+        await wait(CYCLE_PAUSE);
+      }
+    };
+
+    run();
+    return () => {
+      cancelled = true;
+    };
+  }, [inView]);
 
   return (
     <section id="process" className="relative py-24 sm:py-32">
@@ -114,8 +159,71 @@ export function Process() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6 relative">
+            {/* Desktop traveling particle */}
+            <AnimatePresence>
+              {particleFrom !== null && (
+                <motion.div
+                  key={`h-particle-${particleFrom}`}
+                  className="hidden md:block pointer-events-none absolute top-12 z-20 size-3 rounded-full -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    background: steps[particleFrom].particleColor,
+                    boxShadow: `0 0 12px 2px ${steps[particleFrom].particleColor}, 0 0 28px 6px ${steps[particleFrom].particleColor}`,
+                    left: `${CENTERS_PCT[particleFrom]}%`,
+                  }}
+                  initial={{
+                    left: `${CENTERS_PCT[particleFrom]}%`,
+                    opacity: 0,
+                    scale: 0.4,
+                  }}
+                  animate={{
+                    left: `${CENTERS_PCT[particleFrom + 1]}%`,
+                    opacity: [0, 1, 1, 0],
+                    scale: [0.4, 1, 1, 0.6],
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    duration: TRAVEL_DURATION / 1000,
+                    ease: "easeInOut",
+                    times: [0, 0.15, 0.85, 1],
+                  }}
+                />
+              )}
+            </AnimatePresence>
+
+            {/* Mobile traveling particle (vertical) */}
+            <AnimatePresence>
+              {particleFrom !== null && (
+                <motion.div
+                  key={`v-particle-${particleFrom}`}
+                  className="md:hidden pointer-events-none absolute left-12 z-20 size-3 rounded-full -translate-x-1/2 -translate-y-1/2"
+                  style={{
+                    background: steps[particleFrom].particleColor,
+                    boxShadow: `0 0 12px 2px ${steps[particleFrom].particleColor}, 0 0 28px 6px ${steps[particleFrom].particleColor}`,
+                    top: `${CENTERS_PCT[particleFrom]}%`,
+                  }}
+                  initial={{
+                    top: `${CENTERS_PCT[particleFrom]}%`,
+                    opacity: 0,
+                    scale: 0.4,
+                  }}
+                  animate={{
+                    top: `${CENTERS_PCT[particleFrom + 1]}%`,
+                    opacity: [0, 1, 1, 0],
+                    scale: [0.4, 1, 1, 0.6],
+                  }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    duration: TRAVEL_DURATION / 1000,
+                    ease: "easeInOut",
+                    times: [0, 0.15, 0.85, 1],
+                  }}
+                />
+              )}
+            </AnimatePresence>
+
             {steps.map((s, i) => {
               const Icon = s.icon;
+              const isActive = inView && activeStep === i;
               return (
                 <motion.div
                   key={s.title}
@@ -134,11 +242,46 @@ export function Process() {
                   className="group relative flex md:flex-col items-start md:items-center gap-5 md:gap-6 md:text-center"
                 >
                   <div className="relative shrink-0">
+                    {/* Base ambient halo */}
                     {s.glow && (
-                      <div className={`absolute -inset-6 rounded-full ${s.glowBgClass ?? "bg-primary/30"} blur-2xl opacity-90`} />
+                      <div
+                        className={`absolute -inset-6 rounded-full ${s.glowBgClass ?? "bg-primary/30"} blur-2xl opacity-90`}
+                      />
                     )}
-                    <div
-                      className={`relative size-24 rounded-full glass border ${s.ringClass} flex items-center justify-center transition-shadow ${s.glow ?? ""}`}
+                    {/* Active pulsing halo */}
+                    <motion.div
+                      aria-hidden
+                      className="absolute -inset-8 rounded-full blur-2xl pointer-events-none"
+                      style={{ background: s.particleColor }}
+                      animate={
+                        isActive
+                          ? { opacity: [0.55, 0.95, 0.55], scale: [1, 1.18, 1] }
+                          : { opacity: 0, scale: 1 }
+                      }
+                      transition={
+                        isActive
+                          ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
+                          : { duration: 0.5, ease: "easeOut" }
+                      }
+                    />
+                    <motion.div
+                      className={`relative size-24 rounded-full glass border ${s.ringClass} flex items-center justify-center ${s.glow ?? ""}`}
+                      animate={
+                        isActive
+                          ? {
+                              boxShadow: [
+                                `0 0 18px 2px ${s.particleColor}, 0 0 40px 8px ${s.particleColor}`,
+                                `0 0 32px 6px ${s.particleColor}, 0 0 80px 18px ${s.particleColor}`,
+                                `0 0 18px 2px ${s.particleColor}, 0 0 40px 8px ${s.particleColor}`,
+                              ],
+                            }
+                          : { boxShadow: "0 0 0 0 rgba(0,0,0,0)" }
+                      }
+                      transition={
+                        isActive
+                          ? { duration: 1.1, repeat: Infinity, ease: "easeInOut" }
+                          : { duration: 0.5, ease: "easeOut" }
+                      }
                     >
                       <Icon className={`size-9 ${s.iconClass}`} />
                       <span
@@ -146,7 +289,7 @@ export function Process() {
                       >
                         {s.n}
                       </span>
-                    </div>
+                    </motion.div>
                   </div>
 
                   <div className="md:mt-2">
