@@ -16,7 +16,7 @@ const cards: Card[] = [
     desc: "Автоворонки и ИИ-сотрудники в Телеграм, которые продают и консультируют вместо вас. Без выходных и ошибок.",
     icon: Bot,
     tone: "violet",
-    className: "md:col-span-2",
+    className: "",
   },
   {
     title: "Вайб - кодинг",
@@ -51,7 +51,7 @@ const cards: Card[] = [
     desc: "Всё в одном месте — от идеи до готового проекта за 2–4 недели. Вам больше не нужно искать отдельно дизайнеров, копирайтеров и программистов.",
     icon: Rocket,
     tone: "violet",
-    className: "md:col-span-1",
+    className: "",
   },
 ];
 
@@ -79,7 +79,7 @@ export function Services() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: i * 0.06, duration: 0.6 }}
                 whileHover={{ y: -4 }}
-                className={`group relative rounded-3xl bg-card/60 border border-border p-6 sm:p-8 overflow-hidden transition-shadow hover:border-transparent ${
+                className={`group relative h-full flex flex-col rounded-3xl bg-card/60 border border-border p-6 sm:p-8 overflow-hidden transition-shadow hover:border-transparent ${
                   violet ? "hover:shadow-neon-violet" : "hover:shadow-neon-cyan"
                 } ${c.className}`}
               >
@@ -103,7 +103,7 @@ export function Services() {
                 <h3 className="relative text-xl sm:text-2xl font-semibold tracking-tight">
                   {c.title}
                 </h3>
-                <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md">
+                <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md flex-1">
                   {c.desc}
                 </p>
               </motion.div>
