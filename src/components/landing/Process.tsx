@@ -23,6 +23,8 @@ const steps: Step[] = [
     badgeClass: "border-secondary/70 bg-secondary/15 text-secondary",
     ringClass: "border-secondary/50",
     iconClass: "text-secondary",
+    glow: "shadow-neon-cyan",
+    glowBgClass: "bg-secondary/30",
   },
   {
     n: "2",
@@ -32,6 +34,8 @@ const steps: Step[] = [
     badgeClass: "border-[var(--neon-blue)]/70 bg-[var(--neon-blue)]/15 text-[var(--neon-blue)]",
     ringClass: "border-[var(--neon-blue)]/50",
     iconClass: "text-[var(--neon-blue)]",
+    glow: "shadow-neon-cyan",
+    glowBgClass: "bg-[var(--neon-blue)]/30",
   },
   {
     n: "3",
@@ -42,6 +46,7 @@ const steps: Step[] = [
     ringClass: "border-primary/70",
     iconClass: "text-primary",
     glow: "shadow-neon-violet",
+    glowBgClass: "bg-primary/30",
   },
   {
     n: "4",
@@ -52,8 +57,11 @@ const steps: Step[] = [
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
     ringClass: "border-[var(--neon-pink)]/50",
     iconClass: "text-[var(--neon-pink)]",
+    glow: "shadow-neon-pink",
+    glowBgClass: "bg-[var(--neon-pink)]/30",
   },
 ];
+
 
 export function Process() {
   const ref = useRef<HTMLDivElement>(null);
