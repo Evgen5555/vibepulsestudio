@@ -13,7 +13,7 @@ type Card = {
 const cards: Card[] = [
   {
     title: "AI-маркетинг",
-    desc: "Персонализация, генерация контента и предиктивная аналитика на базе LLM.",
+    desc: "Персонализация, генерация контента и аналитика на базе LLM.",
     icon: Bot,
     tone: "violet",
     className: "md:col-span-2",
