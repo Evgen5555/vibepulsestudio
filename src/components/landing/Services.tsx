@@ -34,7 +34,7 @@ const cards: Card[] = [
   },
   {
     title: "AI Видео & Клипы & Reels",
-    desc: "Когорты, retention, unit-экономика. Решения на данных, а не интуиции.",
+    desc: "Динамичные Shorts, Reels и промо-ролики нового поколения. Кинематографичный ИИ-продакшн и генерация клипов под ключ.",
     icon: LineChart,
     tone: "violet",
     className: "",
