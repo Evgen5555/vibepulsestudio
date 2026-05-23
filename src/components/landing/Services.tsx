@@ -29,7 +29,7 @@ const cards: Card[] = [
     title: "AI-Дизайн & Аватары",
     desc: "Цифровые аватары и кинематографичный визуал премиум-уровня. Реалистичные портреты.",
     icon: Palette,
-    tone: "cyan",
+    tone: "violet",
     className: "",
   },
   {
