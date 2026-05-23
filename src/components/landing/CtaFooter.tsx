@@ -60,7 +60,7 @@ export function CtaFooter() {
         </motion.div>
 
         <div className="mt-24 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div>© {new Date().getFullYear()} NEXUS.studio · Все права защищены</div>
+          <div>© {new Date().getFullYear()} VibePulse studio · Все права защищены</div>
           <div className="flex items-center gap-6">
             <a href="#cta" className="hover:text-foreground">Telegram</a>
             <a href="mailto:hi@example.com" className="hover:text-foreground">Email</a>
