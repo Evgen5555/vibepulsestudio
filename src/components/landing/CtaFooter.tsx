@@ -22,7 +22,7 @@ export function CtaFooter() {
           className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,7vw,5.5rem)]"
         >
           Превратим вашу идею <br className="hidden sm:block" />
-          в <span className="text-gradient-cv">премиальный продукт</span>.
+          в <span className="text-gradient-cv">премиальный продукт</span>
         </motion.h2>
 
         <motion.p
