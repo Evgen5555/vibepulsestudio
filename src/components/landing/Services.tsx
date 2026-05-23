@@ -56,7 +56,7 @@ export function Services() {
           <p className="text-sm text-secondary mb-3">Услуги · Философия</p>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
             Не «делать сайт». <br />
-            <span className="text-gradient-cv">Делать результат.</span>
+            <span className="text-gradient-cv">Делать результат</span>
           </h2>
         </div>
 
