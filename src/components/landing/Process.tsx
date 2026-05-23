@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Bot, Lightbulb, PenTool, Target } from "lucide-react";
+import { Cpu, Layers, Rocket, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Step = {
@@ -19,7 +19,7 @@ const steps: Step[] = [
     n: "1",
     title: "Идея",
     desc: "Обсуждаем задачу, цели и видение результата.",
-    icon: Lightbulb,
+    icon: Sparkles,
     badgeClass: "border-secondary/70 bg-secondary/15 text-secondary",
     ringClass: "border-secondary/50",
     iconClass: "text-secondary",
@@ -28,7 +28,7 @@ const steps: Step[] = [
     n: "2",
     title: "Концепция",
     desc: "Создаём мудборд, референсы и техническое задание.",
-    icon: PenTool,
+    icon: Layers,
     badgeClass: "border-[var(--neon-blue)]/70 bg-[var(--neon-blue)]/15 text-[var(--neon-blue)]",
     ringClass: "border-[var(--neon-blue)]/50",
     iconClass: "text-[var(--neon-blue)]",
@@ -37,7 +37,7 @@ const steps: Step[] = [
     n: "3",
     title: "AI-создание",
     desc: "Генерируем, дорабатываем и шлифуем результат.",
-    icon: Bot,
+    icon: Cpu,
     badgeClass: "border-primary/70 bg-primary/15 text-primary",
     ringClass: "border-primary/70",
     iconClass: "text-primary",
@@ -47,7 +47,7 @@ const steps: Step[] = [
     n: "4",
     title: "Результат",
     desc: "Сдаём готовый проект и поддерживаем после.",
-    icon: Target,
+    icon: Rocket,
     badgeClass:
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
     ringClass: "border-[var(--neon-pink)]/50",
