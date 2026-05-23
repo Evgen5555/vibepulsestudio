@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Bot, LineChart, Music, Palette, Rocket, Workflow } from "lucide-react";
+import { Bot, Code2, LineChart, Music, Palette, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Card = {
@@ -21,7 +21,7 @@ const cards: Card[] = [
   {
     title: "Вайб - кодинг",
     desc: "Сайты и приложения: от дизайна до интеграции умных AI-сотрудников. Сборка за 3–7 дней.",
-    icon: Workflow,
+    icon: Code2,
     tone: "cyan",
     className: "",
   },
