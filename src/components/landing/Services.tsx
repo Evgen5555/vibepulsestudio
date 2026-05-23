@@ -33,7 +33,7 @@ const cards: Card[] = [
     className: "",
   },
   {
-    title: "Аналитика и рост",
+    title: "AI Видео & Клипы & Reels",
     desc: "Когорты, retention, unit-экономика. Решения на данных, а не интуиции.",
     icon: LineChart,
     tone: "violet",
