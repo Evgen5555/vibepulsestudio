@@ -43,8 +43,8 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="flex items-end justify-between mb-14 gap-6 flex-wrap">
-          <div className="max-w-2xl">
+        <div className="flex items-end justify-center mb-14 gap-6 flex-wrap text-center">
+          <div className="max-w-2xl text-center">
             <p className="text-sm text-secondary mb-3">Портфолио</p>
             <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
               Проекты, где дизайн{" "}
