@@ -12,6 +12,7 @@ type Step = {
   ringClass: string;
   iconClass: string;
   glow?: string;
+  glowBgClass?: string;
 };
 
 const steps: Step[] = [
