@@ -51,6 +51,7 @@ function Index() {
         <TargetAudience />
         <RoiCalculator />
         <Portfolio />
+        <Testimonials />
         <Process />
         <Quiz />
         <Faq />
