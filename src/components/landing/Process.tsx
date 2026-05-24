@@ -19,8 +19,9 @@ type Step = {
 const steps: Step[] = [
   {
     n: "1",
-    title: "Идея",
-    desc: "Обсуждаем задачу, цели и видение результата.",
+    title: "Разбор",
+    desc: "Обсуждаем вашу идею, находим слабые места в процессах и решаем, что именно нужно автоматизировать или упаковать.",
+
     icon: Sparkles,
     badgeClass: "border-secondary/70 bg-secondary/15 text-secondary",
     ringClass: "border-secondary/50",
