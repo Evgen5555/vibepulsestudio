@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Rocket, Sparkles, MessageCircle, X, Send } from "lucide-react";
+import { Rocket, Sparkles, MessageCircle, X, Send, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type ModalType = "apply" | "discuss" | "ask" | null;
@@ -11,6 +11,9 @@ type FormErrors = {
   agreed?: string;
 };
 
+const TELEGRAM_BOT_TOKEN = "8016376045:AAGpQIbgZEVpC7RtrA-8DaF_k0mb99PoIyE";
+const TELEGRAM_CHAT_ID = "971559120";
+
 const modalConfig = {
   apply: {
     title: "Оставить",
@@ -19,6 +22,7 @@ const modalConfig = {
     label: "Что хотите заказать? *",
     placeholder: "Опишите услугу, формат, пожелания...",
     buttonText: "Оставить заявку",
+    tgTitle: "🔥 ЗАЯВКА",
     Icon: Rocket,
   },
   discuss: {
@@ -28,6 +32,7 @@ const modalConfig = {
     label: "Расскажите о проекте *",
     placeholder: "Что хотите создать? Идея, цели, формат, сроки...",
     buttonText: "Отправить",
+    tgTitle: "✨ ОБСУЖДЕНИЕ ПРОЕКТА",
     Icon: Sparkles,
   },
   ask: {
@@ -37,12 +42,15 @@ const modalConfig = {
     label: "Ваш вопрос *",
     placeholder: "Опишите, что вы хотите узнать...",
     buttonText: "Отправить вопрос",
+    tgTitle: "❓ ВОПРОС",
     Icon: MessageCircle,
   },
 } as const;
 
 export function CtaFooter() {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     message: "",
     name: "",
@@ -54,6 +62,8 @@ export function CtaFooter() {
 
   const closeModal = () => {
     setActiveModal(null);
+    setIsSuccess(false);
+    setIsSending(false);
     setFormData({ message: "", name: "", messenger: "Telegram", username: "", agreed: false });
     setErrors({});
   };
@@ -76,8 +86,9 @@ export function CtaFooter() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!activeModal) return;
     const newErrors: FormErrors = {};
     if (!formData.message.trim()) newErrors.message = "Опишите подробнее";
     if (!formData.name.trim()) newErrors.name = "Введите имя";
@@ -88,8 +99,30 @@ export function CtaFooter() {
       setErrors(newErrors);
       return;
     }
-    console.log(`Форма из окна: ${activeModal}`, formData);
-    closeModal();
+
+    const cfg = modalConfig[activeModal];
+    const telegramText = [
+      cfg.tgTitle,
+      `👤 Имя: ${formData.name}`,
+      `📱 Мессенджер: ${formData.messenger}`,
+      `🔗 Контакт: ${formData.username}`,
+      `📋 Задача: ${formData.message}`,
+    ].join("\n");
+
+    setIsSending(true);
+    try {
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramText }),
+      });
+      setIsSuccess(true);
+    } catch (err) {
+      console.error("Ошибка отправки в Telegram:", err);
+      alert("Что-то пошло не так, попробуйте позже.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const cfg = activeModal ? modalConfig[activeModal] : null;
@@ -201,112 +234,139 @@ export function CtaFooter() {
                 <X className="size-4" />
               </button>
 
-              <div className="flex items-start gap-4 mb-6">
-                <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-cv text-background shadow-neon-violet">
-                  <cfg.Icon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-[-0.02em]">
-                    {cfg.title} <span className="text-gradient-cv">{cfg.titleAccent}</span>
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{cfg.subtitle}</p>
-                </div>
-              </div>
-
-              <form onSubmit={handleSubmit} noValidate className="space-y-4 text-left">
-                <div>
-                  <label className="block text-xs font-medium text-foreground/80 mb-2">{cfg.label}</label>
-                  <textarea
-                    rows={4}
-                    placeholder={cfg.placeholder}
-                    value={formData.message}
-                    onChange={(e) => handleInputChange("message", e.target.value)}
-                    className={`w-full rounded-2xl border bg-card/60 p-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 resize-none transition-colors ${
-                      errors.message
-                        ? "border-destructive focus:border-destructive focus:ring-destructive"
-                        : "border-border focus:border-primary focus:ring-primary"
-                    }`}
-                  />
-                  {errors.message && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.message}</p>}
-                </div>
-
-                <div>
-                  <label className="block text-xs font-medium text-foreground/80 mb-2">Имя *</label>
-                  <input
-                    type="text"
-                    placeholder="Ваше имя"
-                    value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
-                    className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
-                      errors.name
-                        ? "border-destructive focus:border-destructive focus:ring-destructive"
-                        : "border-border focus:border-primary focus:ring-primary"
-                    }`}
-                  />
-                  {errors.name && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.name}</p>}
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-medium text-foreground/80 mb-2">Мессенджер *</label>
-                    <select
-                      value={formData.messenger}
-                      onChange={(e) => handleInputChange("messenger", e.target.value)}
-                      className="w-full rounded-xl border border-border bg-card/60 px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none cursor-pointer"
-                    >
-                      <option value="Telegram">Telegram</option>
-                      <option value="WhatsApp">WhatsApp</option>
-                      <option value="Viber">Viber</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-foreground/80 mb-2">Ник / username *</label>
-                    <input
-                      type="text"
-                      placeholder="@username"
-                      value={formData.username}
-                      onChange={(e) => handleInputChange("username", e.target.value)}
-                      className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
-                        errors.username
-                          ? "border-destructive focus:border-destructive focus:ring-destructive"
-                          : "border-border focus:border-primary focus:ring-primary"
-                      }`}
-                    />
-                    {errors.username && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.username}</p>}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="flex items-start gap-3 text-xs text-muted-foreground cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={formData.agreed}
-                      onChange={(e) => handleInputChange("agreed", e.target.checked)}
-                      className={`mt-0.5 size-4 rounded bg-card/60 cursor-pointer ${
-                        errors.agreed
-                          ? "border-destructive text-destructive focus:ring-destructive/40"
-                          : "border-border text-primary focus:ring-primary/40"
-                      }`}
-                    />
-                    <span>
-                      Я ознакомлен(а) и согласен(на) с{" "}
-                      <a href="#" className="text-secondary hover:underline">политикой конфиденциальности</a>{" "}
-                      и даю согласие на обработку персональных данных.
-                    </span>
-                  </label>
-                  {errors.agreed && <p className="mt-1.5 pl-7 text-xs text-destructive">{errors.agreed}</p>}
-                </div>
-
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet"
+              {isSuccess ? (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="py-8 text-center"
                 >
-                  <Send className="size-4" />
-                  {cfg.buttonText}
-                </motion.button>
-              </form>
+                  <div className="mx-auto inline-flex size-16 items-center justify-center rounded-full bg-gradient-cv text-background shadow-neon-violet">
+                    <CheckCircle2 className="size-8" />
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold tracking-[-0.02em]">
+                    Заявка <span className="text-gradient-cv">отправлена</span>
+                  </h3>
+                  <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
+                    Спасибо! Данные уже улетели ко мне. Разберу вашу задачу и напишу в течение пары часов.
+                  </p>
+                  <button
+                    onClick={closeModal}
+                    className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv px-7 py-3 text-sm font-semibold text-background shadow-neon-violet"
+                  >
+                    Закрыть окно
+                  </button>
+                </motion.div>
+              ) : (
+                <>
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-gradient-cv text-background shadow-neon-violet">
+                      <cfg.Icon className="size-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold tracking-[-0.02em]">
+                        {cfg.title} <span className="text-gradient-cv">{cfg.titleAccent}</span>
+                      </h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{cfg.subtitle}</p>
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleSubmit} noValidate className="space-y-4 text-left">
+                    <div>
+                      <label className="block text-xs font-medium text-foreground/80 mb-2">{cfg.label}</label>
+                      <textarea
+                        rows={4}
+                        placeholder={cfg.placeholder}
+                        value={formData.message}
+                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        className={`w-full rounded-2xl border bg-card/60 p-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 resize-none transition-colors ${
+                          errors.message
+                            ? "border-destructive focus:border-destructive focus:ring-destructive"
+                            : "border-border focus:border-primary focus:ring-primary"
+                        }`}
+                      />
+                      {errors.message && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.message}</p>}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-medium text-foreground/80 mb-2">Имя *</label>
+                      <input
+                        type="text"
+                        placeholder="Ваше имя"
+                        value={formData.name}
+                        onChange={(e) => handleInputChange("name", e.target.value)}
+                        className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
+                          errors.name
+                            ? "border-destructive focus:border-destructive focus:ring-destructive"
+                            : "border-border focus:border-primary focus:ring-primary"
+                        }`}
+                      />
+                      {errors.name && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.name}</p>}
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-medium text-foreground/80 mb-2">Мессенджер *</label>
+                        <select
+                          value={formData.messenger}
+                          onChange={(e) => handleInputChange("messenger", e.target.value)}
+                          className="w-full rounded-xl border border-border bg-card/60 px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none cursor-pointer"
+                        >
+                          <option value="Telegram">Telegram</option>
+                          <option value="WhatsApp">WhatsApp</option>
+                          <option value="Viber">Viber</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-foreground/80 mb-2">Ник / username *</label>
+                        <input
+                          type="text"
+                          placeholder="@username"
+                          value={formData.username}
+                          onChange={(e) => handleInputChange("username", e.target.value)}
+                          className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
+                            errors.username
+                              ? "border-destructive focus:border-destructive focus:ring-destructive"
+                              : "border-border focus:border-primary focus:ring-primary"
+                          }`}
+                        />
+                        {errors.username && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.username}</p>}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="flex items-start gap-3 text-xs text-muted-foreground cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.agreed}
+                          onChange={(e) => handleInputChange("agreed", e.target.checked)}
+                          className={`mt-0.5 size-4 rounded bg-card/60 cursor-pointer ${
+                            errors.agreed
+                              ? "border-destructive text-destructive focus:ring-destructive/40"
+                              : "border-border text-primary focus:ring-primary/40"
+                          }`}
+                        />
+                        <span>
+                          Я ознакомлен(а) и согласен(на) с{" "}
+                          <a href="#" className="text-secondary hover:underline">политикой конфиденциальности</a>{" "}
+                          и даю согласие на обработку персональных данных.
+                        </span>
+                      </label>
+                      {errors.agreed && <p className="mt-1.5 pl-7 text-xs text-destructive">{errors.agreed}</p>}
+                    </div>
+
+                    <motion.button
+                      type="submit"
+                      disabled={isSending}
+                      whileHover={{ scale: isSending ? 1 : 1.02 }}
+                      whileTap={{ scale: isSending ? 1 : 0.98 }}
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet disabled:opacity-60"
+                    >
+                      <Send className="size-4" />
+                      {isSending ? "Отправка..." : cfg.buttonText}
+                    </motion.button>
+                  </form>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
