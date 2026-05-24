@@ -5,35 +5,36 @@ export function CtaFooter() {
   return (
     <section id="cta" className="relative py-28 sm:py-40">
       <div className="mx-auto max-w-5xl px-5 sm:px-8 text-center">
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-sm text-secondary mb-5"
         >
-          Готовы начать?
-        </motion.p>
+          <p className="text-sm text-secondary mb-5">Готовы начать?</p>
+        </motion.div>
 
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,7vw,5.5rem)]"
         >
-          Превратим вашу идею <br className="hidden sm:block" />
-          в <span className="text-gradient-cv">премиальный продукт</span>
-        </motion.h2>
+          <h2 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,7vw,5.5rem)]">
+            Превратим вашу идею <br className="hidden sm:block" />
+            в <span className="text-gradient-cv">премиальный продукт</span>
+          </h2>
+        </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.15 }}
-          className="mt-6 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto"
         >
-          Расскажите о вашей задаче — мы разработаем индивидуальное решение, определим формат и рассчитаем точную стоимость.
-        </motion.p>
+          <p className="mt-6 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
+            Расскажите о вашей задаче — мы разработаем индивидуальное решение, определим формат и рассчитаем точную стоимость.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
