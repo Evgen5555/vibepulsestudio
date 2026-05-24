@@ -15,6 +15,8 @@ const links = [
   { href: "#portfolio", label: "Портфолио" },
   { href: "#about", label: "Обо мне" },
   { href: "#process", label: "Процесс" },
+  { href: "#faq", label: "FAQ" },
+
 ];
 
 const TELEGRAM_URL = "https://t.me/evgeniya5_5";
