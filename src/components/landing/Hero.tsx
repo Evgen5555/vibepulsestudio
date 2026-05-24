@@ -74,15 +74,21 @@ export function Hero() {
             transition={{ delay: 0.45 }}
             className="mt-10 flex flex-col sm:flex-row gap-3"
           >
-            <motion.a
+            <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href="#quiz"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-neon-violet"
+              onClick={() =>
+                document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="relative group flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#3b82f6] via-[#6366f1] to-[#a855f7] text-white font-bold text-base transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
             >
-              Пройти КВИЗ и получить расчет
-              <ArrowRight className="size-4" />
-            </motion.a>
+              <span className="relative flex h-3 w-3 mr-1">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500" />
+              </span>
+              <span>Пройти квиз → расчёт за 2 минуты</span>
+            </motion.button>
+
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
