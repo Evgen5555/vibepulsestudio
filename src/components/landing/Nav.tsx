@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Menu, X, MessageSquare } from "lucide-react";
+import { Menu, X } from "lucide-react";
+
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M21.944 3.244a1.2 1.2 0 0 0-1.262-.2L2.92 10.51c-.86.34-.85 1.56.014 1.887l4.36 1.65 1.69 5.27a1.2 1.2 0 0 0 1.97.49l2.43-2.27 4.45 3.27c.68.5 1.65.13 1.83-.7l3.05-14.6a1.2 1.2 0 0 0-.77-1.263Zm-4.32 4.05-7.86 6.95a.6.6 0 0 0-.19.34l-.46 2.62-1.31-4.09 9.45-5.74c.36-.22.71.24.37.54Z"/>
+    </svg>
+  );
+}
 import { motion } from "framer-motion";
 
 const links = [
@@ -41,7 +49,7 @@ export function Nav() {
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground hover:bg-primary/20 shadow-neon-violet transition-colors"
             >
-              <MessageSquare className="size-4" />
+              <TelegramIcon className="size-4" />
               Написать в Telegram
             </motion.a>
             <button
@@ -76,7 +84,7 @@ export function Nav() {
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium shadow-neon-violet"
                 >
-                  <MessageSquare className="size-4" />
+                  <TelegramIcon className="size-4" />
                   Написать в Telegram
                 </a>
               </li>
