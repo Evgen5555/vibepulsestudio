@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, MessageCircleQuestion } from "lucide-react";
+import { Menu, X, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 const links = [
@@ -8,6 +8,8 @@ const links = [
   { href: "#about", label: "Обо мне" },
   { href: "#process", label: "Процесс" },
 ];
+
+const TELEGRAM_URL = "https://t.me/evgeniya5_5";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -34,11 +36,13 @@ export function Nav() {
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href="#cta"
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground hover:bg-primary/20 shadow-neon-violet transition-colors"
             >
-              <MessageCircleQuestion className="size-4" />
-              Задать вопрос
+              <MessageSquare className="size-4" />
+              Написать в Telegram
             </motion.a>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -66,12 +70,14 @@ export function Nav() {
               ))}
               <li>
                 <a
-                  href="#cta"
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium shadow-neon-violet"
                 >
-                  <MessageCircleQuestion className="size-4" />
-                  Задать вопрос
+                  <MessageSquare className="size-4" />
+                  Написать в Telegram
                 </a>
               </li>
             </ul>
