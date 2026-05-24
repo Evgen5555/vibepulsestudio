@@ -8,6 +8,7 @@ import { Portfolio } from "@/components/landing/Portfolio";
 import { Process } from "@/components/landing/Process";
 import { Quiz } from "@/components/landing/Quiz";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
+import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 
@@ -50,6 +51,7 @@ function Index() {
         <TargetAudience />
         <RoiCalculator />
         <Portfolio />
+        <Testimonials />
         <Process />
         <Quiz />
         <Faq />
