@@ -49,7 +49,7 @@ export function Nav() {
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium text-foreground hover:bg-primary/20 shadow-neon-violet transition-colors"
             >
-              <MessageSquare className="size-4" />
+              <TelegramIcon className="size-4" />
               Написать в Telegram
             </motion.a>
             <button
@@ -84,7 +84,7 @@ export function Nav() {
                   onClick={() => setOpen(false)}
                   className="mt-2 inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/10 px-4 py-2 text-sm font-medium shadow-neon-violet"
                 >
-                  <MessageSquare className="size-4" />
+                  <TelegramIcon className="size-4" />
                   Написать в Telegram
                 </a>
               </li>
