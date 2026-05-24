@@ -20,7 +20,7 @@ const steps: Step[] = [
   {
     n: "1",
     title: "Разбор",
-    desc: "Обсуждаем вашу идею, решаем, что именно нужно автоматизировать или упаковать.",
+    desc: "Обсуждаем вашу идею, задачи, интеграции.",
 
     icon: Sparkles,
     badgeClass: "border-secondary/70 bg-secondary/15 text-secondary",
