@@ -42,6 +42,13 @@ export function TargetAudience() {
   return (
     <section id="audience" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center">
+        <div className="max-w-2xl mx-auto mb-12">
+          <p className="text-sm text-secondary mb-3">Для кого</p>
+          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+            Кому подойдёт{" "}
+            <span className="text-gradient-cv">сотрудничество</span>
+          </h2>
+        </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 select-none">
           <h3 className="text-xl md:text-2xl font-medium text-foreground/80">
             Для экспертов, онлайн-школ, продуктовых брендов
