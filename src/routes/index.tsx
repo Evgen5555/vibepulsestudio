@@ -5,6 +5,7 @@ import { Marquee } from "@/components/landing/Marquee";
 import { Services } from "@/components/landing/Services";
 import { Portfolio } from "@/components/landing/Portfolio";
 import { Process } from "@/components/landing/Process";
+import { Quiz } from "@/components/landing/Quiz";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 
 export const Route = createFileRoute("/")({
@@ -44,6 +45,7 @@ function Index() {
         <Services />
         <Portfolio />
         <Process />
+        <Quiz />
         <CtaFooter />
       </main>
     </>
