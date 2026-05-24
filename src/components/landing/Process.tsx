@@ -32,7 +32,7 @@ const steps: Step[] = [
   },
   {
     n: "2",
-    title: "Концепция",
+    title: "Архитектура",
     desc: "Создаём мудборд, референсы и техническое задание.",
     icon: Layers,
     badgeClass: "border-[var(--neon-blue)]/70 bg-[var(--neon-blue)]/15 text-[var(--neon-blue)]",
