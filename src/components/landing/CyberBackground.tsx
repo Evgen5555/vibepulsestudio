@@ -1,15 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-interface Particle {
+interface Point {
   x: number;
   y: number;
-  size: number;
-  speedX: number;
-  speedY: number;
-  rot: number;
-  rotSpeed: number;
-  sides: number;
-  alpha: number;
+  vx: number;
+  vy: number;
+  r: number;
 }
 
 export default function CyberBackground() {
@@ -21,103 +17,145 @@ export default function CyberBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
-    const particles: Particle[] = [];
-    const maxParticles = 25;
+    let raf = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const points: Point[] = [];
+    const mouse = { x: -9999, y: -9999, active: false };
+    const LINK_DIST = 160;
+    const MOUSE_DIST = 180;
+    const REPEL = 0.6;
 
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const resize = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
 
-    const createParticle = (initY = false): Particle => ({
-      x: Math.random() * canvas.width,
-      y: initY ? Math.random() * canvas.height : canvas.height + 20,
-      size: Math.random() * 15 + 8,
-      speedX: (Math.random() - 0.5) * 0.6,
-      speedY: -(Math.random() * 0.5 + 0.3),
-      rot: Math.random() * Math.PI * 2,
-      rotSpeed: (Math.random() - 0.5) * 0.01,
-      sides: Math.random() > 0.5 ? 3 : 4,
-      alpha: Math.random() * 0.4 + 0.1,
-    });
-
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push(createParticle(true));
-    }
-
-    const drawPolygon = (
-      ctx: CanvasRenderingContext2D,
-      x: number,
-      y: number,
-      radius: number,
-      sides: number,
-      rotation: number,
-    ) => {
-      ctx.beginPath();
-      for (let i = 0; i < sides; i++) {
-        const angle = rotation + (i * Math.PI * 2) / sides;
-        const sx = x + Math.cos(angle) * radius;
-        const sy = y + Math.sin(angle) * radius;
-        if (i === 0) ctx.moveTo(sx, sy);
-        else ctx.lineTo(sx, sy);
+    const init = () => {
+      points.length = 0;
+      const count = 50;
+      for (let i = 0; i < count; i++) {
+        points.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          r: Math.random() * 1.4 + 1.2,
+        });
       }
-      ctx.closePath();
     };
 
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    resize();
+    init();
 
-      particles.forEach((p, idx) => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        p.rot += p.rotSpeed;
+    const onResize = () => {
+      resize();
+      init();
+    };
+    const onMove = (e: MouseEvent) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+      mouse.active = true;
+    };
+    const onLeave = () => {
+      mouse.active = false;
+      mouse.x = -9999;
+      mouse.y = -9999;
+    };
 
-        if (p.y < -20 || p.x < -20 || p.x > canvas.width + 20) {
-          particles[idx] = createParticle(false);
-        }
+    window.addEventListener('resize', onResize);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseout', onLeave);
 
-        ctx.save();
-        ctx.shadowBlur = 15;
-        const isCyan = idx % 2 === 0;
-        ctx.shadowColor = isCyan ? 'rgba(6, 182, 212, 0.6)' : 'rgba(168, 85, 247, 0.6)';
-        ctx.strokeStyle = isCyan
-          ? `rgba(6, 182, 212, ${p.alpha})`
-          : `rgba(168, 85, 247, ${p.alpha})`;
-        ctx.lineWidth = 1.5;
-        drawPolygon(ctx, p.x, p.y, p.size, p.sides, p.rot);
-        ctx.stroke();
-        ctx.restore();
-      });
+    const draw = () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      ctx.clearRect(0, 0, w, h);
 
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
-            ctx.save();
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${0.05 * (1 - dist / 180)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-            ctx.restore();
+      // update positions
+      for (const p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // bounce off edges
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+
+        // mouse repel
+        if (mouse.active) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < MOUSE_DIST && d > 0) {
+            const force = ((MOUSE_DIST - d) / MOUSE_DIST) * REPEL;
+            p.x += (dx / d) * force;
+            p.y += (dy / d) * force;
           }
         }
       }
 
-      animationFrameId = requestAnimationFrame(animate);
+      // draw connecting lines between nearby points
+      ctx.lineWidth = 0.6;
+      for (let i = 0; i < points.length; i++) {
+        for (let j = i + 1; j < points.length; j++) {
+          const a = points[i];
+          const b = points[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK_DIST) {
+            const alpha = (1 - d / LINK_DIST) * 0.35;
+            ctx.strokeStyle = `rgba(210, 210, 210, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // lines from mouse to nearby points
+      if (mouse.active) {
+        for (const p of points) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < MOUSE_DIST) {
+            const alpha = (1 - d / MOUSE_DIST) * 0.5;
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(mouse.x, mouse.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // draw gold dots with subtle glow
+      for (const p of points) {
+        ctx.save();
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+        ctx.fillStyle = '#d4af37';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      raf = requestAnimationFrame(draw);
     };
 
-    animate();
+    raf = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(raf);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseout', onLeave);
     };
   }, []);
 
