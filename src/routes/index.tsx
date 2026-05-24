@@ -7,7 +7,9 @@ import { Portfolio } from "@/components/landing/Portfolio";
 import { Process } from "@/components/landing/Process";
 import { Quiz } from "@/components/landing/Quiz";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
+import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -48,7 +50,9 @@ function Index() {
         <Process />
         <Quiz />
         <RoiCalculator />
+        <Faq />
         <CtaFooter />
+
       </main>
     </>
   );
