@@ -47,6 +47,7 @@ function Index() {
         <Portfolio />
         <Process />
         <Quiz />
+        <RoiCalculator />
         <CtaFooter />
       </main>
     </>
