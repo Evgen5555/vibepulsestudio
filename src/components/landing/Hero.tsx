@@ -44,28 +44,29 @@ export function Hero() {
             AI-маркетинг · Premium-сайты · Автоворонки
           </motion.div>
 
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.8 }}
-            className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.75rem,7vw,5.5rem)]"
           >
-            Где идеи оживают <br className="hidden sm:block" />
-            через маркетинг и{" "}
-            <span className="text-gradient-cv">AI</span>
-          </motion.h1>
+            <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.75rem,7vw,5.5rem)]">
+              Где идеи оживают <br className="hidden sm:block" />
+              через маркетинг и{" "}
+              <span className="text-gradient-cv">AI</span>
+            </h1>
+          </motion.div>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground"
           >
-            Сайты, автоворонки, боты с окупаемостью в первый месяц. Сильная аналитика,
-            эстетичный дизайн и полная интеграция ИИ: от нейрофотосессий и AI-видео
-            до музыки и вейб-кодинга.
-
-          </motion.p>
+            <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
+              Сайты, автоворонки, боты с окупаемостью в первый месяц. Сильная аналитика,
+              эстетичный дизайн и полная интеграция ИИ: от нейрофотосессий и AI-видео
+              до музыки и вейб-кодинга.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
