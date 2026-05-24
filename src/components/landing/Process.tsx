@@ -44,7 +44,7 @@ const steps: Step[] = [
   },
   {
     n: "3",
-    title: "AI-создание",
+    title: "Сборка",
     desc: "Генерируем, дорабатываем и шлифуем результат.",
     icon: Cpu,
     badgeClass: "border-primary/70 bg-primary/15 text-primary",
