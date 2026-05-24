@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
