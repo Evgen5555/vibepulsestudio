@@ -297,7 +297,7 @@ export function Process() {
                     <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground max-w-xs">
+                    <p className="mt-2 text-sm text-muted-foreground max-w-xs text-justify">
                       {s.desc}
                     </p>
                   </div>
