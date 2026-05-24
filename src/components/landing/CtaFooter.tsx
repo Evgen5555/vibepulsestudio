@@ -11,8 +11,6 @@ type FormErrors = {
   agreed?: string;
 };
 
-const TELEGRAM_BOT_TOKEN = "8016376045:AAGpQIbgZEVpC7RtrA-8DaF_k0mb99PoIyE";
-const TELEGRAM_CHAT_ID = "971559120";
 
 const modalConfig = {
   apply: {
@@ -100,30 +98,29 @@ export function CtaFooter() {
       return;
     }
 
-    const cfg = modalConfig[activeModal];
-    const telegramText = [
-      cfg.tgTitle,
-      `👤 Имя: ${formData.name}`,
-      `📱 Мессенджер: ${formData.messenger}`,
-      `🔗 Контакт: ${formData.username}`,
-      `📋 Задача: ${formData.message}`,
-    ].join("\n");
-
     setIsSending(true);
     try {
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const res = await fetch("/api/public/telegram-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramText }),
+        body: JSON.stringify({
+          type: activeModal,
+          name: formData.name,
+          messenger: formData.messenger,
+          username: formData.username,
+          message: formData.message,
+        }),
       });
+      if (!res.ok) throw new Error("Send failed");
       setIsSuccess(true);
     } catch (err) {
-      console.error("Ошибка отправки в Telegram:", err);
+      console.error("Ошибка отправки:", err);
       alert("Что-то пошло не так, попробуйте позже.");
     } finally {
       setIsSending(false);
     }
   };
+
 
   const cfg = activeModal ? modalConfig[activeModal] : null;
 

@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/telegram-lead'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicTelegramLeadRoute = ApiPublicTelegramLeadRouteImport.update({
+  id: '/api/public/telegram-lead',
+  path: '/api/public/telegram-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/public/telegram-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/public/telegram-lead'
+  id: '__root__' | '/' | '/api/public/telegram-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicTelegramLeadRoute: typeof ApiPublicTelegramLeadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/telegram-lead': {
+      id: '/api/public/telegram-lead'
+      path: '/api/public/telegram-lead'
+      fullPath: '/api/public/telegram-lead'
+      preLoaderRoute: typeof ApiPublicTelegramLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicTelegramLeadRoute: ApiPublicTelegramLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
