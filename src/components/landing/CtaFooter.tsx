@@ -11,8 +11,6 @@ type FormErrors = {
   agreed?: string;
 };
 
-const TELEGRAM_BOT_TOKEN = "8016376045:AAGpQIbgZEVpC7RtrA-8DaF_k0mb99PoIyE";
-const TELEGRAM_CHAT_ID = "971559120";
 
 const modalConfig = {
   apply: {
