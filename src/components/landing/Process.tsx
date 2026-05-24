@@ -57,7 +57,7 @@ const steps: Step[] = [
   {
     n: "4",
     title: "Результат",
-    desc: "Проверяем, чтобы всё кликалось и работало без ошибок, запускаем проект и передаем его вам. Дальше — остаемся на связи.",
+    desc: "Запускаем проект и передаем его вам. Дальше — остаемся на связи.",
     icon: Check,
     badgeClass:
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
@@ -297,7 +297,7 @@ export function Process() {
                     <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted-foreground max-w-xs text-justify">
+                    <p className="mt-2 text-sm text-muted-foreground max-w-xs text-center">
                       {s.desc}
                     </p>
                   </div>
