@@ -99,18 +99,6 @@ export function Hero() {
             </motion.a>
           </motion.div>
 
-          <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-            {[
-              { k: "+120", v: "проектов" },
-              { k: "×3.4", v: "средний ROI" },
-              { k: "7 лет", v: "в digital" },
-            ].map((s) => (
-              <div key={s.v}>
-                <div className="text-2xl font-semibold text-gradient-cv">{s.k}</div>
-                <div className="text-xs text-muted-foreground mt-1">{s.v}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
