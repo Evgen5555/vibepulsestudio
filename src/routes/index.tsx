@@ -11,6 +11,7 @@ import { RoiCalculator } from "@/components/landing/RoiCalculator";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
+import CyberBackground from "@/components/landing/CyberBackground";
 
 
 export const Route = createFileRoute("/")({
@@ -44,6 +45,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <CyberBackground />
       <Nav />
       <main className="relative overflow-x-clip">
         <Hero />
