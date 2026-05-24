@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import MatrixPortrait from "./MatrixPortrait";
+
 
 export function Hero() {
   return (
@@ -12,24 +14,8 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="lg:col-span-5 order-2 lg:order-1"
         >
-          <div className="relative mx-auto max-w-md">
-            <div className="absolute -inset-6 rounded-[2rem] bg-gradient-cv opacity-40 blur-2xl" />
-            <div className="relative aspect-[5/6] rounded-[1.75rem] overflow-hidden border border-border/80 bg-card">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 30% 20%, color-mix(in oklab, var(--neon-violet) 35%, transparent), transparent 55%), radial-gradient(ellipse at 80% 90%, color-mix(in oklab, var(--neon-cyan) 28%, transparent), transparent 60%), linear-gradient(180deg, #0a0a14, #05050b)",
-                }}
-              />
-              <div className="absolute inset-0 flex items-end p-6">
-                <div className="flex items-center gap-2 rounded-full glass border border-border px-3 py-1.5 text-xs text-foreground/80">
-                  <span className="size-2 rounded-full bg-secondary shadow-neon-cyan" />
-                  Доступен для проектов · Q3
-                </div>
-              </div>
-            </div>
-          </div>
+          <MatrixPortrait />
+
         </motion.div>
 
         {/* Copy */}
