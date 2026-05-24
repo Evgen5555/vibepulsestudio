@@ -13,7 +13,6 @@ import { motion } from "framer-motion";
 const links = [
   { href: "#services", label: "Услуги" },
   { href: "#portfolio", label: "Портфолио" },
-  { href: "#about", label: "Обо мне" },
   { href: "#process", label: "Процесс" },
   { href: "#faq", label: "FAQ" },
 
