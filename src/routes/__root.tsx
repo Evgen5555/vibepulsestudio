@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AI-маркетинг и premium-сайты" },
-      { name: "description", content: "Высококонверсионные сайты и автоворонки на стыке AI-маркетинга и Apple-эстетики. Окупаемость в первый месяц." },
+      { title: "VibePulse Studio — Высокоскоростная AI-разработка" },
+      { name: "description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "AI-маркетинг и premium-сайты" },
-      { property: "og:description", content: "Высококонверсионные сайты и автоворонки на стыке AI-маркетинга и Apple-эстетики." },
+      { property: "og:title", content: "VibePulse Studio — Высокоскоростная AI-разработка" },
+      { property: "og:description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "VibePulse Studio — Высокоскоростная AI-разработка" },
+      { name: "twitter:description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" },
     ],
     links: [
       {
