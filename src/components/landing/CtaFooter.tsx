@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 
 type ModalType = "apply" | "discuss" | "ask" | null;
 
+type FormErrors = {
+  message?: string;
+  name?: string;
+  username?: string;
+  agreed?: string;
+};
+
 const modalConfig = {
   apply: {
     title: "Оставить",
@@ -43,10 +50,12 @@ export function CtaFooter() {
     username: "",
     agreed: false,
   });
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const closeModal = () => {
     setActiveModal(null);
     setFormData({ message: "", name: "", messenger: "Telegram", username: "", agreed: false });
+    setErrors({});
   };
 
   useEffect(() => {
@@ -60,9 +69,25 @@ export function CtaFooter() {
     };
   }, [activeModal]);
 
+  const handleInputChange = (field: string, value: string | boolean) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [field]: undefined }));
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.agreed) return;
+    const newErrors: FormErrors = {};
+    if (!formData.message.trim()) newErrors.message = "Опишите подробнее";
+    if (!formData.name.trim()) newErrors.name = "Введите имя";
+    if (!formData.username.trim()) newErrors.username = "Введите контакт";
+    if (!formData.agreed) newErrors.agreed = "Необходимо согласие";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
     console.log(`Форма из окна: ${activeModal}`, formData);
     closeModal();
   };
@@ -188,29 +213,37 @@ export function CtaFooter() {
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4 text-left">
+              <form onSubmit={handleSubmit} noValidate className="space-y-4 text-left">
                 <div>
                   <label className="block text-xs font-medium text-foreground/80 mb-2">{cfg.label}</label>
                   <textarea
-                    required
                     rows={4}
                     placeholder={cfg.placeholder}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full rounded-2xl border border-border bg-card/60 p-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+                    onChange={(e) => handleInputChange("message", e.target.value)}
+                    className={`w-full rounded-2xl border bg-card/60 p-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 resize-none transition-colors ${
+                      errors.message
+                        ? "border-destructive focus:border-destructive focus:ring-destructive"
+                        : "border-border focus:border-primary focus:ring-primary"
+                    }`}
                   />
+                  {errors.message && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.message}</p>}
                 </div>
 
                 <div>
                   <label className="block text-xs font-medium text-foreground/80 mb-2">Имя *</label>
                   <input
                     type="text"
-                    required
                     placeholder="Ваше имя"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full rounded-xl border border-border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
+                      errors.name
+                        ? "border-destructive focus:border-destructive focus:ring-destructive"
+                        : "border-border focus:border-primary focus:ring-primary"
+                    }`}
                   />
+                  {errors.name && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.name}</p>}
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -218,7 +251,7 @@ export function CtaFooter() {
                     <label className="block text-xs font-medium text-foreground/80 mb-2">Мессенджер *</label>
                     <select
                       value={formData.messenger}
-                      onChange={(e) => setFormData({ ...formData, messenger: e.target.value })}
+                      onChange={(e) => handleInputChange("messenger", e.target.value)}
                       className="w-full rounded-xl border border-border bg-card/60 px-4 py-3 text-sm text-foreground focus:border-primary focus:outline-none cursor-pointer"
                     >
                       <option value="Telegram">Telegram</option>
@@ -230,35 +263,45 @@ export function CtaFooter() {
                     <label className="block text-xs font-medium text-foreground/80 mb-2">Ник / username *</label>
                     <input
                       type="text"
-                      required
                       placeholder="@username"
                       value={formData.username}
-                      onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                      className="w-full rounded-xl border border-border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                      onChange={(e) => handleInputChange("username", e.target.value)}
+                      className={`w-full rounded-xl border bg-card/60 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-1 transition-colors ${
+                        errors.username
+                          ? "border-destructive focus:border-destructive focus:ring-destructive"
+                          : "border-border focus:border-primary focus:ring-primary"
+                      }`}
                     />
+                    {errors.username && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.username}</p>}
                   </div>
                 </div>
 
-                <label className="flex items-start gap-3 text-xs text-muted-foreground cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={formData.agreed}
-                    onChange={(e) => setFormData({ ...formData, agreed: e.target.checked })}
-                    className="mt-0.5 size-4 rounded border-border bg-card/60 text-primary focus:ring-primary/40 cursor-pointer"
-                  />
-                  <span>
-                    Я ознакомлен(а) и согласен(на) с{" "}
-                    <a href="#" className="text-secondary hover:underline">политикой конфиденциальности</a>{" "}
-                    и даю согласие на обработку персональных данных.
-                  </span>
-                </label>
+                <div>
+                  <label className="flex items-start gap-3 text-xs text-muted-foreground cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={formData.agreed}
+                      onChange={(e) => handleInputChange("agreed", e.target.checked)}
+                      className={`mt-0.5 size-4 rounded bg-card/60 cursor-pointer ${
+                        errors.agreed
+                          ? "border-destructive text-destructive focus:ring-destructive/40"
+                          : "border-border text-primary focus:ring-primary/40"
+                      }`}
+                    />
+                    <span>
+                      Я ознакомлен(а) и согласен(на) с{" "}
+                      <a href="#" className="text-secondary hover:underline">политикой конфиденциальности</a>{" "}
+                      и даю согласие на обработку персональных данных.
+                    </span>
+                  </label>
+                  {errors.agreed && <p className="mt-1.5 pl-7 text-xs text-destructive">{errors.agreed}</p>}
+                </div>
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: formData.agreed ? 1.02 : 1 }}
-                  whileTap={{ scale: formData.agreed ? 0.98 : 1 }}
-                  disabled={!formData.agreed}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet disabled:opacity-40 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet"
                 >
                   <Send className="size-4" />
                   {cfg.buttonText}
