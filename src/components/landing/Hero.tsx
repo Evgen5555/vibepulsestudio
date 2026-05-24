@@ -77,10 +77,10 @@ export function Hero() {
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href="#cta"
+              href="#quiz"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-4 text-base font-medium text-primary-foreground shadow-neon-violet"
             >
-              Обсудить проект
+              Пройти КВИЗ и получить расчет
               <ArrowRight className="size-4" />
             </motion.a>
             <motion.a
@@ -89,7 +89,7 @@ export function Hero() {
               href="#cta"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-secondary/70 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan"
             >
-              Оставить заявку
+              Обсудить проект
             </motion.a>
           </motion.div>
 
