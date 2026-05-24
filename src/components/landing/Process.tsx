@@ -45,7 +45,7 @@ const steps: Step[] = [
   {
     n: "3",
     title: "Сборка",
-    desc: "Генерируем, дорабатываем и шлифуем результат.",
+    desc: "Быстро собираем проект с помощью нейросетей, докручиваем код руками и связываем всё в рабочую систему.",
     icon: Cpu,
     badgeClass: "border-primary/70 bg-primary/15 text-primary",
     ringClass: "border-primary/70",
