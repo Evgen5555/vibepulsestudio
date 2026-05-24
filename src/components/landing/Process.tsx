@@ -33,7 +33,7 @@ const steps: Step[] = [
   {
     n: "2",
     title: "Архитектура",
-    desc: "Придумываем, как всё будет устроено. Выбираем инструменты и набрасываем визуальный стиль",
+    desc: "Продумываем, как будет устроено. Выбираем инструменты и стиль",
     icon: Layers,
     badgeClass: "border-[var(--neon-blue)]/70 bg-[var(--neon-blue)]/15 text-[var(--neon-blue)]",
     ringClass: "border-[var(--neon-blue)]/50",
