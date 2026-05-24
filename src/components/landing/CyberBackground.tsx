@@ -19,7 +19,7 @@ export default function CyberBackground() {
 
     let animationFrameId: number;
     const dots: Dot[] = [];
-    const maxDots = 40;
+    const LINK_DIST = 180;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -28,47 +28,56 @@ export default function CyberBackground() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
+    // density-based count so lines actually connect on any viewport
+    const area = canvas.width * canvas.height;
+    const count = Math.min(90, Math.max(45, Math.round(area / 22000)));
+
     const createDot = (initAll = false): Dot => ({
       x: Math.random() * canvas.width,
       y: initAll ? Math.random() * canvas.height : canvas.height + 10,
-      speedX: (Math.random() - 0.5) * 0.3,
-      speedY: -(Math.random() * 0.3 + 0.15),
-      size: Math.random() * 2 + 1.5,
+      speedX: (Math.random() - 0.5) * 0.25,
+      speedY: -(Math.random() * 0.25 + 0.1),
+      size: Math.random() * 1.2 + 0.8, // small, faint dots
     });
 
-    for (let i = 0; i < maxDots; i++) dots.push(createDot(true));
+    for (let i = 0; i < count; i++) dots.push(createDot(true));
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // update positions
       dots.forEach((d, idx) => {
         d.x += d.speedX;
         d.y += d.speedY;
-
         if (d.y < -10 || d.x < -10 || d.x > canvas.width + 10) {
           dots[idx] = createDot(false);
         }
-
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#d97706';
-        ctx.fill();
       });
 
+      // draw web FIRST so dots sit on top
+      ctx.lineWidth = 0.6;
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
+          if (dist < LINK_DIST) {
+            const alpha = (1 - dist / LINK_DIST) * 0.5;
+            ctx.strokeStyle = `rgba(220, 220, 220, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.12 * (1 - dist / 140)})`;
-            ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
+      }
+
+      // faint gold dots
+      for (const d of dots) {
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(217, 119, 6, 0.55)';
+        ctx.fill();
       }
 
       animationFrameId = requestAnimationFrame(animate);
