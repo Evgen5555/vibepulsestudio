@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RoiRouteImport } from './routes/roi'
 import { Route as CalculatorAppRouteImport } from './routes/calculator-app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/telegram-lead'
 
+const RoiRoute = RoiRouteImport.update({
+  id: '/roi',
+  path: '/roi',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CalculatorAppRoute = CalculatorAppRouteImport.update({
   id: '/calculator-app',
   path: '/calculator-app',
@@ -32,35 +38,51 @@ const ApiPublicTelegramLeadRoute = ApiPublicTelegramLeadRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/calculator-app' | '/api/public/telegram-lead'
+  fullPaths: '/' | '/calculator-app' | '/roi' | '/api/public/telegram-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/calculator-app' | '/api/public/telegram-lead'
-  id: '__root__' | '/' | '/calculator-app' | '/api/public/telegram-lead'
+  to: '/' | '/calculator-app' | '/roi' | '/api/public/telegram-lead'
+  id:
+    | '__root__'
+    | '/'
+    | '/calculator-app'
+    | '/roi'
+    | '/api/public/telegram-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CalculatorAppRoute: typeof CalculatorAppRoute
+  RoiRoute: typeof RoiRoute
   ApiPublicTelegramLeadRoute: typeof ApiPublicTelegramLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/roi': {
+      id: '/roi'
+      path: '/roi'
+      fullPath: '/roi'
+      preLoaderRoute: typeof RoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/calculator-app': {
       id: '/calculator-app'
       path: '/calculator-app'
@@ -88,6 +110,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CalculatorAppRoute: CalculatorAppRoute,
+  RoiRoute: RoiRoute,
   ApiPublicTelegramLeadRoute: ApiPublicTelegramLeadRoute,
 }
 export const routeTree = rootRouteImport
