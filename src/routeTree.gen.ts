@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as CalculatorAppRouteImport } from './routes/calculator-app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/telegram-lead'
 
+const CalculatorAppRoute = CalculatorAppRouteImport.update({
+  id: '/calculator-app',
+  path: '/calculator-app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +31,43 @@ const ApiPublicTelegramLeadRoute = ApiPublicTelegramLeadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/calculator-app': typeof CalculatorAppRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/calculator-app': typeof CalculatorAppRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/calculator-app': typeof CalculatorAppRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/telegram-lead'
+  fullPaths: '/' | '/calculator-app' | '/api/public/telegram-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/telegram-lead'
-  id: '__root__' | '/' | '/api/public/telegram-lead'
+  to: '/' | '/calculator-app' | '/api/public/telegram-lead'
+  id: '__root__' | '/' | '/calculator-app' | '/api/public/telegram-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CalculatorAppRoute: typeof CalculatorAppRoute
   ApiPublicTelegramLeadRoute: typeof ApiPublicTelegramLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/calculator-app': {
+      id: '/calculator-app'
+      path: '/calculator-app'
+      fullPath: '/calculator-app'
+      preLoaderRoute: typeof CalculatorAppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,8 +87,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CalculatorAppRoute: CalculatorAppRoute,
   ApiPublicTelegramLeadRoute: ApiPublicTelegramLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
