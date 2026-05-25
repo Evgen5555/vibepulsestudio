@@ -57,7 +57,7 @@ const steps: Step[] = [
   {
     n: "4",
     title: "Результат",
-    desc: "Запускаем проект и передаю его вам. Остаюсь на связи.",
+    desc: "Запускаю проект и передаю его вам. Остаюсь на связи.",
     icon: Check,
     badgeClass:
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
