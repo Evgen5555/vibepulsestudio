@@ -177,7 +177,7 @@ export function CtaFooter() {
           >
             <span aria-hidden className="absolute -inset-1.5 rounded-full bg-gradient-cv opacity-40 blur-xl -z-10" />
             <TelegramIcon className="size-5" />
-            Написать в телеграм
+            Написать в ТГ
           </motion.a>
 
           <motion.a
