@@ -172,7 +172,7 @@ export function CtaFooter() {
           <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            href="https://t.me/your_username"
+            href="https://t.me/evgeniya5_5"
             target="_blank"
             rel="noopener noreferrer"
             className="relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet w-full"
