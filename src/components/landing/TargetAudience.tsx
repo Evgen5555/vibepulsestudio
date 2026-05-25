@@ -54,21 +54,21 @@ export const TargetAudience: React.FC = () => {
     <section id="audience" className="relative py-24 sm:py-32">
       <style>{`
         @keyframes polaroid-swing {
-          0% { transform: rotate(-1.5deg); }
-          50% { transform: rotate(1.5deg); }
-          100% { transform: rotate(-1.5deg); }
+          0% { transform: rotate(-1deg); }
+          50% { transform: rotate(1deg); }
+          100% { transform: rotate(-1deg); }
         }
         @keyframes polaroid-swing-alt {
-          0% { transform: rotate(1.2deg); }
-          50% { transform: rotate(-1.2deg); }
-          100% { transform: rotate(1.2deg); }
+          0% { transform: rotate(0.8deg); }
+          50% { transform: rotate(-0.8deg); }
+          100% { transform: rotate(0.8deg); }
         }
         .swing-card-even {
-          animation: polaroid-swing 4.5s ease-in-out infinite;
+          animation: polaroid-swing 5s ease-in-out infinite;
           transform-origin: top center;
         }
         .swing-card-odd {
-          animation: polaroid-swing-alt 5s ease-in-out infinite;
+          animation: polaroid-swing-alt 5.5s ease-in-out infinite;
           transform-origin: top center;
         }
         .animation-delay-0 { animation-delay: 0s; }
