@@ -18,19 +18,6 @@ export function Hero() {
           className="lg:col-span-5 order-2 lg:order-1"
         >
           <MatrixPortrait />
-
-          <motion.button
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => navigate({ to: "/roi" })}
-            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-3.5 text-sm sm:text-base font-medium text-white border border-primary/60 shadow-neon-violet transition-all duration-300 hover:bg-primary/10"
-          >
-            <Laptop className="size-4 text-primary drop-shadow-[0_0_8px_var(--neon-violet)]" />
-            Запустить калькулятор прибыли
-          </motion.button>
         </motion.div>
 
         {/* Copy */}
@@ -73,7 +60,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-            className="mt-10 flex flex-col sm:flex-row gap-3"
+            className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3"
           >
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -81,13 +68,23 @@ export function Hero() {
               onClick={() =>
                 document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
               }
-              className="relative group flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#3b82f6] via-[#6366f1] to-[#a855f7] text-white font-bold text-base transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
+              className="relative group inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-gradient-to-r from-[#3b82f6] via-[#6366f1] to-[#a855f7] text-white font-bold text-sm transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.4)] hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
             >
-              <span className="relative flex h-3 w-3 mr-1">
+              <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500" />
               </span>
-              <span>Пройти квиз → расчёт за 2 минуты</span>
+              <span>Пройти квиз</span>
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => navigate({ to: "/roi" })}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-4 text-sm font-medium text-white border border-primary/60 shadow-neon-violet transition-all duration-300 hover:bg-primary/10"
+            >
+              <Laptop className="size-4 text-primary drop-shadow-[0_0_8px_var(--neon-violet)]" />
+              Калькулятор прибыли
             </motion.button>
 
             <motion.a
@@ -96,7 +93,7 @@ export function Hero() {
               href="https://vk.ru/neuro_evgeniya_k"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-secondary/70 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-secondary/70 bg-secondary/5 px-6 py-4 text-sm font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan"
             >
               <VkIcon className="size-4" />
               Написать в ВК
