@@ -10,13 +10,9 @@ import {
   Plus,
   Trash2,
   Check,
-  Download,
+  Gift,
 } from "lucide-react";
-
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-};
+import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/calculator-app")({
   head: () => ({
@@ -83,17 +79,8 @@ function CalculatorApp() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  
 
-  useEffect(() => {
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e as BeforeInstallPromptEvent);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
+
 
   const totalIncome = useMemo(
     () => incomes.reduce((s, i) => s + (i.amount || 0), 0),
@@ -310,27 +297,14 @@ function CalculatorApp() {
                       Свяжемся в течение часа, чтобы согласовать время разбора.
                     </p>
                   </div>
-                  <button
-                    onClick={async () => {
-                      if (deferredPrompt) {
-                        await deferredPrompt.prompt();
-                        await deferredPrompt.userChoice;
-                        setDeferredPrompt(null);
-                        return;
-                      }
-                      const ua = navigator.userAgent.toLowerCase();
-                      const isIOS = /iphone|ipad|ipod/.test(ua);
-                      alert(
-                        isIOS
-                          ? "На iPhone: нажмите кнопку «Поделиться» в Safari и выберите «На экран «Домой»»."
-                          : "В меню браузера выберите «Установить приложение» или «Добавить на главный экран».",
-                      );
-                    }}
+                  <Link
+                    to="/calculator-app"
+                    search={{ mode: "gift" } as never}
                     className="w-full mt-2 py-2.5 bg-transparent border border-amber-300/60 text-amber-300 text-sm font-semibold rounded-full hover:bg-amber-300/10 transition inline-flex items-center justify-center gap-2"
                   >
-                    <Download className="w-4 h-4" />
-                    Забрать калькулятор бюджета на экран
-                  </button>
+                    <Gift className="w-4 h-4" />
+                    Забери калькулятор в подарок по ссылке
+                  </Link>
 
                 </motion.div>
               )}
