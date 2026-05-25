@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { VkIcon } from "./VkIcon";
 import { TelegramIcon } from "./TelegramIcon";
 import { MaxIcon } from "./MaxIcon";
+import logo from "@/assets/logo.png";
 
 type ModalType = "apply" | "discuss" | "ask" | null;
 
@@ -206,7 +207,10 @@ export function CtaFooter() {
         </motion.div>
 
         <div className="mt-24 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div>© {new Date().getFullYear()} VibePulse studio · Все права защищены</div>
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="VibePulse studio" className="h-8 w-8 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
+            <span>© {new Date().getFullYear()} <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права защищены</span>
+          </div>
           <div className="flex items-center gap-6">
             <a href="#cta" className="hover:text-foreground">Telegram</a>
             <a href="mailto:hi@example.com" className="hover:text-foreground">Email</a>
