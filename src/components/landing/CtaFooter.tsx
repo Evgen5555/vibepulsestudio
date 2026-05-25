@@ -206,15 +206,40 @@ export function CtaFooter() {
           </motion.a>
         </motion.div>
 
-        <div className="mt-24 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="VibePulse studio" className="h-8 w-8 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
-            <span>© {new Date().getFullYear()} <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права защищены</span>
+        <div className="mt-24 pt-12 border-t border-border/60 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div>
+              <div className="flex items-center gap-3">
+                <img src={logo} alt="VibePulse studio" className="h-10 w-10 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
+                <span className="text-base font-semibold">
+                  <span className="text-gradient-cv">VibePulse</span> studio
+                </span>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+                Сайты, автоворонки, боты, дизайн и полная интеграция с помощью ИИ.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-4">Контакты</h4>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><a href="https://t.me/your_username" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Telegram</a></li>
+                <li><a href="https://max.ru/id503601616932_biz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">MAX</a></li>
+                <li><a href="https://vk.ru/neuro_evgeniya_k" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">ВКонтакте</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-semibold text-foreground mb-4">Документы</h4>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-foreground">Политика конфиденциальности</a></li>
+                <li><a href="#" className="hover:text-foreground">Публичная оферта</a></li>
+              </ul>
+            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <a href="#cta" className="hover:text-foreground">Telegram</a>
-            <a href="mailto:hi@example.com" className="hover:text-foreground">Email</a>
-            <a href="#top" className="hover:text-foreground">Наверх</a>
+
+          <div className="mt-12 pt-6 border-t border-border/40 text-sm text-muted-foreground">
+            © {new Date().getFullYear()} <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права защищены
           </div>
         </div>
       </div>
