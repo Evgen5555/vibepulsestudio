@@ -94,7 +94,6 @@ export function RoiCalculator() {
     0,
   );
   const economy = totalMarket - totalMy;
-  const ratio = totalMarket > 0 ? (totalMy / totalMarket) * 100 : 0;
 
   return (
     <section id="calculator" className="relative py-28 sm:py-40">
@@ -188,65 +187,68 @@ export function RoiCalculator() {
               ) : (
                 <div className="space-y-6">
                   <div className="space-y-4">
-                    <div>
-                      <div className="flex justify-between text-xs text-muted-foreground mb-1.5">
-                        <span>Классическое агентство</span>
-                        <span className="line-through">
-                          от {fmt(totalMarket)} ₽
-                        </span>
-                      </div>
-                      <div className="w-full h-2 bg-background/60 rounded-full overflow-hidden">
-                        <div className="h-full bg-muted rounded-full w-full" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="flex justify-between text-xs font-semibold text-secondary mb-1.5">
-                        <span>ИИ-разработка (Vibecoding)</span>
-                        <span className="text-foreground font-bold">
-                          от {fmt(totalMy)} ₽
-                        </span>
-                      </div>
-                      <div className="w-full h-2 bg-background/60 rounded-full overflow-hidden">
+                    {selected.map((id) => {
+                      const s = services.find((x) => x.id === id);
+                      if (!s) return null;
+                      const r = (s.myPrice / s.marketPrice) * 100;
+                      return (
                         <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${ratio}%` }}
-                          transition={{ duration: 0.6, ease: "easeOut" }}
-                          className="h-full bg-gradient-cv rounded-full"
-                        />
-                      </div>
-                    </div>
+                          key={id}
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="space-y-2 pb-4 border-b border-border/40 last:border-0 last:pb-0"
+                        >
+                          <div className="flex items-center gap-2">
+                            {s.icon}
+                            <h4 className="text-xs font-semibold leading-snug flex-1">
+                              {s.title}
+                            </h4>
+                          </div>
+                          <div>
+                            <div className="flex justify-between text-[11px] text-muted-foreground mb-1">
+                              <span>Агентство</span>
+                              <span className="line-through">от {fmt(s.marketPrice)} ₽</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-background/60 rounded-full overflow-hidden">
+                              <div className="h-full bg-muted rounded-full w-full" />
+                            </div>
+                          </div>
+                          <div>
+                            <div className="flex justify-between text-[11px] font-semibold text-secondary mb-1">
+                              <span>Vibecoding</span>
+                              <span className="text-foreground font-bold">от {fmt(s.myPrice)} ₽</span>
+                            </div>
+                            <div className="w-full h-1.5 bg-background/60 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${r}%` }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                className="h-full bg-gradient-cv rounded-full"
+                              />
+                            </div>
+                          </div>
+                          <p className="text-[11px] text-muted-foreground flex items-start gap-1.5 pt-1">
+                            <Clock className="w-3 h-3 text-secondary flex-shrink-0 mt-0.5" />
+                            <span>{s.timeSaving}</span>
+                          </p>
+                        </motion.div>
+                      );
+                    })}
                   </div>
 
                   <hr className="border-border" />
 
-                  <div>
-                    <p className="text-[11px] font-bold uppercase text-muted-foreground tracking-[0.2em] mb-3 flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-secondary" />
-                      Экономия времени
-                    </p>
-                    <ul className="space-y-2">
-                      {selected.map((id) => {
-                        const s = services.find((x) => x.id === id);
-                        if (!s) return null;
-                        return (
-                          <motion.li
-                            key={id}
-                            initial={{ opacity: 0, x: -6 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="flex items-start gap-2 text-xs text-foreground/85"
-                          >
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
-                            <span>
-                              <span className="font-semibold">{s.title}:</span>{" "}
-                              <span className="text-muted-foreground">
-                                {s.timeSaving}
-                              </span>
-                            </span>
-                          </motion.li>
-                        );
-                      })}
-                    </ul>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">Итого агентство:</span>
+                      <span className="line-through text-muted-foreground">от {fmt(totalMarket)} ₽</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="font-semibold text-secondary">Итого Vibecoding:</span>
+                      <span className="font-bold text-foreground">от {fmt(totalMy)} ₽</span>
+                    </div>
                   </div>
+
 
                   <hr className="border-border" />
 
