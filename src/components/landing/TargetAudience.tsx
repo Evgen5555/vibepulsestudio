@@ -1,4 +1,8 @@
 import React from "react";
+import audience1 from "@/assets/audience-1.png";
+import audience2 from "@/assets/audience-2.png";
+import audience3 from "@/assets/audience-3.png";
+import audience4 from "@/assets/audience-4.png";
 
 interface AudienceCard {
   id: number;
@@ -13,34 +17,31 @@ const targetCards: AudienceCard[] = [
     title: "Эксперты & Предприниматели",
     description:
       "Упаковка сильного личного бренда, стильный сайт и автоматизация прогрева аудитории через умных ботов.",
-    image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80",
+    image: audience1,
   },
   {
     id: 2,
     title: "Онлайн-школы & Инфобизнес",
     description:
       "Внедрение AI-сотрудников, сквозная автоматизация процессов, CRM и быстрая квалификация входящих лидов.",
-    image:
-      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=500&q=80",
+    image: audience2,
   },
   {
     id: 3,
     title: "Бизнес",
     description:
       "Создание кинематографичного AI-визуала, цифровых аватаров и генерация продающих Reels без трат на студии, моделей и операторов.",
-    image:
-      "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=500&q=80",
+    image: audience3,
   },
   {
     id: 4,
     title: "Маркетологи",
     description:
       "Замена «ручных» заявок на интерактивные воронки: автоматический прием, квалификация и прогрев лидов 24/7 без участия человека.",
-    image:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=500&q=80",
+    image: audience4,
   },
 ];
+
 
 const delayClasses = [
   "animation-delay-0",
