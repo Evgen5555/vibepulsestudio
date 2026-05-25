@@ -219,6 +219,37 @@ export function RoiCalculator() {
 
                   <hr className="border-border" />
 
+                  <div>
+                    <p className="text-[11px] font-bold uppercase text-muted-foreground tracking-[0.2em] mb-3 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-secondary" />
+                      Экономия времени
+                    </p>
+                    <ul className="space-y-2">
+                      {selected.map((id) => {
+                        const s = services.find((x) => x.id === id);
+                        if (!s) return null;
+                        return (
+                          <motion.li
+                            key={id}
+                            initial={{ opacity: 0, x: -6 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="flex items-start gap-2 text-xs text-foreground/85"
+                          >
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-secondary flex-shrink-0" />
+                            <span>
+                              <span className="font-semibold">{s.title}:</span>{" "}
+                              <span className="text-muted-foreground">
+                                {s.timeSaving}
+                              </span>
+                            </span>
+                          </motion.li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  <hr className="border-border" />
+
                   <div className="p-5 rounded-2xl bg-gradient-to-br from-primary/10 via-card/40 to-card/20 border border-primary/20 relative">
                     <p className="text-[11px] font-medium text-primary uppercase tracking-[0.18em] flex items-center gap-1">
                       <TrendingDown className="w-4 h-4" />
