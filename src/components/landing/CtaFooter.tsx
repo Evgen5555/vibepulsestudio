@@ -211,8 +211,9 @@ export function CtaFooter() {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-24">
         <div className="pt-12 border-t border-border/60 text-left">
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-10">
-            <div className="sm:col-span-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+            <div>
+
               <div className="flex items-center gap-3">
                 <img src={logo} alt="VibePulse studio" className="h-10 w-10 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
                 <span className="text-base font-semibold">
