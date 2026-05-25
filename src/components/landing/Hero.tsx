@@ -1,10 +1,17 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { useState } from "react";
 import MatrixPortrait from "./MatrixPortrait";
 import { VkIcon } from "./VkIcon";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 
 export function Hero() {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
   return (
     <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -17,6 +24,17 @@ export function Hero() {
         >
           <MatrixPortrait />
 
+          <motion.button
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => setOpen(true)}
+            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-3.5 text-sm sm:text-base font-medium text-white border border-emerald-400/70 transition-all duration-300 hover:shadow-[0_0_28px_rgba(16,185,129,0.55)] hover:bg-emerald-400/5"
+          >
+            💻 Запустить калькулятор прибыли
+          </motion.button>
         </motion.div>
 
         {/* Copy */}
