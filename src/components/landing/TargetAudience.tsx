@@ -88,55 +88,47 @@ export const TargetAudience: React.FC = () => {
         </div>
 
         <div className="relative mt-24">
-          {/* ДЕРЕВЯННАЯ ШТАНГА */}
+          {/* НЕОНОВАЯ ШТАНГА */}
           <div
-            className="hidden md:block absolute top-4 left-8 right-8 h-6 rounded-full z-[15]"
+            className="hidden md:block absolute top-4 left-8 right-8 h-[14px] rounded-full z-[15]"
             style={{
               background:
-                "linear-gradient(to bottom, #8b4a26 0%, #6b3410 35%, #4a2208 70%, #2a1505 100%)",
+                "linear-gradient(90deg, oklch(0.62 0.28 300) 0%, oklch(0.7 0.25 320) 35%, oklch(0.75 0.22 230) 70%, oklch(0.82 0.18 200) 100%)",
               boxShadow:
-                "0 12px 22px rgba(0,0,0,0.75), inset 0 2px 3px rgba(255,190,130,0.45), inset 0 -3px 6px rgba(0,0,0,0.65)",
+                "0 0 18px oklch(0.62 0.28 300 / 0.85), 0 0 38px oklch(0.7 0.25 320 / 0.55), 0 0 60px oklch(0.82 0.18 200 / 0.35), inset 0 1px 2px rgba(255,255,255,0.55), inset 0 -2px 4px rgba(0,0,0,0.35)",
             }}
           >
-            {/* древесные волокна */}
+            {/* верхний хайлайт */}
+            <div className="absolute inset-x-3 top-[2px] h-[2px] rounded-full bg-white/70 blur-[1px]" />
+
+            {/* Левое неоновое крепление */}
             <div
-              className="absolute inset-0 rounded-full opacity-35 mix-blend-overlay pointer-events-none"
+              className="absolute -left-8 -top-1.5 w-9 h-[22px] rounded-sm flex items-center justify-center"
               style={{
                 background:
-                  "repeating-linear-gradient(90deg, transparent 0 22px, rgba(0,0,0,0.4) 22px 23px, transparent 23px 55px, rgba(255,210,160,0.2) 55px 56px)",
-              }}
-            />
-            {/* Левое металлическое крепление к стене */}
-            <div
-              className="absolute -left-8 -top-2 w-9 h-10 rounded-sm"
-              style={{
-                background:
-                  "linear-gradient(135deg, #e0e0e4 0%, #a4a4a8 50%, #5e5e62 100%)",
+                  "linear-gradient(135deg, oklch(0.28 0.05 290) 0%, oklch(0.14 0.02 280) 100%)",
                 boxShadow:
-                  "0 4px 8px rgba(0,0,0,0.65), inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 1px rgba(0,0,0,0.4)",
+                  "0 0 12px oklch(0.62 0.28 300 / 0.6), inset 0 1px 1px rgba(255,255,255,0.15), inset 0 0 8px oklch(0.62 0.28 300 / 0.35)",
+                border: "1px solid oklch(0.62 0.28 300 / 0.55)",
               }}
             >
-              <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="w-3 h-3 rounded-full bg-[oklch(0.82_0.18_200)] shadow-[0_0_8px_oklch(0.82_0.18_200_/_0.9)]" />
             </div>
-            {/* Правое металлическое крепление к стене */}
+            {/* Правое неоновое крепление */}
             <div
-              className="absolute -right-8 -top-2 w-9 h-10 rounded-sm"
+              className="absolute -right-8 -top-1.5 w-9 h-[22px] rounded-sm flex items-center justify-center"
               style={{
                 background:
-                  "linear-gradient(225deg, #e0e0e4 0%, #a4a4a8 50%, #5e5e62 100%)",
+                  "linear-gradient(225deg, oklch(0.28 0.05 290) 0%, oklch(0.14 0.02 280) 100%)",
                 boxShadow:
-                  "0 4px 8px rgba(0,0,0,0.65), inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 1px rgba(0,0,0,0.4)",
+                  "0 0 12px oklch(0.82 0.18 200 / 0.6), inset 0 1px 1px rgba(255,255,255,0.15), inset 0 0 8px oklch(0.82 0.18 200 / 0.35)",
+                border: "1px solid oklch(0.82 0.18 200 / 0.55)",
               }}
             >
-              <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
-              <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="w-3 h-3 rounded-full bg-[oklch(0.62_0.28_300)] shadow-[0_0_8px_oklch(0.62_0.28_300_/_0.9)]" />
             </div>
           </div>
+
 
           {/* Сетка карточек */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-0 md:-mt-3">
