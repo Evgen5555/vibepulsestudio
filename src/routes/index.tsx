@@ -52,7 +52,7 @@ function Index() {
         <Marquee />
         <Services />
         <TargetAudience />
-        <RoiCalculator />
+        
         <Portfolio />
         <Testimonials />
         <Process />
