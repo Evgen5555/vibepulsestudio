@@ -29,9 +29,9 @@ export function Nav() {
       <div className="glass border-b border-border/60">
         <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
-            <img src={logo} alt="VibePulse studio" className="h-10 w-auto drop-shadow-[0_0_12px_rgba(168,85,247,0.5)]" />
-            <span className="hidden sm:inline"><span className="text-gradient-cv">Vibe</span>Pulse<span className="text-foreground/60"> studio</span></span>
+            <span><span className="text-gradient-cv">Vibe</span>Pulse<span className="text-foreground/60"> studio</span></span>
           </a>
+
 
           <ul className="hidden md:flex items-center gap-8 text-sm text-foreground/75">
             {links.map((l) => (
