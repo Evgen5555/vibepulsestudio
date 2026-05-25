@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Bot, Code2, Film, Music, Palette, Rocket } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+
+const MotionLink = motion(Link);
 
 type Card = {
   title: string;
@@ -156,14 +159,14 @@ export function ServicesTeaser() {
               <span className="font-bold">2 месяцев</span> нудных согласований.
             </p>
 
-            <motion.a
+            <MotionLink
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              href="/services"
+              to="/services"
               className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-900 px-8 py-4 text-sm sm:text-base font-bold shadow-[0_10px_40px_rgba(0,0,0,0.35)] hover:shadow-[0_14px_50px_rgba(0,0,0,0.45)] transition-shadow"
             >
               Каталог решений VibePulse studio →
-            </motion.a>
+            </MotionLink>
           </div>
         </motion.div>
       </div>
