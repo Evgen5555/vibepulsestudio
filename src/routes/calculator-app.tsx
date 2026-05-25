@@ -84,7 +84,7 @@ function CalculatorApp() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const isInstallable = deferredPrompt !== null;
+  
 
   useEffect(() => {
     const handler = (e: Event) => {
