@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import MatrixPortrait from "./MatrixPortrait";
+import { MaxIcon } from "./MaxIcon";
 
 
 export function Hero() {
@@ -78,9 +79,12 @@ export function Hero() {
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href="#cta"
+              href="https://max.ru/id503601616932_biz"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-secondary/70 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan"
             >
+              <MaxIcon className="size-4" />
               Написать в МАХ
             </motion.a>
           </motion.div>
