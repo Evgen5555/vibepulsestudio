@@ -87,17 +87,13 @@ export const TargetAudience: React.FC = () => {
         </div>
 
         <div className="relative mt-24">
-          {/* ТОЛСТАЯ ОБЪЁМНАЯ ШТАНГА */}
-          <div className="hidden md:block absolute top-4 left-4 right-4 h-5 bg-gradient-to-b from-[#2a1b15] via-[#5c4033] to-[#1a100d] rounded-full z-[15] shadow-[0_8px_16px_rgba(0,0,0,0.7)] border-t border-white/10 border-b border-black/50">
-            <div className="absolute -left-2 -top-1.5 w-5 h-8 rounded-sm bg-gradient-to-r from-neutral-600 to-neutral-800 border border-neutral-900 shadow-md flex flex-col justify-between py-1 items-center">
-              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
-              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
-            </div>
-            <div className="absolute -right-2 -top-1.5 w-5 h-8 rounded-sm bg-gradient-to-l from-neutral-600 to-neutral-800 border border-neutral-900 shadow-md flex flex-col justify-between py-1 items-center">
-              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
-              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
-            </div>
+          {/* СТИЛЬНЫЙ МЕТАЛЛИЧЕСКИЙ РЕЙЛИНГ */}
+          <div className="hidden md:block absolute top-4 left-2 right-2 h-[6px] rounded-full z-[15] bg-gradient-to-b from-neutral-300 via-neutral-500 to-neutral-800 shadow-[0_4px_10px_rgba(0,0,0,0.55)] border-t border-white/30 border-b border-black/40">
+            {/* Минималистичные стальные боковые крепления */}
+            <div className="absolute -left-1 -top-2 w-3 h-[22px] rounded-[2px] bg-gradient-to-b from-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
+            <div className="absolute -right-1 -top-2 w-3 h-[22px] rounded-[2px] bg-gradient-to-b from-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
           </div>
+
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-2">
             {targetCards.map((card, index) => {
