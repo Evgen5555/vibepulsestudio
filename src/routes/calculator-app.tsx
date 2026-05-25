@@ -10,13 +10,9 @@ import {
   Plus,
   Trash2,
   Check,
-  Download,
+  Gift,
 } from "lucide-react";
-
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
-};
+import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/calculator-app")({
   head: () => ({
