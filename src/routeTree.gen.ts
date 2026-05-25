@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RoiRouteImport } from './routes/roi'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as CalculatorAppRouteImport } from './routes/calculator-app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/telegram-lead'
@@ -17,6 +18,11 @@ import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/t
 const RoiRoute = RoiRouteImport.update({
   id: '/roi',
   path: '/roi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalculatorAppRoute = CalculatorAppRouteImport.update({
@@ -38,12 +44,14 @@ const ApiPublicTelegramLeadRoute = ApiPublicTelegramLeadRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
@@ -51,18 +59,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/calculator-app': typeof CalculatorAppRoute
+  '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/calculator-app' | '/roi' | '/api/public/telegram-lead'
+  fullPaths:
+    | '/'
+    | '/calculator-app'
+    | '/privacy'
+    | '/roi'
+    | '/api/public/telegram-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/calculator-app' | '/roi' | '/api/public/telegram-lead'
+  to:
+    | '/'
+    | '/calculator-app'
+    | '/privacy'
+    | '/roi'
+    | '/api/public/telegram-lead'
   id:
     | '__root__'
     | '/'
     | '/calculator-app'
+    | '/privacy'
     | '/roi'
     | '/api/public/telegram-lead'
   fileRoutesById: FileRoutesById
@@ -70,6 +90,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CalculatorAppRoute: typeof CalculatorAppRoute
+  PrivacyRoute: typeof PrivacyRoute
   RoiRoute: typeof RoiRoute
   ApiPublicTelegramLeadRoute: typeof ApiPublicTelegramLeadRoute
 }
@@ -81,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/roi'
       fullPath: '/roi'
       preLoaderRoute: typeof RoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calculator-app': {
@@ -110,6 +138,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CalculatorAppRoute: CalculatorAppRoute,
+  PrivacyRoute: PrivacyRoute,
   RoiRoute: RoiRoute,
   ApiPublicTelegramLeadRoute: ApiPublicTelegramLeadRoute,
 }

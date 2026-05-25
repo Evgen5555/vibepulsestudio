@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Rocket, Sparkles, MessageCircle, X, Send, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { VkIcon } from "./VkIcon";
@@ -235,7 +236,7 @@ export function CtaFooter() {
             <div className="sm:col-span-3">
               <h4 className="text-sm font-semibold text-foreground mb-4">Документы</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-foreground">Политика конфиденциальности</a></li>
+                <li><Link to="/privacy" className="hover:text-foreground">Политика конфиденциальности</Link></li>
                 <li><a href="#" className="hover:text-foreground">Публичная оферта</a></li>
               </ul>
             </div>
