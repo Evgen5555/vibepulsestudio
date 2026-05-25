@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Rocket, Sparkles, MessageCircle, X, Send, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { MaxIcon } from "./MaxIcon";
+import { VkIcon } from "./VkIcon";
 
 type ModalType = "apply" | "discuss" | "ask" | null;
 
@@ -179,13 +179,13 @@ export function CtaFooter() {
           <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            href="https://max.ru/id503601616932_biz"
+            href="https://vk.ru/neuro_evgeniya_k"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 rounded-full border border-primary/50 bg-primary/5 px-7 py-4 text-base font-medium text-primary hover:bg-primary/10 shadow-neon-violet w-full sm:w-auto"
           >
-            <MaxIcon className="size-4" />
-            Написать в МАХ
+            <VkIcon className="size-4" />
+            Написать в ВК
           </motion.a>
 
           <motion.button
