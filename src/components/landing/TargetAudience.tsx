@@ -103,10 +103,17 @@ export const TargetAudience: React.FC = () => {
                   key={card.id}
                   className={`relative flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
                 >
-                  {/* Деревянная прищепка */}
-                  <div className="absolute -top-4 md:top-[-6px] w-4 h-12 bg-[#cd9a62] rounded-sm border border-[#a07444] z-20 shadow-[0_4px_8px_rgba(0,0,0,0.4)] flex flex-col justify-between py-1.5">
-                    <div className="w-full h-[3px] bg-gradient-to-r from-neutral-400 to-neutral-600 my-auto border-t border-black/20 border-b border-white/20"></div>
+                  {/* ТЁМНЫЙ МЕТАЛЛИЧЕСКИЙ ЗАЖИМ (БИНДЕР) */}
+                  <div className="absolute -top-3 md:-top-2 z-20 flex flex-col items-center">
+                    {/* Верхнее ушко зажима, перекинутое через штангу */}
+                    <div className="w-5 h-2 rounded-t-full border-2 border-neutral-400 border-b-0 bg-transparent shadow-[0_1px_2px_rgba(0,0,0,0.4)]" />
+                    {/* Тело зажима */}
+                    <div className="relative w-9 h-5 -mt-[1px] rounded-[3px] bg-gradient-to-b from-neutral-700 via-neutral-900 to-black border border-black shadow-[0_6px_10px_rgba(0,0,0,0.55)]">
+                      {/* Блик */}
+                      <div className="absolute top-[2px] left-1 right-1 h-[2px] rounded-full bg-white/30" />
+                    </div>
                   </div>
+
 
                   {/* Полароидная карточка */}
                   <div className="w-full max-w-[280px] bg-[#fdfbf7] p-3.5 pb-6 rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-neutral-200/60 flex flex-col text-left transition-all duration-300 mt-6 md:mt-8 hover:scale-105 hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)]">
