@@ -165,7 +165,7 @@ export function CtaFooter() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.25 }}
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto"
         >
           <motion.a
             whileHover={{ scale: 1.03 }}
