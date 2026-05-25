@@ -136,7 +136,7 @@ export function CtaFooter() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-sm text-secondary mb-5"
+          className="text-secondary mb-5 uppercase tracking-widest text-lg"
         >
           Готовы начать?
         </motion.p>

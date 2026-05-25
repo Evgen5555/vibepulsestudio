@@ -87,7 +87,7 @@ export function Quiz() {
     <section id="quiz" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-sm text-secondary mb-3">Квиз</p>
+          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Квиз</p>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
             5 шагов — и вы получите{" "}
             <span className="text-gradient-cv">персональный расчёт</span>
