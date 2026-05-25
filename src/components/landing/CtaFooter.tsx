@@ -173,7 +173,7 @@ export function CtaFooter() {
             href="https://t.me/your_username"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet w-full sm:w-auto"
+            className="relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet w-full"
           >
             <span aria-hidden className="absolute -inset-1.5 rounded-full bg-gradient-cv opacity-40 blur-xl -z-10" />
             <TelegramIcon className="size-5" />
@@ -186,7 +186,7 @@ export function CtaFooter() {
             href="https://vk.ru/neuro_evgeniya_k"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full border border-primary/50 bg-primary/5 px-7 py-4 text-base font-medium text-primary hover:bg-primary/10 shadow-neon-violet w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full border border-primary/50 bg-primary/5 px-7 py-4 text-base font-medium text-primary hover:bg-primary/10 shadow-neon-violet w-full"
           >
             <VkIcon className="size-4" />
             Написать в ВК
@@ -198,7 +198,7 @@ export function CtaFooter() {
             href="https://max.ru/id503601616932_biz"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full border border-secondary/60 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full border border-secondary/60 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan w-full"
           >
             <MaxIcon className="size-5" />
             Написать в МАХ
