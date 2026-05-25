@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
-import { CyberBackground } from "@/components/landing/CyberBackground";
+import CyberBackground from "@/components/landing/CyberBackground";
 
 export const Route = createFileRoute("/roi")({
   head: () => ({
