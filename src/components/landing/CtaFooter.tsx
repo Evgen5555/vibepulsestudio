@@ -225,7 +225,8 @@ export function CtaFooter() {
               </p>
             </div>
 
-            <div className="sm:col-span-3">
+            <div>
+
               <h4 className="text-sm font-semibold text-foreground mb-4">Контакты</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
                 <li><a href="https://t.me/evgeniya5_5" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Telegram</a></li>
