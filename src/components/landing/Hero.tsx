@@ -109,6 +109,43 @@ export function Hero() {
 
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setSent(false); }}>
+        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-background/80 border-emerald-400/40 shadow-[0_0_60px_rgba(16,185,129,0.25)] rounded-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
+              Внутренний софт для предпринимателей: Калькулятор упущенной выгоды бизнеса.
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground pt-2 leading-relaxed">
+              Показывает слепые зоны вашей воронки и рассчитывает потенциал прибыли при внедрении AI-агентов. Скачать бесплатно за Email.
+            </DialogDescription>
+          </DialogHeader>
+
+          {sent ? (
+            <p className="text-emerald-400 text-sm py-2">Доступ отправлен на {email}. Проверьте почту.</p>
+          ) : (
+            <form
+              onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }}
+              className="flex flex-col gap-3 pt-2"
+            >
+              <Input
+                type="email"
+                required
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="h-11 rounded-full bg-background/60 border-border focus-visible:ring-emerald-400/60 px-5"
+              />
+              <button
+                type="submit"
+                className="h-11 rounded-full bg-emerald-400/10 border border-emerald-400/70 text-white font-medium text-sm transition-all hover:shadow-[0_0_28px_rgba(16,185,129,0.55)] hover:bg-emerald-400/20"
+              >
+                Получить доступ к PWA
+              </button>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
