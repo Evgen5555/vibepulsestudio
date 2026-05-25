@@ -84,7 +84,7 @@ function CalculatorApp() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const isInstallable = deferredPrompt !== null;
+  
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -310,20 +310,28 @@ function CalculatorApp() {
                       Свяжемся в течение часа, чтобы согласовать время разбора.
                     </p>
                   </div>
-                  {isInstallable && (
-                    <button
-                      onClick={async () => {
-                        if (!deferredPrompt) return;
+                  <button
+                    onClick={async () => {
+                      if (deferredPrompt) {
                         await deferredPrompt.prompt();
                         await deferredPrompt.userChoice;
                         setDeferredPrompt(null);
-                      }}
-                      className="w-full mt-2 py-2.5 bg-transparent border border-amber-300/60 text-amber-300 text-sm font-semibold rounded-full hover:bg-amber-300/10 transition inline-flex items-center justify-center gap-2"
-                    >
-                      <Download className="w-4 h-4" />
-                      Забрать калькулятор бюджета на экран
-                    </button>
-                  )}
+                        return;
+                      }
+                      const ua = navigator.userAgent.toLowerCase();
+                      const isIOS = /iphone|ipad|ipod/.test(ua);
+                      alert(
+                        isIOS
+                          ? "На iPhone: нажмите кнопку «Поделиться» в Safari и выберите «На экран «Домой»»."
+                          : "В меню браузера выберите «Установить приложение» или «Добавить на главный экран».",
+                      );
+                    }}
+                    className="w-full mt-2 py-2.5 bg-transparent border border-amber-300/60 text-amber-300 text-sm font-semibold rounded-full hover:bg-amber-300/10 transition inline-flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    Забрать калькулятор бюджета на экран
+                  </button>
+
                 </motion.div>
               )}
             </motion.div>
