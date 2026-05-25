@@ -35,13 +35,6 @@ const items: Item[] = [
     icon: Crown,
     tone: "cyan",
   },
-  {
-    title: "Диджитал-агентства & Студии",
-    text: "Надёжный партнёр на вайбкодинге для быстрой сборки сложных IT-решений и MVP на нейросетях в 4 раза быстрее рынка.",
-    icon: Code2,
-    tone: "violet",
-    wide: true,
-  },
 ];
 
 export function TargetAudience() {
