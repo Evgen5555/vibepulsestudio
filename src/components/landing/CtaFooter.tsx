@@ -219,8 +219,8 @@ export function CtaFooter() {
                   <span className="text-gradient-cv">VibePulse</span> studio
                 </span>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground max-w-md">
-                Сайты, автоворонки, боты, дизайн и полная интеграция с помощью ИИ.
+              <p className="mt-4 text-sm text-muted-foreground max-w-md whitespace-pre-line">
+                Сайты, автоворонки, боты, дизайн и полная{"\n"}интеграция с помощью ИИ.
               </p>
             </div>
 
