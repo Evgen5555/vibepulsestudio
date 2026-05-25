@@ -120,7 +120,7 @@ export function Process() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p className="text-sm text-secondary mb-3">Процесс</p>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            Как мы <span className="text-gradient-cv">работаем</span>
+            Как я <span className="text-gradient-cv">работаю</span>
           </h2>
           <p className="mt-5 text-muted-foreground text-base sm:text-lg">
             Процесс без подводных камней — вы точно знаете, что получите и когда.
