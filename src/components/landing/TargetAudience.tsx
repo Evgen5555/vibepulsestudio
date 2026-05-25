@@ -86,63 +86,58 @@ export const TargetAudience: React.FC = () => {
           </h2>
         </div>
 
-        <div className="relative pt-6">
-          {/* Горизонтальная штанга */}
-          <div className="hidden md:block absolute top-4 left-4 right-4 h-[3px] rounded-full bg-gradient-to-r from-transparent via-white/40 to-transparent shadow-[0_2px_8px_rgba(255,255,255,0.15)]">
-            <div className="absolute -left-2 -top-1.5 size-4 rounded-full bg-white/30 border border-white/50 shadow-inner" />
-            <div className="absolute -right-2 -top-1.5 size-4 rounded-full bg-white/30 border border-white/50 shadow-inner" />
+        <div className="relative mt-24">
+          {/* ТОЛСТАЯ ОБЪЁМНАЯ ШТАНГА */}
+          <div className="hidden md:block absolute top-4 left-4 right-4 h-5 bg-gradient-to-b from-[#2a1b15] via-[#5c4033] to-[#1a100d] rounded-full z-[15] shadow-[0_8px_16px_rgba(0,0,0,0.7)] border-t border-white/10 border-b border-black/50">
+            <div className="absolute -left-2 -top-1.5 w-5 h-8 rounded-sm bg-gradient-to-r from-neutral-600 to-neutral-800 border border-neutral-900 shadow-md flex flex-col justify-between py-1 items-center">
+              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
+            </div>
+            <div className="absolute -right-2 -top-1.5 w-5 h-8 rounded-sm bg-gradient-to-l from-neutral-600 to-neutral-800 border border-neutral-900 shadow-md flex flex-col justify-between py-1 items-center">
+              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
+              <div className="w-1.5 h-1.5 bg-neutral-950 rounded-full"></div>
+            </div>
           </div>
 
-          {/* Сетка карточек */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8 pt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-2">
             {targetCards.map((card, index) => {
               const isEven = index % 2 === 0;
               return (
                 <div
                   key={card.id}
-                  className="relative flex flex-col items-center"
+                  className={`relative flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
                 >
-                  {/* Прищепка */}
-                  <div className="relative z-20 -mb-3">
-                    <div className="w-6 h-8 rounded-sm bg-gradient-to-b from-amber-200 to-amber-500 shadow-md border border-amber-700/40">
-                      <div className="mx-auto mt-1.5 w-3 h-0.5 rounded bg-zinc-400/80 shadow-inner" />
-                      <div className="mx-auto mt-1 w-2.5 h-2.5 rounded-full bg-zinc-300 border border-zinc-500/60" />
-                    </div>
+                  {/* Деревянная прищепка */}
+                  <div className="absolute -top-4 md:top-[-6px] w-4 h-12 bg-[#cd9a62] rounded-sm border border-[#a07444] z-20 shadow-[0_4px_8px_rgba(0,0,0,0.4)] flex flex-col justify-between py-1.5">
+                    <div className="w-full h-[3px] bg-gradient-to-r from-neutral-400 to-neutral-600 my-auto border-t border-black/20 border-b border-white/20"></div>
                   </div>
 
                   {/* Полароидная карточка */}
-                  <div
-                    className={`relative w-full max-w-[260px] bg-[#f5f1e8] p-3 pb-5 rounded-sm shadow-[0_18px_40px_rgba(0,0,0,0.5)] ${
-                      isEven ? "swing-card-even" : "swing-card-odd"
-                    } ${delayClasses[index]}`}
-                  >
-                    {/* Снимок */}
-                    <div className="relative aspect-square overflow-hidden bg-zinc-900">
+                  <div className="w-full max-w-[280px] bg-[#fdfbf7] p-3.5 pb-6 rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-neutral-200/60 flex flex-col text-left transition-all duration-300 mt-6 md:mt-8 hover:scale-105 hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)]">
+                    <div className="w-full aspect-square bg-neutral-950 overflow-hidden relative rounded-sm border border-neutral-300/50">
                       <img
                         src={card.image}
                         alt={card.title}
                         loading="lazy"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 select-none"
                       />
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10" />
-                      <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.45)]" />
+                      <div className="absolute inset-0 shadow-[inset_0_4px_12px_rgba(0,0,0,0.45)]"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
 
-                    {/* Текст */}
-                    <div className="mt-4 px-1">
-                      <h3 className="text-zinc-900 font-semibold text-base leading-tight font-serif">
-                        {card.title}
-                      </h3>
-                      <p className="mt-2 text-zinc-700 text-xs leading-snug">
-                        {card.description}
-                      </p>
+                    <div className="mt-4 flex-grow flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-lg font-bold text-neutral-900 tracking-tight leading-tight font-sans">
+                          {card.title}
+                        </h3>
+                        <p className="text-[11px] text-neutral-700 mt-2 leading-relaxed font-sans font-normal">
+                          {card.description}
+                        </p>
+                      </div>
 
-                      <div className="mt-4 pt-2 border-t border-zinc-400/40 flex items-center justify-between text-[10px] tracking-widest uppercase text-zinc-500 font-mono">
+                      <div className="mt-5 flex justify-between items-center text-[9px] font-bold text-neutral-400 tracking-wider uppercase select-none">
                         <span>VP LAB // 2026</span>
-                        <span className="flex items-center gap-1">
-                          <span className="size-1.5 rounded-full bg-red-500 animate-pulse" />
-                          ACTIVE
-                        </span>
+                        <span className="text-[#d4af37]/70">● ACTIVE</span>
                       </div>
                     </div>
                   </div>
