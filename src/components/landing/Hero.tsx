@@ -14,7 +14,6 @@ export function Hero() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
-  const [email, setEmail] = useState("");
 
   return (
     <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
