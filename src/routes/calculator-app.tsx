@@ -224,7 +224,7 @@ function CalculatorApp() {
 
         {/* Показывается только когда есть реальные цифры */}
         <AnimatePresence>
-          {(totalIncome > 0 || totalExpense > 0) && (
+          {totalExpense > 0 && (
             <motion.div
               key="results-block"
               initial={{ opacity: 0, y: 12 }}
