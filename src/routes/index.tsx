@@ -50,7 +50,7 @@ function Index() {
       <main className="relative overflow-x-clip">
         <Hero />
         <Marquee />
-        <Services />
+        <ServicesTeaser />
         <TargetAudience />
         
         <Portfolio />
