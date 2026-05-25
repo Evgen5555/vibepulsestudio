@@ -1,26 +1,18 @@
 import { motion } from "framer-motion";
 import { Sparkles, Laptop } from "lucide-react";
-import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import MatrixPortrait from "./MatrixPortrait";
 import { VkIcon } from "./VkIcon";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 
 
 export function Hero() {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
 
   return (
     <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Portrait */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="lg:col-span-5 order-2 lg:order-1"
@@ -33,7 +25,7 @@ export function Hero() {
             transition={{ delay: 0.5 }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => setOpen(true)}
+            onClick={() => navigate({ to: "/roi" })}
             className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-3.5 text-sm sm:text-base font-medium text-white border border-primary/60 shadow-neon-violet transition-all duration-300 hover:bg-primary/10"
           >
             <Laptop className="size-4 text-primary drop-shadow-[0_0_8px_var(--neon-violet)]" />
@@ -113,67 +105,6 @@ export function Hero() {
 
         </div>
       </div>
-
-      <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setError(null); }}>
-        <DialogContent className="sm:max-w-md backdrop-blur-xl bg-background/80 border-emerald-400/40 shadow-[0_0_60px_rgba(16,185,129,0.25)] rounded-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
-              Внутренний софт для предпринимателей: Калькулятор упущенной выгоды бизнеса.
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground pt-2 leading-relaxed">
-              Показывает слепые зоны вашей воронки и рассчитывает потенциал прибыли при внедрении AI-агентов. Скачать бесплатно за Email.
-            </DialogDescription>
-          </DialogHeader>
-
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              if (!email || submitting) return;
-              setSubmitting(true);
-              setError(null);
-              try {
-                const res = await fetch("/api/public/telegram-lead", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({
-                    type: "apply",
-                    name: "Лид с калькулятора прибыли",
-                    messenger: "Email",
-                    username: email,
-                    message: `🔥 Новый лид с сайта VibePulse!\n📧 Email: ${email}\n💻 Пользователь перенаправлен в калькулятор прибыли.`,
-                  }),
-                });
-                if (!res.ok) throw new Error("send_failed");
-                localStorage.setItem("access_granted", "true");
-                setOpen(false);
-                navigate({ to: "/calculator-app" });
-              } catch {
-                setError("Не удалось отправить. Попробуйте ещё раз.");
-              } finally {
-                setSubmitting(false);
-              }
-            }}
-            className="flex flex-col gap-3 pt-2"
-          >
-            <Input
-              type="email"
-              required
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-11 rounded-full bg-background/60 border-border focus-visible:ring-emerald-400/60 px-5"
-            />
-            {error && <p className="text-red-400 text-xs px-2">{error}</p>}
-            <button
-              type="submit"
-              disabled={submitting}
-              className="h-11 rounded-full bg-emerald-400/10 border border-emerald-400/70 text-white font-medium text-sm transition-all hover:shadow-[0_0_28px_rgba(16,185,129,0.55)] hover:bg-emerald-400/20 disabled:opacity-60"
-            >
-              {submitting ? "Отправка..." : "Получить доступ к PWA"}
-            </button>
-          </form>
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
