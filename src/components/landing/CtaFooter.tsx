@@ -235,7 +235,7 @@ export function CtaFooter() {
               </ul>
             </div>
 
-            <div className="sm:col-span-3">
+            <div>
               <h4 className="text-sm font-semibold text-foreground mb-4">Документы</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
                 <li><Link to="/privacy" className="hover:text-foreground">Политика конфиденциальности</Link></li>
