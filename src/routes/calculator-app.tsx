@@ -222,106 +222,122 @@ function CalculatorApp() {
           delay={0.3}
         />
 
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 text-sm sm:text-[15px] leading-relaxed text-white/65 text-center max-w-2xl mx-auto"
-        >
-          Этот интерактивный аудит — пример того, как VibePulse превращает
-          сложные бизнес-процессы в работающие цифровые инструменты, а не просто
-          контент. Если откликается такой формат — мы можем собрать кастомное
-          решение под задачи вашего бизнеса.
-        </motion.p>
+        {/* Показывается только когда есть реальные цифры */}
+        <AnimatePresence>
+          {(totalIncome > 0 || totalExpense > 0) && (
+            <motion.div
+              key="results-block"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.4 }}
+              className="mt-8 space-y-6"
+            >
+              <p className="text-sm sm:text-[15px] leading-relaxed text-white/65 italic text-center max-w-2xl mx-auto">
+                Этот интерактивный аудит — пример того, как VibePulse превращает
+                сложные бизнес-процессы в работающие цифровые инструменты, а не
+                просто контент. Если откликается такой формат — мы можем собрать
+                кастомное решение под задачи вашего бизнеса.
+              </p>
 
-        {/* CTA */}
-        <motion.button
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.99 }}
-          onClick={() => setShowModal(true)}
-          className="group mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-black font-semibold text-sm sm:text-base py-4 px-6 shadow-[0_0_40px_-8px_rgba(251,191,36,0.7)] hover:shadow-[0_0_60px_-4px_rgba(251,191,36,0.9)] transition-shadow"
-        >
-          <Zap className="w-4 h-4" />
-          Окупить слив прибыли
-        </motion.button>
+              {!isSubmitted ? (
+                <div className="space-y-2">
+                  <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    disabled={submitting}
+                    onClick={async () => {
+                      if (submitting) return;
+                      setSubmitting(true);
+                      setError(null);
+                      try {
+                        const incomesText = incomes
+                          .map((i) => `   • ${i.label}: ${fmt(i.amount)} ₽`)
+                          .join("\n");
+                        const expensesText = expenses
+                          .map((i) => `   • ${i.label}: ${fmt(i.amount)} ₽`)
+                          .join("\n");
+                        const message =
+                          `💰 Калькулятор упущенной выгоды\n\n` +
+                          `📈 Доходы (${fmt(totalIncome)} ₽):\n${incomesText || "   —"}\n\n` +
+                          `📉 Расходы (${fmt(totalExpense)} ₽):\n${expensesText || "   —"}\n\n` +
+                          `💎 Чистая прибыль: ${fmt(profit)} ₽\n` +
+                          `🚀 Потенциал AI: +${fmt(potential)} ₽/мес\n\n` +
+                          `Запрос: 15-минутный стратегический разбор воронки.`;
+                        const res = await fetch("/api/public/telegram-lead", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            type: "discuss",
+                            name: "Лид из калькулятора",
+                            messenger: "PWA Calculator",
+                            username: "—",
+                            message,
+                          }),
+                        });
+                        if (!res.ok) throw new Error("send_failed");
+                        setIsSubmitted(true);
+                      } catch {
+                        setError("Не удалось отправить. Попробуйте ещё раз.");
+                      } finally {
+                        setSubmitting(false);
+                      }
+                    }}
+                    className="group w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-black font-semibold text-sm sm:text-base py-4 px-6 shadow-[0_0_40px_-8px_rgba(251,191,36,0.7)] hover:shadow-[0_0_60px_-4px_rgba(251,191,36,0.9)] transition-shadow disabled:opacity-60"
+                  >
+                    <Zap className="w-4 h-4" />
+                    {submitting ? "Отправка…" : "Окупить слив прибыли"}
+                  </motion.button>
+                  {error && (
+                    <p className="text-rose-300 text-xs text-center">{error}</p>
+                  )}
+                </div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="rounded-3xl border border-emerald-400/30 bg-emerald-400/[0.04] p-6 text-center space-y-4"
+                >
+                  <div className="w-11 h-11 mx-auto rounded-full bg-emerald-400/10 border border-emerald-400/40 text-emerald-300 flex items-center justify-center">
+                    <Check className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">
+                      Заявка отправлена
+                    </h3>
+                    <p className="text-sm text-white/60 mt-1">
+                      Свяжемся в течение часа, чтобы согласовать время разбора.
+                    </p>
+                  </div>
+                  {isInstallable && (
+                    <button
+                      onClick={async () => {
+                        if (!deferredPrompt) return;
+                        await deferredPrompt.prompt();
+                        await deferredPrompt.userChoice;
+                        setDeferredPrompt(null);
+                      }}
+                      className="w-full mt-2 py-2.5 bg-transparent border border-amber-300/60 text-amber-300 text-sm font-semibold rounded-full hover:bg-amber-300/10 transition inline-flex items-center justify-center gap-2"
+                    >
+                      <Download className="w-4 h-4" />
+                      Забрать калькулятор бюджета на экран
+                    </button>
+                  )}
+                </motion.div>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <p className="mt-8 text-center text-[11px] text-white/30 tracking-wider uppercase">
           VibePulse Internal · v1.0
         </p>
       </div>
-
-      {/* Modal */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xl flex items-center justify-center p-4"
-            onClick={() => setShowModal(false)}
-          >
-            <motion.div
-              key="modal"
-              initial={{ opacity: 0, y: 16, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 16, scale: 0.97 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-md rounded-3xl border border-amber-300/40 bg-[#0a0b10] p-8 shadow-[0_0_80px_-10px_rgba(251,191,36,0.45)]"
-            >
-              <button
-                onClick={() => setShowModal(false)}
-                className="absolute right-4 top-4 w-8 h-8 inline-flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              <div className="w-12 h-12 rounded-full bg-amber-300/10 border border-amber-300/40 flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5 text-amber-300" />
-              </div>
-
-              <h3 className="text-xl font-semibold tracking-tight">
-                Мы сохранили ваш расчёт
-              </h3>
-              <p className="mt-3 text-sm text-white/65 leading-relaxed">
-                Чтобы убрать самый крупный слив в вашем бизнесе, заберите
-                бесплатный 15-минутный разбор.
-              </p>
-
-              {profit !== 0 && (
-                <div className="mt-5 rounded-2xl border border-amber-300/20 bg-amber-300/5 px-4 py-3">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-amber-300/70">
-                    Ваш потенциал
-                  </p>
-                  <p className="mt-1 text-lg font-semibold text-amber-300">
-                    +{fmt(potential)} ₽ / мес с AI-агентами
-                  </p>
-                </div>
-              )}
-
-              <a
-                href={TELEGRAM_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-black font-semibold text-sm py-3.5 hover:shadow-[0_0_40px_-6px_rgba(251,191,36,0.8)] transition-shadow"
-              >
-                <Send className="w-4 h-4" />
-                Забрать разбор в Telegram
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </main>
   );
 }
+
 
 function Section({
   title,
