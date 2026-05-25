@@ -44,7 +44,7 @@ const EXPENSE_PRESETS = [
   "Слив заявок",
 ];
 
-const TELEGRAM_URL = "https://t.me/evgeniya5_5";
+
 
 function AnimatedNumber({ value }: { value: number }) {
   const mv = useMotionValue(value);
