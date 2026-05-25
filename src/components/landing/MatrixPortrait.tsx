@@ -66,6 +66,7 @@ export default function MatrixPortrait() {
       <img
         src={portrait}
         alt="Портрет"
+        style={{ filter: "grayscale(100%) contrast(120%)" }}
         className="absolute inset-0 w-full h-full object-contain object-bottom drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
       />
     </div>
