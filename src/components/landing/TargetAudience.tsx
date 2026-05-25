@@ -87,15 +87,58 @@ export const TargetAudience: React.FC = () => {
         </div>
 
         <div className="relative mt-24">
-          {/* ТОЛСТЫЙ РЕЙЛИНГ С ОБЪЁМОМ */}
-          <div className="hidden md:block absolute top-4 left-2 right-2 h-3 rounded-full z-[15] bg-gradient-to-b from-neutral-200 via-neutral-500 to-neutral-900 shadow-[0_6px_14px_rgba(0,0,0,0.6)] border-t border-white/40 border-b border-black/50">
-            {/* Хромированные заглушки */}
-            <div className="absolute -left-2 -top-1 w-4 h-5 rounded-full bg-gradient-to-b from-neutral-100 via-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
-            <div className="absolute -right-2 -top-1 w-4 h-5 rounded-full bg-gradient-to-b from-neutral-100 via-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
+          {/* ДЕРЕВЯННАЯ ШТАНГА */}
+          <div
+            className="hidden md:block absolute top-4 left-8 right-8 h-6 rounded-full z-[15]"
+            style={{
+              background:
+                "linear-gradient(to bottom, #8b4a26 0%, #6b3410 35%, #4a2208 70%, #2a1505 100%)",
+              boxShadow:
+                "0 12px 22px rgba(0,0,0,0.75), inset 0 2px 3px rgba(255,190,130,0.45), inset 0 -3px 6px rgba(0,0,0,0.65)",
+            }}
+          >
+            {/* древесные волокна */}
+            <div
+              className="absolute inset-0 rounded-full opacity-35 mix-blend-overlay pointer-events-none"
+              style={{
+                background:
+                  "repeating-linear-gradient(90deg, transparent 0 22px, rgba(0,0,0,0.4) 22px 23px, transparent 23px 55px, rgba(255,210,160,0.2) 55px 56px)",
+              }}
+            />
+            {/* Левое металлическое крепление к стене */}
+            <div
+              className="absolute -left-8 -top-2 w-9 h-10 rounded-sm"
+              style={{
+                background:
+                  "linear-gradient(135deg, #e0e0e4 0%, #a4a4a8 50%, #5e5e62 100%)",
+                boxShadow:
+                  "0 4px 8px rgba(0,0,0,0.65), inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 1px rgba(0,0,0,0.4)",
+              }}
+            >
+              <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+            </div>
+            {/* Правое металлическое крепление к стене */}
+            <div
+              className="absolute -right-8 -top-2 w-9 h-10 rounded-sm"
+              style={{
+                background:
+                  "linear-gradient(225deg, #e0e0e4 0%, #a4a4a8 50%, #5e5e62 100%)",
+                boxShadow:
+                  "0 4px 8px rgba(0,0,0,0.65), inset 0 1px 1px rgba(255,255,255,0.7), inset 0 -1px 1px rgba(0,0,0,0.4)",
+              }}
+            >
+              <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-neutral-900/70 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+            </div>
           </div>
 
-          {/* Сетка карточек — жёстко смещаем вверх на md, чтобы крепление садилось на штангу */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-0 md:-mt-2">
+          {/* Сетка карточек */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-0 md:-mt-3">
             {targetCards.map((card, index) => {
               const isEven = index % 2 === 0;
               return (
@@ -103,13 +146,35 @@ export const TargetAudience: React.FC = () => {
                   key={card.id}
                   className={`relative flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
                 >
-                  {/* КРЕПЛЕНИЕ: стальная петля + чёрный биндер */}
+                  {/* ДЕРЕВЯННАЯ ПРИЩЕПКА */}
                   <div className="relative z-20 flex flex-col items-center">
-                    {/* Стальная петля — проходит поверх штанги */}
-                    <div className="w-6 h-4 rounded-t-full border-[3px] border-neutral-300 border-b-0 bg-transparent shadow-[0_2px_3px_rgba(0,0,0,0.5)]" />
-                    {/* Чёрный зажим — наезжает на низ петли */}
-                    <div className="relative w-10 h-5 -mt-[3px] rounded-[3px] bg-gradient-to-b from-neutral-700 via-neutral-900 to-black border border-black shadow-[0_6px_10px_rgba(0,0,0,0.6)]">
-                      <div className="absolute top-[2px] left-1.5 right-1.5 h-[2px] rounded-full bg-white/35" />
+                    <div
+                      className="w-7 h-14 rounded-[4px] relative overflow-hidden"
+                      style={{
+                        background:
+                          "linear-gradient(to bottom, #c9924f 0%, #a06a32 40%, #7a4a22 80%, #5a3418 100%)",
+                        boxShadow:
+                          "0 6px 12px rgba(0,0,0,0.65), inset 1px 0 1px rgba(255,220,170,0.5), inset -1px 0 1px rgba(0,0,0,0.55)",
+                      }}
+                    >
+                      {/* металлическая пружина */}
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 top-[38%] w-[20px] h-[5px] rounded-full"
+                        style={{
+                          background:
+                            "linear-gradient(to bottom, #ededf1, #8e8e92 60%, #4e4e52)",
+                          boxShadow:
+                            "0 1px 2px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.75)",
+                        }}
+                      />
+                      {/* древесные волокна */}
+                      <div
+                        className="absolute inset-0 opacity-40 mix-blend-overlay pointer-events-none"
+                        style={{
+                          background:
+                            "repeating-linear-gradient(180deg, transparent 0 5px, rgba(0,0,0,0.35) 5px 6px, transparent 6px 13px)",
+                        }}
+                      />
                     </div>
                   </div>
 
