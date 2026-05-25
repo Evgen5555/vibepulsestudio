@@ -45,7 +45,7 @@ export function Portfolio() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex items-end justify-center mb-14 gap-6 flex-wrap text-center">
           <div className="max-w-2xl text-center">
-            <p className="text-sm text-secondary mb-3">Портфолио</p>
+            <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Портфолио</p>
             <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
               Проекты, где дизайн{" "}
               <span className="text-gradient-cv">приносит деньги</span>

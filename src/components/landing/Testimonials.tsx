@@ -73,7 +73,7 @@ export function Testimonials() {
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="text-center mb-16 relative z-10">
-          <div className="text-sm text-secondary mb-3">Репутация</div>
+          <div className="text-secondary mb-3 uppercase tracking-widest text-lg">Репутация</div>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
             <span className="text-gradient-cv">Отзывы</span>
           </h2>
