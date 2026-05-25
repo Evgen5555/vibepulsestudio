@@ -14,7 +14,7 @@ export function Hero() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
+  const [email, setEmail] = useState("");
 
   return (
     <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
@@ -114,7 +114,7 @@ export function Hero() {
         </div>
       </div>
 
-      <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setSent(false); }}>
+      <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) setError(null); }}>
         <DialogContent className="sm:max-w-md backdrop-blur-xl bg-background/80 border-emerald-400/40 shadow-[0_0_60px_rgba(16,185,129,0.25)] rounded-2xl">
           <DialogHeader>
             <DialogTitle className="text-xl sm:text-2xl font-semibold tracking-tight text-white">
