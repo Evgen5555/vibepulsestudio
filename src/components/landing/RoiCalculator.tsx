@@ -94,7 +94,6 @@ export function RoiCalculator() {
     0,
   );
   const economy = totalMarket - totalMy;
-  const ratio = totalMarket > 0 ? (totalMy / totalMarket) * 100 : 0;
 
   return (
     <section id="calculator" className="relative py-28 sm:py-40">
