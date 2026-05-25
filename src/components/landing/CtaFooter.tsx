@@ -2,6 +2,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Rocket, Sparkles, MessageCircle, X, Send, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { VkIcon } from "./VkIcon";
+import { TelegramIcon } from "./TelegramIcon";
+import { MaxIcon } from "./MaxIcon";
 
 type ModalType = "apply" | "discuss" | "ask" | null;
 
@@ -165,16 +167,18 @@ export function CtaFooter() {
           transition={{ delay: 0.25 }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => setActiveModal("apply")}
+            href="https://t.me/your_username"
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet w-full sm:w-auto"
           >
             <span aria-hidden className="absolute -inset-1.5 rounded-full bg-gradient-cv opacity-40 blur-xl -z-10" />
-            <Rocket className="size-4" />
-            Запустить проект
-          </motion.button>
+            <TelegramIcon className="size-5" />
+            Написать в телеграм
+          </motion.a>
 
           <motion.a
             whileHover={{ scale: 1.03 }}
@@ -188,15 +192,17 @@ export function CtaFooter() {
             Написать в ВК
           </motion.a>
 
-          <motion.button
+          <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => setActiveModal("ask")}
+            href="https://max.ru/id503601616932_biz"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2.5 rounded-full border border-secondary/60 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan w-full sm:w-auto"
           >
-            <MessageCircle className="size-4" />
-            Задать вопрос
-          </motion.button>
+            <MaxIcon className="size-5" />
+            Написать в МАХ
+          </motion.a>
         </motion.div>
 
         <div className="mt-24 pt-8 border-t border-border/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
