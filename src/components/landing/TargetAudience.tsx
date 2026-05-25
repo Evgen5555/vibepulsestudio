@@ -87,15 +87,15 @@ export const TargetAudience: React.FC = () => {
         </div>
 
         <div className="relative mt-24">
-          {/* СТИЛЬНЫЙ МЕТАЛЛИЧЕСКИЙ РЕЙЛИНГ */}
-          <div className="hidden md:block absolute top-4 left-2 right-2 h-[6px] rounded-full z-[15] bg-gradient-to-b from-neutral-300 via-neutral-500 to-neutral-800 shadow-[0_4px_10px_rgba(0,0,0,0.55)] border-t border-white/30 border-b border-black/40">
-            {/* Минималистичные стальные боковые крепления */}
-            <div className="absolute -left-1 -top-2 w-3 h-[22px] rounded-[2px] bg-gradient-to-b from-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
-            <div className="absolute -right-1 -top-2 w-3 h-[22px] rounded-[2px] bg-gradient-to-b from-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
+          {/* ТОЛСТЫЙ РЕЙЛИНГ С ОБЪЁМОМ */}
+          <div className="hidden md:block absolute top-4 left-2 right-2 h-3 rounded-full z-[15] bg-gradient-to-b from-neutral-200 via-neutral-500 to-neutral-900 shadow-[0_6px_14px_rgba(0,0,0,0.6)] border-t border-white/40 border-b border-black/50">
+            {/* Хромированные заглушки */}
+            <div className="absolute -left-2 -top-1 w-4 h-5 rounded-full bg-gradient-to-b from-neutral-100 via-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
+            <div className="absolute -right-2 -top-1 w-4 h-5 rounded-full bg-gradient-to-b from-neutral-100 via-neutral-400 to-neutral-700 border border-black/50 shadow-md" />
           </div>
 
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-2">
+          {/* Сетка карточек — жёстко смещаем вверх на md, чтобы крепление садилось на штангу */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-6 pt-12 md:pt-0 md:-mt-2">
             {targetCards.map((card, index) => {
               const isEven = index % 2 === 0;
               return (
@@ -103,20 +103,19 @@ export const TargetAudience: React.FC = () => {
                   key={card.id}
                   className={`relative flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
                 >
-                  {/* ТЁМНЫЙ МЕТАЛЛИЧЕСКИЙ ЗАЖИМ (БИНДЕР) */}
-                  <div className="absolute -top-3 md:-top-2 z-20 flex flex-col items-center">
-                    {/* Верхнее ушко зажима, перекинутое через штангу */}
-                    <div className="w-5 h-2 rounded-t-full border-2 border-neutral-400 border-b-0 bg-transparent shadow-[0_1px_2px_rgba(0,0,0,0.4)]" />
-                    {/* Тело зажима */}
-                    <div className="relative w-9 h-5 -mt-[1px] rounded-[3px] bg-gradient-to-b from-neutral-700 via-neutral-900 to-black border border-black shadow-[0_6px_10px_rgba(0,0,0,0.55)]">
-                      {/* Блик */}
-                      <div className="absolute top-[2px] left-1 right-1 h-[2px] rounded-full bg-white/30" />
+                  {/* КРЕПЛЕНИЕ: стальная петля + чёрный биндер */}
+                  <div className="relative z-20 flex flex-col items-center">
+                    {/* Стальная петля — проходит поверх штанги */}
+                    <div className="w-6 h-4 rounded-t-full border-[3px] border-neutral-300 border-b-0 bg-transparent shadow-[0_2px_3px_rgba(0,0,0,0.5)]" />
+                    {/* Чёрный зажим — наезжает на низ петли */}
+                    <div className="relative w-10 h-5 -mt-[3px] rounded-[3px] bg-gradient-to-b from-neutral-700 via-neutral-900 to-black border border-black shadow-[0_6px_10px_rgba(0,0,0,0.6)]">
+                      <div className="absolute top-[2px] left-1.5 right-1.5 h-[2px] rounded-full bg-white/35" />
                     </div>
                   </div>
 
+                  {/* Полароидная карточка — стыкуется с зажимом */}
+                  <div className="w-full max-w-[280px] bg-[#fdfbf7] p-3.5 pb-6 rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-neutral-200/60 flex flex-col text-left transition-all duration-300 -mt-1 hover:scale-105 hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)]">
 
-                  {/* Полароидная карточка */}
-                  <div className="w-full max-w-[280px] bg-[#fdfbf7] p-3.5 pb-6 rounded-sm shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-neutral-200/60 flex flex-col text-left transition-all duration-300 mt-6 md:mt-8 hover:scale-105 hover:shadow-[0_25px_50px_rgba(0,0,0,0.85)]">
                     <div className="w-full aspect-square bg-neutral-950 overflow-hidden relative rounded-sm border border-neutral-300/50">
                       <img
                         src={card.image}
