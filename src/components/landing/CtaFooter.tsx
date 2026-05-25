@@ -148,7 +148,7 @@ export function CtaFooter() {
           transition={{ duration: 0.7 }}
           className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,7vw,5.5rem)]"
         >
-          Превратим вашу идею <br className="hidden sm:block" />
+          Превращу вашу идею <br className="hidden sm:block" />
           в <span className="text-gradient-cv">премиальный продукт</span>
         </motion.h2>
 
@@ -159,7 +159,7 @@ export function CtaFooter() {
           transition={{ delay: 0.15 }}
           className="mt-6 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto"
         >
-          Расскажите о вашей задаче — мы разработаем индивидуальное решение, определим формат и рассчитаем точную стоимость.
+          Расскажите о вашей задаче — разработаю индивидуальное решение, определю формат и рассчитаю точную стоимость.
         </motion.p>
 
         <motion.div
