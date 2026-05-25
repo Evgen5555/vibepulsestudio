@@ -137,7 +137,7 @@ export const TargetAudience: React.FC = () => {
               return (
                 <div
                   key={card.id}
-                  className={`relative flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
+                  className={`relative z-20 flex flex-col items-center group transition-all duration-500 ${isEven ? "swing-card-even" : "swing-card-odd"} ${delayClasses[index]}`}
                 >
                   {/* ДЕРЕВЯННАЯ ПРИЩЕПКА */}
                   <div className="relative z-20 flex flex-col items-center">
