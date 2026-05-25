@@ -242,7 +242,7 @@ export function CtaFooter() {
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-border/40 text-sm text-muted-foreground">
+          <div className="mt-12 pt-6 border-t border-border/40 text-sm text-muted-foreground text-center">
             © {new Date().getFullYear()} <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права защищены
           </div>
         </div>
