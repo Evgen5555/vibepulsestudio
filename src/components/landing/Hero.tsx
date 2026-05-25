@@ -34,9 +34,10 @@ export function Hero() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setOpen(true)}
-            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-3.5 text-sm sm:text-base font-medium text-white border border-emerald-400/70 transition-all duration-300 hover:shadow-[0_0_28px_rgba(16,185,129,0.55)] hover:bg-emerald-400/5"
+            className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-background/40 backdrop-blur px-6 py-3.5 text-sm sm:text-base font-medium text-white border border-primary/60 shadow-neon-violet transition-all duration-300 hover:bg-primary/10"
           >
-            💻 Запустить калькулятор прибыли
+            <Laptop className="size-4 text-primary drop-shadow-[0_0_8px_var(--neon-violet)]" />
+            Запустить калькулятор прибыли
           </motion.button>
         </motion.div>
 
