@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 function TelegramIcon({ className }: { className?: string }) {
@@ -16,13 +16,35 @@ const links = [
   { href: "#portfolio", label: "Портфолио" },
   { href: "#process", label: "Процесс" },
   { href: "#faq", label: "FAQ" },
-
 ];
 
 const TELEGRAM_URL = "https://t.me/evgeniya5_5";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("services");
+
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="fixed top-0 inset-x-0 z-50">
@@ -33,16 +55,34 @@ export function Nav() {
             <span className="hidden sm:inline"><span className="text-gradient-cv">Vibe</span>Pulse<span className="text-foreground/60"> studio</span></span>
           </a>
 
-
-
-          <ul className="hidden md:flex items-center gap-8 text-sm text-foreground/75">
-            {links.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="hover:text-foreground transition-colors">
-                  {l.label}
-                </a>
-              </li>
-            ))}
+          <ul className="hidden md:flex items-center gap-8 text-sm">
+            {links.map((l) => {
+              const id = l.href.slice(1);
+              const isActive = activeSection === id;
+              return (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className={`relative pb-2 font-medium tracking-wide transition-colors duration-300 ${
+                      isActive ? "text-foreground" : "text-foreground/60 hover:text-foreground/90"
+                    }`}
+                  >
+                    {l.label}
+                    <span
+                      className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full transition-all duration-500 ${
+                        isActive
+                          ? "bg-gradient-to-r from-cyan-400 via-primary to-fuchsia-500 opacity-100 scale-x-100"
+                          : "bg-transparent opacity-0 scale-x-75"
+                      }`}
+                    >
+                      {isActive && (
+                        <span className="absolute inset-0 bg-primary blur-[4px] opacity-80 rounded-full" />
+                      )}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
