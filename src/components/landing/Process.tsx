@@ -20,7 +20,7 @@ const steps: Step[] = [
   {
     n: "1",
     title: "Разбор",
-    desc: "Обсуждаем вашу идею, задачи, интеграции.",
+    desc: "Обсуждаю вашу идею, задачи, интеграции.",
 
     icon: Sparkles,
     badgeClass: "border-secondary/70 bg-secondary/15 text-secondary",
@@ -33,7 +33,7 @@ const steps: Step[] = [
   {
     n: "2",
     title: "Архитектура",
-    desc: "Продумываем, как все будет устроено. Составляем т/з.",
+    desc: "Продумываю, как все будет устроено. Составляю т/з.",
     icon: Layers,
     badgeClass: "border-[var(--neon-blue)]/70 bg-[var(--neon-blue)]/15 text-[var(--neon-blue)]",
     ringClass: "border-[var(--neon-blue)]/50",
@@ -57,7 +57,7 @@ const steps: Step[] = [
   {
     n: "4",
     title: "Результат",
-    desc: "Запускаем проект и передаю его вам. Остаюсь на связи.",
+    desc: "Запускаю проект и передаю его вам. Остаюсь на связи.",
     icon: Check,
     badgeClass:
       "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
