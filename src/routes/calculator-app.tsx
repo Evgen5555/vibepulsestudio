@@ -1,29 +1,54 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
-import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
-import { Zap, TrendingUp, Users, Percent, Wallet, ArrowLeft, Sparkles, Loader2 } from "lucide-react";
+import {
+  Zap,
+  TrendingUp,
+  ArrowLeft,
+  Sparkles,
+  Plus,
+  Trash2,
+  ArrowUpRight,
+  Send,
+  X,
+} from "lucide-react";
 
 export const Route = createFileRoute("/calculator-app")({
   head: () => ({
     meta: [
       { title: "Калькулятор упущенной выгоды — VibePulse" },
-      { name: "description", content: "PWA-калькулятор упущенной выгоды бизнеса. Узнайте, сколько вы теряете каждый месяц." },
+      {
+        name: "description",
+        content:
+          "Интерактивный бизнес-аудит: посчитайте чистую прибыль и потенциал автоматизации с AI-агентами VibePulse.",
+      },
     ],
   }),
   component: CalculatorApp,
 });
 
+type Item = { id: string; label: string; amount: number };
+
 const fmt = (n: number) => Math.round(n).toLocaleString("ru-RU");
 
+const INCOME_PRESETS = ["Сайт", "Telegram-канал", "Личный бренд", "Другое"];
+const EXPENSE_PRESETS = [
+  "Рекламный бюджет",
+  "Зарплаты",
+  "Потери на рутине",
+  "Слив заявок",
+];
+
+const TELEGRAM_URL = "https://t.me/evgeniya5_5";
+
 function AnimatedNumber({ value }: { value: number }) {
-  const mv = useMotionValue(0);
+  const mv = useMotionValue(value);
   const rounded = useTransform(mv, (v) => fmt(v));
-  const [text, setText] = useState("0");
+  const [text, setText] = useState(fmt(value));
 
   useEffect(() => {
-    const controls = animate(mv, value, { duration: 0.6, ease: "easeOut" });
+    const controls = animate(mv, value, { duration: 0.5, ease: "easeOut" });
     const unsub = rounded.on("change", setText);
     return () => {
       controls.stop();
@@ -49,55 +74,51 @@ function CalculatorApp() {
     }
   }, [navigate]);
 
-  const [traffic, setTraffic] = useState(5000);
-  const [conv, setConv] = useState(1.5);
-  const [check, setCheck] = useState(10000);
+  const [incomes, setIncomes] = useState<Item[]>([]);
+  const [expenses, setExpenses] = useState<Item[]>([]);
+  const [showModal, setShowModal] = useState(false);
 
-  const [showForm, setShowForm] = useState(false);
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [sent, setSent] = useState(false);
-
-  const current = useMemo(() => traffic * (conv / 100) * check, [traffic, conv, check]);
-  const potential = useMemo(() => traffic * ((conv + 2) / 100) * check, [traffic, conv, check]);
-  const lost = potential - current;
-
-  async function submit(e: React.FormEvent) {
-    e.preventDefault();
-    setError(null);
-    if (!name.trim() || !contact.trim()) {
-      setError("Заполните оба поля");
-      return;
-    }
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/public/telegram-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          type: "discuss",
-          name: name.trim(),
-          messenger: "Telegram/Контакт",
-          username: contact.trim(),
-          message: `Запрос на 15-мин стратегический разбор воронки.\nТрафик: ${fmt(traffic)}/мес\nКонверсия: ${conv}%\nСредний чек: ${fmt(check)} ₽\nУпускает: ${fmt(lost)} ₽/мес`,
-        }),
-      });
-      if (!res.ok) throw new Error();
-      setSent(true);
-    } catch {
-      setError("Не удалось отправить. Попробуйте ещё раз.");
-    } finally {
-      setSubmitting(false);
-    }
-  }
+  const totalIncome = useMemo(
+    () => incomes.reduce((s, i) => s + (i.amount || 0), 0),
+    [incomes],
+  );
+  const totalExpense = useMemo(
+    () => expenses.reduce((s, i) => s + (i.amount || 0), 0),
+    [expenses],
+  );
+  const profit = totalIncome - totalExpense;
+  const potential = Math.max(0, Math.round(profit * 0.25));
 
   if (!granted) return null;
 
+  const addItem = (
+    setter: React.Dispatch<React.SetStateAction<Item[]>>,
+    label: string,
+  ) => {
+    setter((prev) => [
+      ...prev,
+      { id: crypto.randomUUID(), label, amount: 0 },
+    ]);
+  };
+
+  const updateItem = (
+    setter: React.Dispatch<React.SetStateAction<Item[]>>,
+    id: string,
+    patch: Partial<Item>,
+  ) => {
+    setter((prev) => prev.map((i) => (i.id === id ? { ...i, ...patch } : i)));
+  };
+
+  const removeItem = (
+    setter: React.Dispatch<React.SetStateAction<Item[]>>,
+    id: string,
+  ) => {
+    setter((prev) => prev.filter((i) => i.id !== id));
+  };
+
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#05060a] text-white">
-      {/* Background glow */}
+      {/* Background glow — preserved violet/emerald palette */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-40 -left-20 h-[480px] w-[480px] rounded-full bg-violet-600/20 blur-[140px]" />
         <div className="absolute -bottom-40 -right-20 h-[520px] w-[520px] rounded-full bg-emerald-500/20 blur-[160px]" />
@@ -118,7 +139,7 @@ function CalculatorApp() {
           transition={{ duration: 0.5 }}
           className="mt-6 text-center"
         >
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.22em] text-emerald-400 uppercase bg-emerald-400/10 border border-emerald-400/30 px-3 py-1 rounded-full">
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-[0.22em] text-amber-300 uppercase bg-amber-300/10 border border-amber-300/30 px-3 py-1 rounded-full">
             <Sparkles className="w-3 h-3" /> Internal Tool · PWA
           </span>
           <h1 className="mt-5 font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,5.5vw,3.25rem)]">
@@ -128,217 +149,281 @@ function CalculatorApp() {
             </span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-white/60 max-w-lg mx-auto">
-            Двигайте ползунки — система мгновенно покажет, сколько денег ваш бизнес теряет каждый месяц.
+            Внесите статьи доходов и расходов — система покажет вашу чистую
+            прибыль и точки автоматизации.
           </p>
         </motion.div>
 
-        {/* Sliders card */}
+        {/* Profit widget */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 shadow-[0_0_60px_-20px_rgba(139,92,246,0.45)]"
+          className="mt-10 relative rounded-3xl border border-amber-300/40 bg-gradient-to-br from-amber-300/5 via-black/40 to-amber-500/5 p-7 sm:p-10 overflow-hidden"
         >
-          <SliderRow
-            icon={<Users className="w-4 h-4 text-violet-300" />}
-            label="Трафик сайта в месяц"
-            value={fmt(traffic)}
-            unit="посетителей"
-            accent="violet"
-          >
-            <Slider value={[traffic]} min={1000} max={50000} step={500} onValueChange={(v) => setTraffic(v[0])} />
-            <RangeLabels min="1 000" max="50 000" />
-          </SliderRow>
-
-          <Divider />
-
-          <SliderRow
-            icon={<Percent className="w-4 h-4 text-fuchsia-300" />}
-            label="Текущая конверсия сайта"
-            value={conv.toFixed(1)}
-            unit="%"
-            accent="fuchsia"
-          >
-            <Slider value={[conv]} min={0.5} max={5} step={0.1} onValueChange={(v) => setConv(v[0])} />
-            <RangeLabels min="0.5%" max="5%" />
-          </SliderRow>
-
-          <Divider />
-
-          <SliderRow
-            icon={<Wallet className="w-4 h-4 text-emerald-300" />}
-            label="Средний чек продукта"
-            value={fmt(check)}
-            unit="₽"
-            accent="emerald"
-          >
-            <Slider value={[check]} min={3000} max={150000} step={1000} onValueChange={(v) => setCheck(v[0])} />
-            <RangeLabels min="3 000 ₽" max="150 000 ₽" />
-          </SliderRow>
-        </motion.div>
-
-        {/* Result */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 relative rounded-3xl border border-emerald-400/40 bg-gradient-to-br from-emerald-500/10 via-black/40 to-violet-600/10 p-7 sm:p-10 overflow-hidden"
-        >
-          <div className="absolute -inset-px rounded-3xl bg-[conic-gradient(from_120deg,rgba(16,185,129,0.25),transparent_30%,rgba(139,92,246,0.25)_60%,transparent_90%)] opacity-60 blur-2xl pointer-events-none" />
-          <div className="relative">
-            <p className="text-[11px] font-semibold tracking-[0.22em] text-emerald-400 uppercase flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5" /> Вы упускаете в месяц
+          <div className="absolute -inset-px rounded-3xl bg-[conic-gradient(from_120deg,rgba(251,191,36,0.18),transparent_30%,rgba(217,119,6,0.18)_60%,transparent_90%)] opacity-60 blur-2xl pointer-events-none" />
+          <div className="relative text-center sm:text-left">
+            <p className="text-[11px] font-semibold tracking-[0.22em] text-amber-300/80 uppercase flex items-center gap-1.5 justify-center sm:justify-start">
+              <TrendingUp className="w-3.5 h-3.5" /> Чистая прибыль
             </p>
-            <p className="mt-3 font-semibold tracking-[-0.04em] leading-none text-[clamp(2.5rem,9vw,5.5rem)] bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-500 bg-clip-text text-transparent">
-              <AnimatedNumber value={lost} /> ₽
+            <p className="mt-3 font-semibold tracking-[-0.04em] leading-none text-[clamp(2.5rem,9vw,5.5rem)] bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 bg-clip-text text-transparent">
+              <AnimatedNumber value={profit} /> ₽
             </p>
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
-              <MiniStat label="Текущий доход" value={current} tone="muted" />
-              <MiniStat label="Потенциальный доход" value={potential} tone="bright" />
-            </div>
+            <p className="mt-4 text-xs sm:text-sm text-amber-300/70 italic">
+              Потенциал автоматизации:{" "}
+              <span className="font-semibold text-amber-300">
+                +25% к прибыли (+{fmt(potential)} ₽)
+              </span>{" "}
+              при внедрении AI-агентов VibePulse
+            </p>
           </div>
         </motion.div>
+
+        {/* Income */}
+        <Section
+          title="Доходы"
+          tone="emerald"
+          presets={INCOME_PRESETS}
+          items={incomes}
+          total={totalIncome}
+          onAdd={(label) => addItem(setIncomes, label)}
+          onUpdate={(id, patch) => updateItem(setIncomes, id, patch)}
+          onRemove={(id) => removeItem(setIncomes, id)}
+          delay={0.2}
+        />
+
+        {/* Expenses */}
+        <Section
+          title="Расходы"
+          tone="rose"
+          presets={EXPENSE_PRESETS}
+          items={expenses}
+          total={totalExpense}
+          onAdd={(label) => addItem(setExpenses, label)}
+          onUpdate={(id, patch) => updateItem(setExpenses, id, patch)}
+          onRemove={(id) => removeItem(setExpenses, id)}
+          delay={0.3}
+        />
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-8 text-sm sm:text-[15px] leading-relaxed text-white/65 text-center max-w-2xl mx-auto"
+        >
+          Этот интерактивный аудит — пример того, как VibePulse превращает
+          сложные бизнес-процессы в работающие цифровые инструменты, а не просто
+          контент. Если откликается такой формат — мы можем собрать кастомное
+          решение под задачи вашего бизнеса.
+        </motion.p>
 
         {/* CTA */}
         <motion.button
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
           whileHover={{ scale: 1.01 }}
           whileTap={{ scale: 0.99 }}
-          onClick={() => setShowForm((s) => !s)}
-          className="group mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500 text-black font-semibold text-sm sm:text-base py-4 px-6 shadow-[0_0_40px_-8px_rgba(16,185,129,0.7)] hover:shadow-[0_0_60px_-4px_rgba(16,185,129,0.9)] transition-shadow"
+          onClick={() => setShowModal(true)}
+          className="group mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-black font-semibold text-sm sm:text-base py-4 px-6 shadow-[0_0_40px_-8px_rgba(251,191,36,0.7)] hover:shadow-[0_0_60px_-4px_rgba(251,191,36,0.9)] transition-shadow"
         >
           <Zap className="w-4 h-4" />
-          Исправить слив прибыли
+          Окупить слив прибыли
         </motion.button>
-
-        {/* Form */}
-        <AnimatePresence initial={false}>
-          {showForm && (
-            <motion.div
-              key="form"
-              initial={{ opacity: 0, height: 0, marginTop: 0 }}
-              animate={{ opacity: 1, height: "auto", marginTop: 24 }}
-              exit={{ opacity: 0, height: 0, marginTop: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="overflow-hidden"
-            >
-              <div className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8">
-                {sent ? (
-                  <div className="text-center py-6">
-                    <div className="mx-auto w-12 h-12 rounded-full bg-emerald-400/15 border border-emerald-400/40 flex items-center justify-center mb-3">
-                      <Sparkles className="w-5 h-5 text-emerald-400" />
-                    </div>
-                    <h3 className="text-lg font-semibold">Заявка отправлена</h3>
-                    <p className="text-sm text-white/60 mt-1">
-                      Свяжемся в течение часа, чтобы согласовать время разбора.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={submit} className="space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold">15-минутный стратегический разбор воронки</h3>
-                      <p className="text-sm text-white/60 mt-1">
-                        Покажем точки слива и план их закрытия с помощью AI-агентов. Бесплатно.
-                      </p>
-                    </div>
-                    <div className="grid gap-3">
-                      <Input
-                        placeholder="Ваше имя"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="h-12 bg-black/40 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-emerald-400/60"
-                      />
-                      <Input
-                        placeholder="Telegram / Email / Телефон"
-                        value={contact}
-                        onChange={(e) => setContact(e.target.value)}
-                        className="h-12 bg-black/40 border-white/10 text-white placeholder:text-white/40 focus-visible:ring-emerald-400/60"
-                      />
-                    </div>
-                    {error && <p className="text-xs text-rose-400">{error}</p>}
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-white text-black font-semibold text-sm py-3.5 hover:bg-white/90 transition disabled:opacity-60"
-                    >
-                      {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4" />}
-                      {submitting ? "Отправляем…" : "Записаться на разбор"}
-                    </button>
-                  </form>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <p className="mt-8 text-center text-[11px] text-white/30 tracking-wider uppercase">
           VibePulse Internal · v1.0
         </p>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xl flex items-center justify-center p-4"
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              key="modal"
+              initial={{ opacity: 0, y: 16, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.97 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-md rounded-3xl border border-amber-300/40 bg-[#0a0b10] p-8 shadow-[0_0_80px_-10px_rgba(251,191,36,0.45)]"
+            >
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute right-4 top-4 w-8 h-8 inline-flex items-center justify-center rounded-full text-white/50 hover:text-white hover:bg-white/5 transition"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="w-12 h-12 rounded-full bg-amber-300/10 border border-amber-300/40 flex items-center justify-center mb-4">
+                <Sparkles className="w-5 h-5 text-amber-300" />
+              </div>
+
+              <h3 className="text-xl font-semibold tracking-tight">
+                Мы сохранили ваш расчёт
+              </h3>
+              <p className="mt-3 text-sm text-white/65 leading-relaxed">
+                Чтобы убрать самый крупный слив в вашем бизнесе, заберите
+                бесплатный 15-минутный разбор.
+              </p>
+
+              {profit !== 0 && (
+                <div className="mt-5 rounded-2xl border border-amber-300/20 bg-amber-300/5 px-4 py-3">
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-amber-300/70">
+                    Ваш потенциал
+                  </p>
+                  <p className="mt-1 text-lg font-semibold text-amber-300">
+                    +{fmt(potential)} ₽ / мес с AI-агентами
+                  </p>
+                </div>
+              )}
+
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 text-black font-semibold text-sm py-3.5 hover:shadow-[0_0_40px_-6px_rgba(251,191,36,0.8)] transition-shadow"
+              >
+                <Send className="w-4 h-4" />
+                Забрать разбор в Telegram
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
 
-function SliderRow({
-  icon,
-  label,
-  value,
-  unit,
-  accent,
-  children,
+function Section({
+  title,
+  tone,
+  presets,
+  items,
+  total,
+  onAdd,
+  onUpdate,
+  onRemove,
+  delay,
 }: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  unit: string;
-  accent: "violet" | "fuchsia" | "emerald";
-  children: React.ReactNode;
+  title: string;
+  tone: "emerald" | "rose";
+  presets: string[];
+  items: Item[];
+  total: number;
+  onAdd: (label: string) => void;
+  onUpdate: (id: string, patch: Partial<Item>) => void;
+  onRemove: (id: string) => void;
+  delay: number;
 }) {
-  const accentClass = {
-    violet: "text-violet-300",
-    fuchsia: "text-fuchsia-300",
-    emerald: "text-emerald-300",
-  }[accent];
+  const toneClass =
+    tone === "emerald"
+      ? {
+          dot: "bg-emerald-400",
+          text: "text-emerald-300",
+          chip: "border-emerald-400/30 hover:border-emerald-400/70 hover:bg-emerald-400/5",
+          total: "text-emerald-300",
+        }
+      : {
+          dot: "bg-rose-400",
+          text: "text-rose-300",
+          chip: "border-rose-400/30 hover:border-rose-400/70 hover:bg-rose-400/5",
+          total: "text-rose-300",
+        };
+
   return (
-    <div className="py-3">
-      <div className="flex items-end justify-between mb-4">
-        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-white/60">
-          <span className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-            {icon}
-          </span>
-          {label}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+      className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-7"
+    >
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2.5">
+          <span className={`w-2 h-2 rounded-full ${toneClass.dot}`} />
+          <h2 className="text-xs uppercase tracking-[0.22em] text-white/70 font-semibold">
+            {title}
+          </h2>
         </div>
-        <div className={`font-semibold tabular-nums text-xl sm:text-2xl ${accentClass}`}>
-          {value} <span className="text-xs text-white/40 font-normal ml-1">{unit}</span>
-        </div>
+        <p className={`text-sm font-semibold tabular-nums ${toneClass.total}`}>
+          {fmt(total)} ₽
+        </p>
       </div>
-      {children}
-    </div>
-  );
-}
 
-function RangeLabels({ min, max }: { min: string; max: string }) {
-  return (
-    <div className="mt-2 flex justify-between text-[10px] tracking-wider uppercase text-white/30">
-      <span>{min}</span>
-      <span>{max}</span>
-    </div>
-  );
-}
+      <div className="flex flex-wrap gap-2">
+        {presets.map((p) => (
+          <button
+            key={p}
+            onClick={() => onAdd(p)}
+            className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border bg-black/30 ${toneClass.chip} text-white/80 transition`}
+          >
+            <Plus className="w-3 h-3" />
+            {p}
+          </button>
+        ))}
+      </div>
 
-function Divider() {
-  return <div className="my-2 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />;
-}
-
-function MiniStat({ label, value, tone }: { label: string; value: number; tone: "muted" | "bright" }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-black/30 p-4">
-      <p className="text-[10px] uppercase tracking-[0.18em] text-white/40">{label}</p>
-      <p className={`mt-1.5 font-semibold tabular-nums text-lg sm:text-xl ${tone === "bright" ? "text-white" : "text-white/60"}`}>
-        <AnimatedNumber value={value} /> ₽
-      </p>
-    </div>
+      <AnimatePresence initial={false}>
+        {items.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: "auto", marginTop: 20 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-2">
+              {items.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, x: 12 }}
+                  className="flex items-center gap-2 rounded-2xl border border-white/10 bg-black/30 p-2"
+                >
+                  <Input
+                    value={item.label}
+                    onChange={(e) =>
+                      onUpdate(item.id, { label: e.target.value })
+                    }
+                    className="flex-1 h-10 bg-transparent border-0 text-sm text-white placeholder:text-white/30 focus-visible:ring-0 focus-visible:ring-offset-0"
+                  />
+                  <Input
+                    type="number"
+                    inputMode="numeric"
+                    placeholder="0"
+                    value={item.amount || ""}
+                    onChange={(e) =>
+                      onUpdate(item.id, {
+                        amount: Number(e.target.value) || 0,
+                      })
+                    }
+                    className="w-32 h-10 bg-black/40 border-white/10 text-right tabular-nums text-sm text-white placeholder:text-white/30 focus-visible:ring-amber-300/60"
+                  />
+                  <span className="text-xs text-white/40 pr-1">₽</span>
+                  <button
+                    onClick={() => onRemove(item.id)}
+                    className="w-9 h-9 inline-flex items-center justify-center rounded-xl text-white/40 hover:text-rose-300 hover:bg-rose-400/10 transition"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
