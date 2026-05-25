@@ -206,21 +206,24 @@ export function CtaFooter() {
           </motion.a>
         </motion.div>
 
-        <div className="mt-24 pt-12 border-t border-border/60 text-left">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-24">
+        <div className="pt-12 border-t border-border/60 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-12 gap-10">
+            <div className="sm:col-span-6">
               <div className="flex items-center gap-3">
                 <img src={logo} alt="VibePulse studio" className="h-10 w-10 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
                 <span className="text-base font-semibold">
                   <span className="text-gradient-cv">VibePulse</span> studio
                 </span>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground max-w-xs">
+              <p className="mt-4 text-sm text-muted-foreground max-w-md">
                 Сайты, автоворонки, боты, дизайн и полная интеграция с помощью ИИ.
               </p>
             </div>
 
-            <div>
+            <div className="sm:col-span-3">
               <h4 className="text-sm font-semibold text-foreground mb-4">Контакты</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
                 <li><a href="https://t.me/your_username" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Telegram</a></li>
@@ -229,7 +232,7 @@ export function CtaFooter() {
               </ul>
             </div>
 
-            <div>
+            <div className="sm:col-span-3">
               <h4 className="text-sm font-semibold text-foreground mb-4">Документы</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-foreground">Политика конфиденциальности</a></li>
