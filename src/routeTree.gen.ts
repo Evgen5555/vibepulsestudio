@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as RoiRouteImport } from './routes/roi'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OfferRouteImport } from './routes/offer'
@@ -16,6 +17,11 @@ import { Route as CalculatorAppRouteImport } from './routes/calculator-app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicTelegramLeadRouteImport } from './routes/api/public/telegram-lead'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RoiRoute = RoiRouteImport.update({
   id: '/roi',
   path: '/roi',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/offer': typeof OfferRoute
   '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
+  '/services': typeof ServicesRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/offer': typeof OfferRoute
   '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
+  '/services': typeof ServicesRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRoutesById {
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/offer': typeof OfferRoute
   '/privacy': typeof PrivacyRoute
   '/roi': typeof RoiRoute
+  '/services': typeof ServicesRoute
   '/api/public/telegram-lead': typeof ApiPublicTelegramLeadRoute
 }
 export interface FileRouteTypes {
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/offer'
     | '/privacy'
     | '/roi'
+    | '/services'
     | '/api/public/telegram-lead'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/offer'
     | '/privacy'
     | '/roi'
+    | '/services'
     | '/api/public/telegram-lead'
   id:
     | '__root__'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/offer'
     | '/privacy'
     | '/roi'
+    | '/services'
     | '/api/public/telegram-lead'
   fileRoutesById: FileRoutesById
 }
@@ -105,11 +117,19 @@ export interface RootRouteChildren {
   OfferRoute: typeof OfferRoute
   PrivacyRoute: typeof PrivacyRoute
   RoiRoute: typeof RoiRoute
+  ServicesRoute: typeof ServicesRoute
   ApiPublicTelegramLeadRoute: typeof ApiPublicTelegramLeadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/roi': {
       id: '/roi'
       path: '/roi'
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   OfferRoute: OfferRoute,
   PrivacyRoute: PrivacyRoute,
   RoiRoute: RoiRoute,
+  ServicesRoute: ServicesRoute,
   ApiPublicTelegramLeadRoute: ApiPublicTelegramLeadRoute,
 }
 export const routeTree = rootRouteImport

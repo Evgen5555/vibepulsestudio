@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
-import { Services } from "@/components/landing/Services";
+import { ServicesTeaser } from "@/components/landing/Services";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { Portfolio } from "@/components/landing/Portfolio";
 import { Process } from "@/components/landing/Process";
@@ -50,7 +50,7 @@ function Index() {
       <main className="relative overflow-x-clip">
         <Hero />
         <Marquee />
-        <Services />
+        <ServicesTeaser />
         <TargetAudience />
         
         <Portfolio />

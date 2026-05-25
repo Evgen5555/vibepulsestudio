@@ -113,3 +113,60 @@ export function Services() {
     </section>
   );
 }
+
+export function ServicesTeaser() {
+  return (
+    <section id="services" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="max-w-2xl mb-14 mx-auto text-center">
+          <p className="text-sm text-secondary mb-3">Услуги</p>
+          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+            <span className="text-gradient-cv">Делаю результат</span>
+          </h2>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="relative overflow-hidden rounded-[2rem] p-8 sm:p-14 border border-white/10"
+          style={{
+            background:
+              "linear-gradient(90deg, #6b21a8 0%, #1e3a8a 25%, #0f766e 50%, #1e3a8a 75%, #be185d 100%)",
+          }}
+        >
+          <div
+            className="pointer-events-none absolute -top-32 -left-32 size-96 rounded-full blur-3xl opacity-60"
+            style={{ background: "radial-gradient(circle, #a855f7, transparent 70%)" }}
+          />
+          <div
+            className="pointer-events-none absolute -bottom-32 -right-32 size-96 rounded-full blur-3xl opacity-60"
+            style={{ background: "radial-gradient(circle, #ec4899, transparent 70%)" }}
+          />
+          <div
+            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[28rem] rounded-full blur-3xl opacity-40"
+            style={{ background: "radial-gradient(circle, #14b8a6, transparent 70%)" }}
+          />
+
+          <div className="relative z-10 flex flex-col items-center text-center gap-8">
+            <p className="max-w-3xl text-white text-lg sm:text-2xl font-medium leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+              Высокоскоростной вайбкодинг: запускаем сложные системы за{" "}
+              <span className="font-bold">5 дней</span> вместо{" "}
+              <span className="font-bold">2 месяцев</span> нудных согласований.
+            </p>
+
+            <motion.a
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              href="/services"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-900 px-8 py-4 text-sm sm:text-base font-bold shadow-[0_10px_40px_rgba(0,0,0,0.35)] hover:shadow-[0_14px_50px_rgba(0,0,0,0.45)] transition-shadow"
+            >
+              Каталог решений VibePulse studio →
+            </motion.a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
