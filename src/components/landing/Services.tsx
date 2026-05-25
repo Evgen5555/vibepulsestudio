@@ -154,7 +154,7 @@ export function ServicesTeaser() {
 
           <div className="relative z-10 flex flex-col items-center text-center gap-8">
             <p className="max-w-3xl text-white text-lg sm:text-2xl font-medium leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
-              Высокоскоростной вайб - кодинг: запускаем сложные системы за{" "}
+              Высокоскоростной вайб - кодинг: запускаю сложные системы от{" "}
               <span className="font-bold">5 дней</span> вместо{" "}
               <span className="font-bold">2 месяцев</span> нудных согласований.
             </p>
