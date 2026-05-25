@@ -9,10 +9,14 @@ import {
   Sparkles,
   Plus,
   Trash2,
-  ArrowUpRight,
-  Send,
-  X,
+  Check,
+  Download,
 } from "lucide-react";
+
+type BeforeInstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+};
 
 export const Route = createFileRoute("/calculator-app")({
   head: () => ({
