@@ -182,7 +182,7 @@ export function CtaFooter() {
             className="inline-flex items-center justify-center gap-2.5 rounded-full border border-primary/50 bg-primary/5 px-7 py-4 text-base font-medium text-primary hover:bg-primary/10 shadow-neon-violet w-full sm:w-auto"
           >
             <Sparkles className="size-4" />
-            Обсудить проект
+            Написать в МАХ
           </motion.button>
 
           <motion.button

@@ -81,7 +81,7 @@ export function Hero() {
               href="#cta"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-secondary/70 bg-secondary/5 px-7 py-4 text-base font-medium text-secondary hover:bg-secondary/10 shadow-neon-cyan"
             >
-              Обсудить проект
+              Написать в МАХ
             </motion.a>
           </motion.div>
 
