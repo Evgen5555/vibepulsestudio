@@ -24,8 +24,8 @@ const modalConfig = {
     Icon: Rocket,
   },
   discuss: {
-    title: "Обсудить",
-    titleAccent: "проект",
+    title: "Написать",
+    titleAccent: "в МАХ",
     subtitle: "Опишите идею — мы подберём подход, формат и стоимость под ваши задачи",
     label: "Расскажите о проекте *",
     placeholder: "Что хотите создать? Идея, цели, формат, сроки...",
