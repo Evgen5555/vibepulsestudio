@@ -176,7 +176,12 @@ export function AiChatWidget() {
                 >
                   {m.sender === "ai" && (
                     <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
-                      <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
+                      {/* TODO: Замените src на URL фотографии Евы */}
+                      <img
+                        src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                   )}
                   <div
