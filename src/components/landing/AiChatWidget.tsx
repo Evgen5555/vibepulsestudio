@@ -138,7 +138,12 @@ export function AiChatWidget() {
               <div className="relative shrink-0">
                 <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#3b82f6] via-[#6d28d9] to-[#d4af37] opacity-70 blur-[2px]" />
                 <div className="relative h-12 w-12 rounded-full overflow-hidden border border-[#d4af37]/40 bg-[#0a0a0f]">
-                  <img src={evaAvatar} alt="Ева" className="h-full w-full object-cover" />
+                  {/* TODO: Замените src на URL фотографии Евы */}
+                  <img
+                    src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                    alt="Ева"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-green-400 border-2 border-[#0a0a0f] shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
               </div>
