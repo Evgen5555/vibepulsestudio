@@ -13,7 +13,7 @@ interface Message {
 const QUICK_REPLIES = [
   { emoji: "💼", text: "Узнать про продукты и услуги VibePulse" },
   { emoji: "⏱", text: "Каковы условия и сроки разработки?" },
-  { emoji: "🚀", text: "Обсудить мой проект с Евгенией" },
+  { emoji: "🚀", text: "Обсудить свой проект с Евгенией" },
 ];
 
 const WELCOME: Message = {
