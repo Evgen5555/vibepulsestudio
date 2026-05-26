@@ -93,9 +93,10 @@ export function AiChatWidget() {
         >
           <span className="absolute inset-0 rounded-full bg-[#3b82f6] opacity-40 animate-ping" />
           <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#3b82f6] to-[#d4af37] opacity-60 blur-md group-hover:opacity-90 transition" />
-          <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#0a0a0f] to-[#1a1a24] border border-[#d4af37]/40 shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:scale-105 transition">
-            <MessageCircle className="h-6 w-6 text-[#d4af37]" />
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full overflow-hidden bg-[#0a0a0f] border border-[#d4af37]/50 shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:scale-105 transition">
+            <img src={evaAvatar} alt="Ева" className="h-full w-full object-cover" />
           </span>
+          <span className="absolute bottom-0.5 right-0.5 h-3.5 w-3.5 rounded-full bg-green-400 border-2 border-[#0a0a0f]" />
         </button>
       )}
 
