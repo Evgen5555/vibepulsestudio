@@ -214,7 +214,12 @@ export function AiChatWidget() {
               {thinking && (
                 <div className="flex justify-start gap-2">
                   <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
-                    <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
+                    {/* TODO: Замените src на URL фотографии Евы */}
+                    <img
+                      src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="rounded-2xl rounded-bl-sm px-4 py-3 bg-[#0f1424]/80 border border-[#3b82f6]/40">
                     <div className="flex gap-1">
