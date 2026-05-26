@@ -12,6 +12,7 @@ import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 import CyberBackground from "@/components/landing/CyberBackground";
+import { AiChatWidget } from "@/components/landing/AiChatWidget";
 
 
 export const Route = createFileRoute("/")({
@@ -61,6 +62,7 @@ function Index() {
         <CtaFooter />
 
       </main>
+      <AiChatWidget />
     </>
   );
 }
