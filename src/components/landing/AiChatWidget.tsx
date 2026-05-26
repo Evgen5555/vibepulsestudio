@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
-import evaAvatar from "@/assets/eva-avatar.png";
+import { X, Send } from "lucide-react";
 
 type Sender = "ai" | "user";
 interface Message {
