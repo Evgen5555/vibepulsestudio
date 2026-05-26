@@ -123,7 +123,7 @@ export function AiChatWidget() {
                     className="h-full w-full object-cover"
                   />
                 </div>
-                <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-green-400 border-2 border-[#0a0a0f] shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
+                
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-white font-semibold text-lg leading-tight tracking-tight">Ева</div>
