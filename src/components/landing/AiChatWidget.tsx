@@ -118,7 +118,7 @@ export function AiChatWidget() {
                 <div className="relative h-12 w-12 rounded-full overflow-hidden border border-[#d4af37]/40 bg-[#0a0a0f]">
                   {/* TODO: Замените src на URL фотографии Евы */}
                   <img
-                    src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                    src={evaAvatar}
                     alt="Ева"
                     className="h-full w-full object-cover"
                   />
@@ -156,7 +156,7 @@ export function AiChatWidget() {
                     <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
                       {/* TODO: Замените src на URL фотографии Евы */}
                       <img
-                        src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                        src={evaAvatar}
                         alt=""
                         className="h-full w-full object-cover"
                       />
@@ -194,7 +194,7 @@ export function AiChatWidget() {
                   <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
                     {/* TODO: Замените src на URL фотографии Евы */}
                     <img
-                      src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                      src={evaAvatar}
                       alt=""
                       className="h-full w-full object-cover"
                     />
