@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
-import evaAvatar from "@/assets/eva-avatar.png";
+import { X, Send } from "lucide-react";
 
 type Sender = "ai" | "user";
 interface Message {
@@ -84,19 +83,47 @@ export function AiChatWidget() {
 
   return (
     <>
-      {/* Floating button */}
+      {/* Floating button - minimal anonymous dark design */}
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          aria-label="Открыть чат с Евой"
+          aria-label="Открыть AI-чат"
           className="fixed bottom-5 right-5 z-50 group"
         >
-          <span className="absolute inset-0 rounded-full bg-[#3b82f6] opacity-40 animate-ping" />
-          <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#3b82f6] to-[#d4af37] opacity-60 blur-md group-hover:opacity-90 transition" />
-          <span className="relative flex h-16 w-16 items-center justify-center rounded-full overflow-hidden bg-[#0a0a0f] border border-[#d4af37]/50 shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:scale-105 transition">
-            <img src={evaAvatar} alt="Ева" className="h-full w-full object-cover" />
+          <span className="absolute inset-0 rounded-full bg-[#3b82f6] opacity-30 animate-ping" />
+          <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#3b82f6]/60 to-[#d4af37]/60 opacity-50 blur-md group-hover:opacity-90 transition" />
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#0a0a0f] to-[#13131c] border border-[#d4af37]/40 shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:scale-105 transition overflow-hidden">
+            {/* Abstract neon wave / intelligence pattern */}
+            <svg
+              viewBox="0 0 64 64"
+              className="h-8 w-8"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            >
+              <defs>
+                <linearGradient id="evaGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#3b82f6" />
+                  <stop offset="100%" stopColor="#d4af37" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M6 38 Q 18 18, 32 32 T 58 26"
+                stroke="url(#evaGrad)"
+                strokeWidth="2"
+              />
+              <path
+                d="M6 46 Q 20 30, 32 40 T 58 34"
+                stroke="url(#evaGrad)"
+                strokeWidth="1.25"
+                opacity="0.65"
+              />
+              <circle cx="32" cy="32" r="2.5" fill="#d4af37" />
+              <circle cx="8" cy="40" r="1.5" fill="#3b82f6" />
+              <circle cx="56" cy="28" r="1.5" fill="#3b82f6" />
+            </svg>
           </span>
-          <span className="absolute bottom-0.5 right-0.5 h-3.5 w-3.5 rounded-full bg-green-400 border-2 border-[#0a0a0f]" />
         </button>
       )}
 
@@ -111,7 +138,12 @@ export function AiChatWidget() {
               <div className="relative shrink-0">
                 <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#3b82f6] via-[#6d28d9] to-[#d4af37] opacity-70 blur-[2px]" />
                 <div className="relative h-12 w-12 rounded-full overflow-hidden border border-[#d4af37]/40 bg-[#0a0a0f]">
-                  <img src={evaAvatar} alt="Ева" className="h-full w-full object-cover" />
+                  {/* TODO: Замените src на URL фотографии Евы */}
+                  <img
+                    src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                    alt="Ева"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-green-400 border-2 border-[#0a0a0f] shadow-[0_0_8px_rgba(74,222,128,0.8)]" />
               </div>
@@ -144,7 +176,12 @@ export function AiChatWidget() {
                 >
                   {m.sender === "ai" && (
                     <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
-                      <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
+                      {/* TODO: Замените src на URL фотографии Евы */}
+                      <img
+                        src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
                     </div>
                   )}
                   <div
@@ -177,7 +214,12 @@ export function AiChatWidget() {
               {thinking && (
                 <div className="flex justify-start gap-2">
                   <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
-                    <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
+                    {/* TODO: Замените src на URL фотографии Евы */}
+                    <img
+                      src="https://via.placeholder.com/150/0a0a0f/d4af37?text=Eva"
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <div className="rounded-2xl rounded-bl-sm px-4 py-3 bg-[#0f1424]/80 border border-[#3b82f6]/40">
                     <div className="flex gap-1">
