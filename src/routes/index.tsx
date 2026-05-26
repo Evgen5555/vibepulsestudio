@@ -62,6 +62,7 @@ function Index() {
         <CtaFooter />
 
       </main>
+      <AiChatWidget />
     </>
   );
 }
