@@ -1,41 +1,47 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { PolaroidCard } from "./PolaroidCard";
+import fleurImage from "@/assets/portfolio-fleur.png";
 
 type Project = {
-  name: string;
-  tag: string;
-  result: string;
-  gradient: string;
+  title: string;
+  description: string;
+  image: string;
+  href: string;
+  rotate: string;
 };
 
 const projects: Project[] = [
   {
-    name: "Aurum Finance",
-    tag: "Fintech · Landing",
-    result: "Конверсия +24%",
-    gradient:
-      "radial-gradient(ellipse at 20% 20%, #7a2cff 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, #00d4ff 0%, transparent 60%), linear-gradient(180deg,#0a0a14,#05050b)",
+    title: "Fleur — Авторские букеты",
+    description:
+      "Премиум-лендинг для цветочной студии с доставкой по Москве. Эстетика, конверсия и плавные сценарии заказа.",
+    image: fleurImage,
+    href: "https://lovable.dev",
+    rotate: "-3deg",
   },
   {
-    name: "Nebula AI",
-    tag: "SaaS · Автоворонка",
-    result: "CAC ниже на 38%",
-    gradient:
-      "radial-gradient(ellipse at 80% 20%, #ff3ea5 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, #5b8cff 0%, transparent 60%), linear-gradient(180deg,#0a0a14,#05050b)",
+    title: "Aurum Finance",
+    description:
+      "Fintech-лендинг с упором на доверие и скорость. AI-квалификация лидов, рост конверсии +24%.",
+    image: fleurImage,
+    href: "https://lovable.dev",
+    rotate: "2deg",
   },
   {
-    name: "Studio Voltage",
-    tag: "Brand · Premium-сайт",
-    result: "Заявок ×3.1",
-    gradient:
-      "radial-gradient(ellipse at 50% 0%, #00ffd1 0%, transparent 55%), radial-gradient(ellipse at 50% 100%, #7a2cff 0%, transparent 60%), linear-gradient(180deg,#0a0a14,#05050b)",
+    title: "Nebula AI",
+    description:
+      "SaaS-автоворонка с интеграцией AI-ассистента. Снизили CAC на 38%, ускорили онбординг.",
+    image: fleurImage,
+    href: "https://lovable.dev",
+    rotate: "-1.5deg",
   },
   {
-    name: "Helix Health",
-    tag: "Wellness · Funnel",
-    result: "LTV +52%",
-    gradient:
-      "radial-gradient(ellipse at 0% 0%, #00d4ff 0%, transparent 55%), radial-gradient(ellipse at 100% 100%, #b066ff 0%, transparent 60%), linear-gradient(180deg,#0a0a14,#05050b)",
+    title: "Studio Voltage",
+    description:
+      "Premium-сайт для брендингового агентства. Заявок ×3.1 за первый месяц после запуска.",
+    image: fleurImage,
+    href: "https://lovable.dev",
+    rotate: "2.5deg",
   },
 ];
 
@@ -43,7 +49,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="flex items-end justify-center mb-14 gap-6 flex-wrap text-center">
+        <div className="flex items-end justify-center mb-16 gap-6 flex-wrap text-center">
           <div className="max-w-2xl text-center">
             <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Портфолио</p>
             <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
@@ -53,42 +59,23 @@ export function Portfolio() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <div className="flex flex-wrap justify-center items-start gap-10 sm:gap-14 py-8">
           {projects.map((p, i) => (
-            <motion.a
-              key={p.name}
-              href="#cta"
-              initial={{ opacity: 0, y: 24 }}
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
-              className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-border bg-card block"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
             >
-              <div
-                className="absolute inset-0 transition-transform duration-[800ms] ease-out group-hover:scale-110"
-                style={{ background: p.gradient }}
+              <PolaroidCard
+                image={p.image}
+                title={p.title}
+                description={p.description}
+                href={p.href}
+                rotate={p.rotate}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-
-              <div className="absolute top-5 right-5">
-                <span className="inline-flex items-center gap-1.5 rounded-full glass border border-border px-3 py-1.5 text-xs text-foreground/80 transition-transform group-hover:-translate-y-0.5">
-                  <ArrowUpRight className="size-3.5" />
-                  Кейс
-                </span>
-              </div>
-
-              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 flex items-end justify-between gap-4">
-                <div>
-                  <div className="text-xs text-muted-foreground mb-2">{p.tag}</div>
-                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                    {p.name}
-                  </h3>
-                </div>
-                <span className="shrink-0 rounded-full border border-secondary/60 bg-secondary/10 text-secondary px-3 py-1.5 text-xs font-medium shadow-neon-cyan">
-                  {p.result}
-                </span>
-              </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
