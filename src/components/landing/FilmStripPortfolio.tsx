@@ -1,4 +1,5 @@
 import React from "react";
+import fleurImage from "@/assets/portfolio-fleur.png";
 
 interface Project {
   id: string;
@@ -6,7 +7,9 @@ interface Project {
   title: string;
   description: string;
   githubUrl: string;
+  image?: string;
 }
+
 
 const projects: Project[] = [
   {
