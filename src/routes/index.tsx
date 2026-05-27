@@ -4,8 +4,8 @@ import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
 import { ServicesTeaser } from "@/components/landing/Services";
 import { TargetAudience } from "@/components/landing/TargetAudience";
-import { Portfolio } from "@/components/landing/Portfolio";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
+
 import { Process } from "@/components/landing/Process";
 import { Quiz } from "@/components/landing/Quiz";
 
