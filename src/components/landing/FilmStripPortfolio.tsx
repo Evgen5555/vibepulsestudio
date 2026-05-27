@@ -82,21 +82,33 @@ export const FilmStripPortfolio: React.FC = () => {
                 rel="noopener noreferrer"
                 className="group shrink-0 w-80 h-56 relative bg-gradient-to-br from-[#141414] to-[#0a0a0a] border border-white/10 hover:border-[#D4AF37]/60 transition-all duration-300 overflow-hidden"
               >
-                {/* Corner ticks */}
-                <span className="absolute top-2 left-2 w-3 h-3 border-l border-t border-white/30 group-hover:border-[#D4AF37]" />
-                <span className="absolute top-2 right-2 w-3 h-3 border-r border-t border-white/30 group-hover:border-[#D4AF37]" />
-                <span className="absolute bottom-2 left-2 w-3 h-3 border-l border-b border-white/30 group-hover:border-[#D4AF37]" />
-                <span className="absolute bottom-2 right-2 w-3 h-3 border-r border-b border-white/30 group-hover:border-[#D4AF37]" />
+                {/* Background image */}
+                {project.image && (
+                  <>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/70 to-transparent" />
+                  </>
+                )}
 
-                <div className="h-full w-full p-6 flex flex-col justify-between">
-                  <div className="text-[#D4AF37] font-mono text-5xl font-bold tracking-tight opacity-80 group-hover:opacity-100 transition">
+                {/* Corner ticks */}
+                <span className="absolute top-2 left-2 w-3 h-3 border-l border-t border-white/30 group-hover:border-[#D4AF37] z-10" />
+                <span className="absolute top-2 right-2 w-3 h-3 border-r border-t border-white/30 group-hover:border-[#D4AF37] z-10" />
+                <span className="absolute bottom-2 left-2 w-3 h-3 border-l border-b border-white/30 group-hover:border-[#D4AF37] z-10" />
+                <span className="absolute bottom-2 right-2 w-3 h-3 border-r border-b border-white/30 group-hover:border-[#D4AF37] z-10" />
+
+                <div className="relative z-10 h-full w-full p-6 flex flex-col justify-between">
+                  <div className="text-[#D4AF37] font-mono text-5xl font-bold tracking-tight opacity-90 group-hover:opacity-100 transition drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                     {project.number}
                   </div>
                   <div>
-                    <h3 className="text-white text-xl font-semibold tracking-tight mb-2">
+                    <h3 className="text-white text-xl font-semibold tracking-tight mb-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
                       {project.title}
                     </h3>
-                    <p className="text-white/60 text-sm leading-relaxed line-clamp-3">
+                    <p className="text-white/70 text-sm leading-relaxed line-clamp-3 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                       {project.description}
                     </p>
                   </div>
