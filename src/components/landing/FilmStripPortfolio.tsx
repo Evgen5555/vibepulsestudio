@@ -19,6 +19,7 @@ const projects: Project[] = [
     description:
       "Сайт с каталогом, корзиной и кастомной админ-панелью для управления заказами.",
     githubUrl: "https://evgen5555.github.io/petal-posh-moscow/",
+    image: fleurImage,
   },
   {
     id: "p2",
