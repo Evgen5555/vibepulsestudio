@@ -48,7 +48,8 @@ export const FilmStripPortfolio: React.FC = () => {
         </p>
         <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
           Кинолента{" "}
-          <span className="text-gradient-cv">наших проектов</span>
+          <span className="text-gradient-cv">моих проектов</span>
+
         </h2>
       </div>
 
