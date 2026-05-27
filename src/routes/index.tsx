@@ -55,8 +55,8 @@ function Index() {
         <ServicesTeaser />
         <TargetAudience />
         
-        <Portfolio />
         <FilmStripPortfolio />
+
         <Testimonials />
         <Process />
         <Quiz />
