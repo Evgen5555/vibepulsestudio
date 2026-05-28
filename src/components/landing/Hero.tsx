@@ -41,7 +41,7 @@ export function Hero() {
               <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.75rem,7vw,5.5rem)]">
                 Где идеи оживают <br className="hidden sm:block" />
                 через маркетинг и{" "}
-                <span className="text-gradient-cv">AI</span>
+                <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))]">AI</span>
               </h1>
             </motion.div>
 
