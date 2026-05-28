@@ -3,6 +3,7 @@ import fleurImage from "@/assets/portfolio-fleur.png";
 import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
 import tochkaVesaImage from "@/assets/portfolio-tochka-vesa.png";
 import neonBloomImage from "@/assets/portfolio-neon-bloom.png";
+import quizDetectiveImage from "@/assets/portfolio-quiz-detective.png";
 
 interface Project {
   id: string;
