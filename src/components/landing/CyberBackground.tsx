@@ -30,14 +30,14 @@ export default function CyberBackground() {
 
     // density-based count covering full viewport
     const area = canvas.width * canvas.height;
-    const count = Math.min(240, Math.max(130, Math.round(area / 9000)));
+    const count = Math.min(90, Math.max(45, Math.round(area / 22000)));
 
     const createDot = (initAll = false): Dot => ({
       x: Math.random() * canvas.width,
       y: initAll ? Math.random() * canvas.height : canvas.height + 10,
       speedX: (Math.random() - 0.5) * 0.25,
       speedY: -(Math.random() * 0.25 + 0.1),
-      size: Math.random() * 1.2 + 0.8,
+      size: Math.random() * 0.8 + 0.6,
     });
 
     for (let i = 0; i < count; i++) dots.push(createDot(true));
@@ -53,15 +53,15 @@ export default function CyberBackground() {
         }
       });
 
-      ctx.lineWidth = 0.8;
+      ctx.lineWidth = 0.6;
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < LINK_DIST) {
-            const alpha = (1 - dist / LINK_DIST) * 0.95;
-            ctx.strokeStyle = `rgba(245, 245, 245, ${alpha})`;
+            const alpha = (1 - dist / LINK_DIST) * 0.5;
+            ctx.strokeStyle = `rgba(220, 220, 220, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
@@ -73,9 +73,10 @@ export default function CyberBackground() {
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(217, 119, 6, 0.8)';
+        ctx.fillStyle = 'rgba(217, 119, 6, 0.55)';
         ctx.fill();
       }
+
 
       animationFrameId = requestAnimationFrame(animate);
     };
