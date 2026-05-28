@@ -3,6 +3,7 @@ import fleurImage from "@/assets/portfolio-fleur.png";
 import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
 import tochkaVesaImage from "@/assets/portfolio-tochka-vesa.png";
 import neonBloomImage from "@/assets/portfolio-neon-bloom.png";
+import quizDetectiveImage from "@/assets/portfolio-quiz-detective.png";
 
 interface Project {
   id: string;
@@ -50,6 +51,15 @@ const projects: Project[] = [
       "Динамичная веб-игра с неоновым дизайном и продвинутой игровой логикой. Слияния шаров.",
     githubUrl: "https://evgen5555.github.io/Ball-/",
     image: neonBloomImage,
+  },
+  {
+    id: "p5",
+    number: "05",
+    title: "Квиз-детектив",
+    description:
+      "Интерактивный лид-магнит для бизнес-аудитории. Реализован в форме игрового сценария.",
+    githubUrl: "https://evgen5555.github.io/quiz/",
+    image: quizDetectiveImage,
   },
 ];
 
