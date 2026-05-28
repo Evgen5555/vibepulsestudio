@@ -73,7 +73,7 @@ export const TargetAudience: React.FC = () => {
             {targetCards.map((card) => (
               <div
                 key={card.id}
-                className="flex flex-col bg-white rounded-2xl overflow-hidden p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-gray-100 transition-all duration-300 hover:translate-y-[-4px]"
+                className="flex flex-col rounded-2xl overflow-hidden p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] border border-gray-100 transition-all duration-300 hover:translate-y-[-4px] bg-inherit"
               >
                 <div className="w-full h-40 rounded-xl overflow-hidden mb-4 bg-gray-100">
                   <img
