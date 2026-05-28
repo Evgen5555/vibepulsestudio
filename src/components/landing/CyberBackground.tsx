@@ -28,7 +28,7 @@ export default function CyberBackground() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // density-based count covering full viewport
+    // density-based count so lines actually connect on any viewport
     const area = canvas.width * canvas.height;
     const count = Math.min(90, Math.max(45, Math.round(area / 22000)));
 
@@ -37,7 +37,7 @@ export default function CyberBackground() {
       y: initAll ? Math.random() * canvas.height : canvas.height + 10,
       speedX: (Math.random() - 0.5) * 0.25,
       speedY: -(Math.random() * 0.25 + 0.1),
-      size: Math.random() * 0.8 + 0.6,
+      size: Math.random() * 1.2 + 0.8, // small, faint dots
     });
 
     for (let i = 0; i < count; i++) dots.push(createDot(true));
@@ -45,6 +45,7 @@ export default function CyberBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // update positions
       dots.forEach((d, idx) => {
         d.x += d.speedX;
         d.y += d.speedY;
@@ -53,6 +54,7 @@ export default function CyberBackground() {
         }
       });
 
+      // draw web FIRST so dots sit on top
       ctx.lineWidth = 0.6;
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
@@ -70,13 +72,13 @@ export default function CyberBackground() {
         }
       }
 
+      // faint gold dots
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(217, 119, 6, 0.55)';
         ctx.fill();
       }
-
 
       animationFrameId = requestAnimationFrame(animate);
     };
