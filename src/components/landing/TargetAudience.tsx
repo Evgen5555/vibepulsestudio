@@ -56,15 +56,17 @@ export const TargetAudience: React.FC = () => {
 
         {/* Большая темная карточка-контейнер со свечением */}
         <div
-          className="relative w-full rounded-[32px] border p-8 md:p-12 overflow-hidden px-[40px] py-[40px] border-inherit bg-sky-800"
+          className="relative w-full rounded-[32px] border border-white/10 p-8 md:p-12 overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.8)]"
           style={{
+            background: "linear-gradient(135deg, #012226 0%, #030812 50%, #1e091e 100%)",
             boxShadow:
-              "0 0 50px rgba(147, 51, 234, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.05)",
+              "0 0 45px rgba(168, 85, 247, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)",
           }}
         >
-          {/* Мягкие градиентные пятна на фоне */}
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-600/10 rounded-full filter blur-[80px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-cyan-600/5 rounded-full filter blur-[80px] pointer-events-none" />
+          {/* Дополнительная фоновая подсветка для сочности переливов */}
+          <div className="absolute top-0 left-0 w-[400px] h-[300px] bg-cyan-500/10 rounded-full filter blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-purple-600/15 rounded-full filter blur-[100px] pointer-events-none" />
+
 
           {/* Сетка белых карточек */}
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
