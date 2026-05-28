@@ -10,7 +10,6 @@ function TelegramIcon({ className }: { className?: string }) {
 }
 import { motion } from "framer-motion";
 import logo from "@/assets/logo.png";
-import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "#services", label: "Услуги" },
@@ -87,7 +86,6 @@ export function Nav() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <ThemeToggle />
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
