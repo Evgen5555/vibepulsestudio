@@ -2,6 +2,7 @@ import React from "react";
 import fleurImage from "@/assets/portfolio-fleur.png";
 import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
 import tochkaVesaImage from "@/assets/portfolio-tochka-vesa.png";
+import neonBloomImage from "@/assets/portfolio-neon-bloom.png";
 
 interface Project {
   id: string;
