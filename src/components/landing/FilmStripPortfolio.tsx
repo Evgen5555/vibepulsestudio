@@ -42,6 +42,15 @@ const projects: Project[] = [
     githubUrl: "https://evgen5555.github.io/Calculator-callorii/",
     image: tochkaVesaImage,
   },
+  {
+    id: "p4",
+    number: "04",
+    title: "Neon Bloom Game",
+    description:
+      "Динамичная веб-игра с неоновым дизайном и продвинутой игровой логикой. Слияния шаров.",
+    githubUrl: "https://evgen5555.github.io/Ball-/",
+    image: neonBloomImage,
+  },
 ];
 
 export const FilmStripPortfolio: React.FC = () => {
