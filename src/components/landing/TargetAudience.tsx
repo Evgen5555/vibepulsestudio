@@ -56,7 +56,7 @@ export const TargetAudience: React.FC = () => {
 
         {/* Большая темная карточка-контейнер со свечением */}
         <div
-          className="relative w-full rounded-[32px] border p-8 md:p-12 overflow-hidden px-[40px] py-[40px] border-inherit bg-inherit"
+          className="relative w-full rounded-[32px] border p-8 md:p-12 overflow-hidden px-[40px] py-[40px] border-inherit bg-sky-800"
           style={{
             boxShadow:
               "0 0 50px rgba(147, 51, 234, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.05)",
