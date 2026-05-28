@@ -52,6 +52,15 @@ const projects: Project[] = [
     githubUrl: "https://evgen5555.github.io/Ball-/",
     image: neonBloomImage,
   },
+  {
+    id: "p5",
+    number: "05",
+    title: "Квиз-детектив",
+    description:
+      "Интерактивный лид-магнит для бизнес-аудитории. Реализован в форме игрового сценария.",
+    githubUrl: "https://evgen5555.github.io/quiz/",
+    image: quizDetectiveImage,
+  },
 ];
 
 export const FilmStripPortfolio: React.FC = () => {
