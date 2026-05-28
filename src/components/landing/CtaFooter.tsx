@@ -229,9 +229,9 @@ export function CtaFooter() {
 
               <h4 className="text-sm font-semibold text-foreground mb-4">Контакты</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><a href="https://vk.ru/neuro_evgeniya_k" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">ВКонтакте</a></li>
                 <li><a href="https://t.me/evgeniya5_5" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Telegram</a></li>
                 <li><a href="https://max.ru/id503601616932_biz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">MAX</a></li>
-                <li><a href="https://vk.ru/neuro_evgeniya_k" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">ВКонтакте</a></li>
               </ul>
             </div>
 
