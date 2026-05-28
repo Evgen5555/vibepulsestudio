@@ -133,7 +133,7 @@ export function ServicesTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-[2rem] p-8 sm:p-14 border border-white/10"
+          className="relative overflow-hidden p-8 sm:p-14 border border-inherit rounded-2xl"
           style={{
             background:
               "linear-gradient(90deg, #6b21a8 0%, #1e3a8a 25%, #0f766e 50%, #1e3a8a 75%, #be185d 100%)",
