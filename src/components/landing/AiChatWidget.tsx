@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Send, MessageCircle } from "lucide-react";
+import { X, Send, MessageSquareText } from "lucide-react";
 import evaAvatar from "@/assets/eva-avatar.png";
 
 
