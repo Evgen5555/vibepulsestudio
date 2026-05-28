@@ -14,7 +14,6 @@ import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
-import { ScrollToTop } from "@/components/landing/ScrollToTop";
 
 
 export const Route = createFileRoute("/")({
@@ -66,7 +65,6 @@ function Index() {
 
       </main>
       <AiChatWidget />
-      <ScrollToTop />
     </>
   );
 }
