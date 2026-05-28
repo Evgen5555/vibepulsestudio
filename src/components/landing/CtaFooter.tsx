@@ -210,7 +210,7 @@ export function CtaFooter() {
       </div>
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-24">
-        <div className="pt-12 border-t border-border/60 text-center">
+        <div className="pt-12 border-t border-border/60 text-left">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             <div className="text-center">
 
