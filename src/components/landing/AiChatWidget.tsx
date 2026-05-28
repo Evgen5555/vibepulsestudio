@@ -40,10 +40,9 @@ function mockAiReply(userText: string): string {
 
 export function AiChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
-  const [welcomed, setWelcomed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -62,25 +61,17 @@ export function AiChatWidget() {
       text: trimmed,
       timestamp: Date.now(),
     };
-    const isFirst = !welcomed;
     setMessages((m) => [...m, userMsg]);
     setInput("");
     setThinking(true);
     setTimeout(() => {
-      setMessages((m) => {
-        const next = [...m];
-        if (isFirst) {
-          next.push({ ...WELCOME, id: `w-${Date.now()}`, timestamp: Date.now() });
-        }
-        next.push({
-          id: `a-${Date.now()}`,
-          sender: "ai",
-          text: mockAiReply(trimmed),
-          timestamp: Date.now(),
-        });
-        return next;
-      });
-      if (isFirst) setWelcomed(true);
+      const aiMsg: Message = {
+        id: `a-${Date.now()}`,
+        sender: "ai",
+        text: mockAiReply(trimmed),
+        timestamp: Date.now(),
+      };
+      setMessages((m) => [...m, aiMsg]);
       setThinking(false);
     }, 1000);
   };
@@ -90,8 +81,7 @@ export function AiChatWidget() {
     sendMessage(input);
   };
 
-  const userMsgCount = messages.filter((m) => m.sender === "user").length;
-  const showQuickReplies = welcomed && !thinking && userMsgCount === 1;
+  const showQuickReplies = messages.length === 1 && messages[0].id === "welcome" && !thinking;
 
   return (
     <>
