@@ -4,6 +4,7 @@ import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
 import tochkaVesaImage from "@/assets/portfolio-tochka-vesa.png";
 import neonBloomImage from "@/assets/portfolio-neon-bloom.png";
 import quizDetectiveImage from "@/assets/portfolio-quiz-detective.png";
+import finTrackerImage from "@/assets/portfolio-fin-tracker.png";
 
 interface Project {
   id: string;
@@ -60,6 +61,15 @@ const projects: Project[] = [
       "Интерактивный лид-магнит для бизнес-аудитории. Реализован в форме игрового сценария.",
     githubUrl: "https://evgen5555.github.io/quiz/",
     image: quizDetectiveImage,
+  },
+  {
+    id: "p6",
+    number: "06",
+    title: "Фин-трекер",
+    description:
+      "Микро-приложение для мониторинга личных или проектных финансов без сложных таблиц.",
+    githubUrl: "https://evgen5555.github.io/Calculator/",
+    image: finTrackerImage,
   },
 ];
 
