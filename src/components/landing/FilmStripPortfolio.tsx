@@ -77,7 +77,7 @@ export const FilmStripPortfolio: React.FC = () => {
   const duplicated = [...projects, ...projects, ...projects, ...projects];
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="portfolio" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mb-12 text-center">
         <p className="text-secondary mb-3 uppercase tracking-widest text-lg">
           Портфолио
