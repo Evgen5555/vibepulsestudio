@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Send, MessageCircle } from "lucide-react";
+import { X, Send, MessageSquareText } from "lucide-react";
 import evaAvatar from "@/assets/eva-avatar.png";
 
 
@@ -105,7 +105,7 @@ export function AiChatWidget() {
           <span className="absolute inset-0 rounded-full bg-[#8b5cf6] opacity-30 animate-ping" />
           <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#8b5cf6]/70 to-[#6d28d9]/70 opacity-70 blur-md group-hover:opacity-100 transition" />
           <span className="relative flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border border-[#a78bfa]/50 shadow-[0_8px_32px_rgba(139,92,246,0.55)] bg-gradient-to-br from-[#7c3aed] to-[#4c1d95] group-hover:scale-105 transition">
-            <MessageCircle className="h-8 w-8 text-white" strokeWidth={1.75} />
+            <MessageSquareText className="h-8 w-8 text-white" strokeWidth={1.75} />
           </span>
           <span className="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full bg-green-400 border-2 border-[#0a0a0f] shadow-[0_0_10px_rgba(74,222,128,0.9)]" />
         </button>
