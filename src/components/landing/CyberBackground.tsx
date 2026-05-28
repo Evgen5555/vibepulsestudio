@@ -28,16 +28,16 @@ export default function CyberBackground() {
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
-    // density-based count so lines actually connect on any viewport
+    // density-based count covering full viewport
     const area = canvas.width * canvas.height;
-    const count = Math.min(90, Math.max(45, Math.round(area / 22000)));
+    const count = Math.min(240, Math.max(130, Math.round(area / 9000)));
 
     const createDot = (initAll = false): Dot => ({
       x: Math.random() * canvas.width,
       y: initAll ? Math.random() * canvas.height : canvas.height + 10,
       speedX: (Math.random() - 0.5) * 0.25,
       speedY: -(Math.random() * 0.25 + 0.1),
-      size: Math.random() * 1.2 + 0.8, // small, faint dots
+      size: Math.random() * 1.2 + 0.8,
     });
 
     for (let i = 0; i < count; i++) dots.push(createDot(true));
@@ -45,7 +45,6 @@ export default function CyberBackground() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // update positions
       dots.forEach((d, idx) => {
         d.x += d.speedX;
         d.y += d.speedY;
@@ -54,16 +53,15 @@ export default function CyberBackground() {
         }
       });
 
-      // draw web FIRST so dots sit on top
-      ctx.lineWidth = 0.6;
+      ctx.lineWidth = 0.8;
       for (let i = 0; i < dots.length; i++) {
         for (let j = i + 1; j < dots.length; j++) {
           const dx = dots[i].x - dots[j].x;
           const dy = dots[i].y - dots[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < LINK_DIST) {
-            const alpha = (1 - dist / LINK_DIST) * 0.5;
-            ctx.strokeStyle = `rgba(220, 220, 220, ${alpha})`;
+            const alpha = (1 - dist / LINK_DIST) * 0.95;
+            ctx.strokeStyle = `rgba(245, 245, 245, ${alpha})`;
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
@@ -72,11 +70,10 @@ export default function CyberBackground() {
         }
       }
 
-      // faint gold dots
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(217, 119, 6, 0.55)';
+        ctx.fillStyle = 'rgba(217, 119, 6, 0.8)';
         ctx.fill();
       }
 
