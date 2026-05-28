@@ -40,7 +40,6 @@ export default function MatrixPortrait() {
         const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-        // head bright, tail dimmer
         ctx.fillStyle = "rgba(180, 255, 200, 0.95)";
         ctx.fillText(text, x, y);
         ctx.fillStyle = "rgba(0, 255, 90, 0.75)";
@@ -60,15 +59,36 @@ export default function MatrixPortrait() {
   }, []);
 
   return (
-    <div className="relative mx-auto w-full max-w-md aspect-square rounded-[1.75rem] overflow-hidden border border-border/80 bg-black shadow-[0_0_60px_rgba(0,255,90,0.25)]">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+    <div
+      className="relative mx-auto w-full max-w-[380px] aspect-square rounded-[28px] overflow-hidden border border-white/5 bg-black"
+      style={{
+        boxShadow:
+          "0 0 35px rgba(34, 197, 94, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05)",
+      }}
+    >
+      {/* Реальное фото с мягкой пост-обработкой */}
       <img
         src={portrait}
-        alt="Портрет"
-        
-        className="absolute inset-0 w-full h-full object-contain object-bottom drop-shadow-[0_10px_30px_rgba(0,0,0,0.6)]"
+        alt="Evgeniya - Vibecoder"
+        className="absolute inset-0 w-full h-full object-contain object-bottom filter contrast-[1.05] brightness-[0.95]"
       />
+
+      {/* Матричный код — деликатный, исчезает к центру (лицу) */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{
+          opacity: 0.35,
+          maskImage:
+            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
+          WebkitMaskImage:
+            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
+          mixBlendMode: "screen",
+        }}
+      />
+
+      {/* Верхнее и нижнее затемнение для интеграции в тёмный UI */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
     </div>
   );
 }
