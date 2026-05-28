@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Send } from "lucide-react";
-import evaButton from "@/assets/eva-button.png";
+import { X, Send, MessageSquareText } from "lucide-react";
 import evaAvatar from "@/assets/eva-avatar.png";
+
 
 type Sender = "ai" | "user";
 interface Message {
@@ -40,9 +40,10 @@ function mockAiReply(userText: string): string {
 
 export function AiChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([WELCOME]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
+  const [welcomed, setWelcomed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -61,17 +62,25 @@ export function AiChatWidget() {
       text: trimmed,
       timestamp: Date.now(),
     };
+    const isFirst = !welcomed;
     setMessages((m) => [...m, userMsg]);
     setInput("");
     setThinking(true);
     setTimeout(() => {
-      const aiMsg: Message = {
-        id: `a-${Date.now()}`,
-        sender: "ai",
-        text: mockAiReply(trimmed),
-        timestamp: Date.now(),
-      };
-      setMessages((m) => [...m, aiMsg]);
+      setMessages((m) => {
+        const next = [...m];
+        if (isFirst) {
+          next.push({ ...WELCOME, id: `w-${Date.now()}`, timestamp: Date.now() });
+        }
+        next.push({
+          id: `a-${Date.now()}`,
+          sender: "ai",
+          text: mockAiReply(trimmed),
+          timestamp: Date.now(),
+        });
+        return next;
+      });
+      if (isFirst) setWelcomed(true);
       setThinking(false);
     }, 1000);
   };
@@ -81,7 +90,8 @@ export function AiChatWidget() {
     sendMessage(input);
   };
 
-  const showQuickReplies = messages.length === 1 && messages[0].id === "welcome" && !thinking;
+  const userMsgCount = messages.filter((m) => m.sender === "user").length;
+  const showQuickReplies = welcomed && !thinking && userMsgCount === 1;
 
   return (
     <>
@@ -90,20 +100,17 @@ export function AiChatWidget() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Открыть AI-чат"
-          className="fixed bottom-5 right-5 z-50 group"
+          className="fixed bottom-5 right-5 z-50 group animate-[wobble_2.2s_ease-in-out_infinite] origin-bottom"
         >
-          <span className="absolute inset-0 rounded-full bg-[#3b82f6] opacity-30 animate-ping" />
-          <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#3b82f6]/60 to-[#d4af37]/60 opacity-60 blur-md group-hover:opacity-90 transition" />
-          <span className="relative block h-16 w-16 rounded-full overflow-hidden border border-[#d4af37]/40 shadow-[0_8px_32px_rgba(0,0,0,0.6)] group-hover:scale-105 transition">
-            <img
-              src={evaButton}
-              alt="AI-консультант Ева"
-              className="h-full w-full object-cover"
-            />
+          <span className="absolute inset-0 rounded-full bg-[#8b5cf6] opacity-30 animate-ping" />
+          <span className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#8b5cf6]/70 to-[#6d28d9]/70 opacity-70 blur-md group-hover:opacity-100 transition" />
+          <span className="relative flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border border-[#a78bfa]/50 shadow-[0_8px_32px_rgba(139,92,246,0.55)] bg-gradient-to-br from-[#7c3aed] to-[#4c1d95] group-hover:scale-105 transition">
+            <MessageSquareText className="h-8 w-8 text-white" strokeWidth={1.75} />
           </span>
           <span className="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full bg-green-400 border-2 border-[#0a0a0f] shadow-[0_0_10px_rgba(74,222,128,0.9)]" />
         </button>
       )}
+
 
       {/* Chat panel */}
       {open && (
