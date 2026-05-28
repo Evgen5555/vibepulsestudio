@@ -25,9 +25,11 @@ const projects: Project[] = [
   {
     id: "p2",
     number: "02",
-    title: "Look & Storyboard",
-    description: "AI engine selection and visual testing.",
-    githubUrl: "https://github.com",
+    title: "Продуктивный перерыв",
+    description:
+      "Система для отдыха от работы, предотвращения выгорания и повышения фокуса.",
+    githubUrl: "https://evgen5555.github.io/Friendly-reminder/",
+    image: friendlyReminderImage,
   },
   {
     id: "p3",
