@@ -133,27 +133,12 @@ export function ServicesTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="relative overflow-hidden p-8 sm:p-14 border border-inherit rounded-2xl px-[40px] py-[40px]"
-          style={{
-            background:
-              "linear-gradient(90deg, #6b21a8 0%, #1e3a8a 25%, #0f766e 50%, #1e3a8a 75%, #be185d 100%)",
-          }}
+          className="relative glass border border-border rounded-3xl p-8 sm:p-14 px-[40px] py-[40px] shadow-neon-violet overflow-hidden"
         >
-          <div
-            className="pointer-events-none absolute -top-32 -left-32 size-96 rounded-full blur-3xl opacity-60"
-            style={{ background: "radial-gradient(circle, #a855f7, transparent 70%)" }}
-          />
-          <div
-            className="pointer-events-none absolute -bottom-32 -right-32 size-96 rounded-full blur-3xl opacity-60"
-            style={{ background: "radial-gradient(circle, #ec4899, transparent 70%)" }}
-          />
-          <div
-            className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[28rem] rounded-full blur-3xl opacity-40"
-            style={{ background: "radial-gradient(circle, #14b8a6, transparent 70%)" }}
-          />
+          <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
 
           <div className="relative z-10 flex flex-col items-center text-center gap-8">
-            <p className="max-w-3xl text-white text-lg sm:text-2xl font-medium leading-snug drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
+            <p className="max-w-3xl text-foreground text-lg sm:text-2xl font-medium leading-snug">
               Высокоскоростной вайб - кодинг: запускаю сложные системы от{" "}
               <span className="font-bold">5 дней</span> вместо{" "}
               <span className="font-bold">2 месяцев</span> нудных согласований.
@@ -163,11 +148,12 @@ export function ServicesTeaser() {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               to="/services"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-900 px-8 py-4 text-sm sm:text-base font-bold shadow-[0_10px_40px_rgba(0,0,0,0.35)] hover:shadow-[0_14px_50px_rgba(0,0,0,0.45)] transition-shadow"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-card/60 border border-border text-foreground px-8 py-4 text-sm sm:text-base font-bold hover:border-primary transition-colors"
             >
               Каталог решений VibePulse studio →
             </MotionLink>
           </div>
+
         </motion.div>
       </div>
     </section>
