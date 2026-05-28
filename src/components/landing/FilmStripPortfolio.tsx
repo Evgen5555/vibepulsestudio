@@ -1,5 +1,6 @@
 import React from "react";
 import fleurImage from "@/assets/portfolio-fleur.png";
+import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
 
 interface Project {
   id: string;
