@@ -1,6 +1,7 @@
 import React from "react";
 import fleurImage from "@/assets/portfolio-fleur.png";
 import friendlyReminderImage from "@/assets/portfolio-friendly-reminder.png";
+import tochkaVesaImage from "@/assets/portfolio-tochka-vesa.png";
 
 interface Project {
   id: string;
@@ -34,9 +35,11 @@ const projects: Project[] = [
   {
     id: "p3",
     number: "03",
-    title: "AI Production",
-    description: "Motion tests and multi-variant generation.",
-    githubUrl: "https://github.com",
+    title: "Точка Веса",
+    description:
+      "Интерактивное приложение для расчета суточной калорийности, трекинг нормы воды и советы.",
+    githubUrl: "https://evgen5555.github.io/Calculator-callorii/",
+    image: tochkaVesaImage,
   },
 ];
 
