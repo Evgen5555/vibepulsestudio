@@ -89,7 +89,7 @@ export const TargetAudience: React.FC = () => {
                     <h3 className="font-extrabold text-base md:text-lg leading-snug mb-2 tracking-tight text-slate-100">
                       {card.title}
                     </h3>
-                    <p className="text-gray-500 text-xs leading-relaxed font-normal">
+                    <p className="text-xs leading-relaxed font-normal text-gray-300">
                       {card.description}
                     </p>
                   </div>
