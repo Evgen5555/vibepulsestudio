@@ -3,6 +3,7 @@ import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
 import { ServicesTeaser } from "@/components/landing/Services";
+import { Pricing } from "@/components/landing/Pricing";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
 
@@ -12,6 +13,7 @@ import { Quiz } from "@/components/landing/Quiz";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
+import { RoiCalculator } from "@/components/landing/RoiCalculator";
 import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
 import { ScrollToTop } from "@/components/landing/ScrollToTop";
@@ -20,17 +22,17 @@ import { ScrollToTop } from "@/components/landing/ScrollToTop";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AI-маркетинг и premium-сайты, которые окупаются" },
+      { title: "AI-маркетинг и сайты с окупаемостью за 30 дней | VibePulse" },
       {
         name: "description",
         content:
-          "Высококонверсионные сайты и автоворонки на стыке AI-маркетинга и Apple-эстетики. Окупаемость в первый месяц.",
+          "Сайты, автоворонки и Telegram-боты под ключ за 5–14 дней от 25 000 ₽. AI-маркетинг для экспертов и онлайн-школ. Средний ROI x3.4, окупаемость 2.3 месяца.",
       },
-      { property: "og:title", content: "AI-маркетинг и premium-сайты" },
+      { property: "og:title", content: "AI-маркетинг и сайты с окупаемостью за 30 дней" },
       {
         property: "og:description",
         content:
-          "Создаю сайты и автоворонки, которые окупаются. AI + аналитика + премиальный дизайн.",
+          "Сайты, автоворонки и Telegram-боты под ключ за 5–14 дней. AI + аналитика + Apple-эстетика. 40+ проектов, средний ROI x3.4.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -54,8 +56,10 @@ function Index() {
         <Hero />
         <Marquee />
         <ServicesTeaser />
+        <Pricing />
+        <RoiCalculator />
         <TargetAudience />
-        
+
         <FilmStripPortfolio />
 
         <Testimonials />
