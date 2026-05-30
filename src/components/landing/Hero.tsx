@@ -70,7 +70,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <TrendingUp className="size-3.5 text-secondary" />
-                Средний ROI <b className="text-foreground">x3.4</b>
+                Экономия до <b className="text-foreground">70%</b>
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Star className="size-3.5 text-primary" />
