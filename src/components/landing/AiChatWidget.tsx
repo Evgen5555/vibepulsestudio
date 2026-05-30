@@ -40,10 +40,10 @@ function mockAiReply(userText: string): string {
 
 export function AiChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
-  const [welcomed, setWelcomed] = useState(false);
+  const [welcomed, setWelcomed] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -91,7 +91,7 @@ export function AiChatWidget() {
   };
 
   const userMsgCount = messages.filter((m) => m.sender === "user").length;
-  const showQuickReplies = welcomed && !thinking && userMsgCount === 1;
+  const showQuickReplies = !thinking && userMsgCount === 0;
 
   return (
     <>
