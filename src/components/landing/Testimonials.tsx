@@ -197,7 +197,7 @@ export function Testimonials() {
             onClick={() =>
               document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium text-xs tracking-wide hover:bg-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02]"
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium text-xs tracking-wide hover:bg-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.45)] hover:shadow-[0_0_50px_rgba(168,85,247,0.7)]"
           >
             <span>Пройти квиз → расчёт за 2 минуты</span>
           </button>
