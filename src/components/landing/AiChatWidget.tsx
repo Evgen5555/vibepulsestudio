@@ -91,7 +91,7 @@ export function AiChatWidget() {
   };
 
   const userMsgCount = messages.filter((m) => m.sender === "user").length;
-  const showQuickReplies = welcomed && !thinking && userMsgCount === 1;
+  const showQuickReplies = !thinking && userMsgCount === 0;
 
   return (
     <>
