@@ -108,22 +108,22 @@ export function Hero() {
 
           {/* SECONDARY ghost buttons */}
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, borderColor: "rgba(99,102,241,0.6)" }}
             whileTap={{ scale: 0.97 }}
             onClick={() => navigate({ to: "/roi" })}
-            className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full border border-border bg-transparent text-foreground/90 hover:text-foreground font-bold text-base transition-colors w-full"
           >
             <Laptop className="size-4 text-primary" />
             Калькулятор прибыли
           </motion.button>
 
           <motion.a
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, borderColor: "rgba(99,102,241,0.6)" }}
             whileTap={{ scale: 0.97 }}
             href="https://vk.ru/neuro_evgeniya_k"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-foreground/80 hover:text-secondary transition-colors"
+            className="inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full border border-border bg-transparent text-foreground/90 hover:text-secondary font-bold text-base transition-colors w-full"
           >
             <VkIcon className="size-4" />
             Написать в ВК
