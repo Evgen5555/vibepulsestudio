@@ -66,7 +66,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-1.5">
                 <Rocket className="size-3.5 text-primary" />
-                <b className="text-foreground">40+</b> проектов
+                <b className="text-foreground">70%</b> экономии
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <TrendingUp className="size-3.5 text-secondary" />
