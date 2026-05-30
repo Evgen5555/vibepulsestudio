@@ -103,7 +103,7 @@ export function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500" />
             </span>
-            <span>Пройти квиз и получить расчёт</span>
+            <span>Пройти квиз</span>
           </motion.button>
 
           {/* SECONDARY ghost buttons */}
