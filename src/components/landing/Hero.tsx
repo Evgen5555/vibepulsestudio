@@ -88,7 +88,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45 }}
-          className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full"
+          className="mt-10 grid grid-cols-1 sm:grid-cols-3 items-center gap-3 w-full"
         >
           {/* PRIMARY CTA */}
           <motion.button
