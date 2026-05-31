@@ -58,6 +58,7 @@ function Index() {
         <ServicesTeaser />
         <RoiCalculator />
         <TargetAudience />
+        <PricingCards />
 
         <FilmStripPortfolio />
 
