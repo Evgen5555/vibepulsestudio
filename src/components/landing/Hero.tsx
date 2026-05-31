@@ -74,7 +74,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Star className="size-3.5 text-primary shrink-0" />
-                <span><b className="text-foreground">5.0</b>{"\n"}от клиентов</span>
+                <span><b className="text-foreground">5.0</b>&nbsp;от клиентов</span>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Sparkles className="size-3.5 text-secondary shrink-0" />
