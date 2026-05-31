@@ -1,9 +1,9 @@
 import { TrendingUp, Rocket, Star, Clock, Users, ShieldCheck } from "lucide-react";
 
 const metrics = [
-  { label: "40+ проектов под ключ", icon: Rocket, tone: "violet" as const },
-  { label: "Средняя окупаемость 2.3 мес", icon: TrendingUp, tone: "cyan" as const },
-  { label: "Средний ROI x3.4", icon: TrendingUp, tone: "violet" as const },
+  { label: "Проекты под ключ", icon: Rocket, tone: "violet" as const },
+  { label: "AI-маркетинг", icon: TrendingUp, tone: "cyan" as const },
+  { label: "AI-аналитика", icon: TrendingUp, tone: "violet" as const },
   { label: "5.0 рейтинг от клиентов", icon: Star, tone: "cyan" as const },
   { label: "Запуск от 5 дней", icon: Clock, tone: "violet" as const },
   { label: "95% клиентов возвращаются", icon: Users, tone: "cyan" as const },
