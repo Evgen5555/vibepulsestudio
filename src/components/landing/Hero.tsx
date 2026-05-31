@@ -77,7 +77,7 @@ export function Hero() {
                 <span><b className="text-foreground">5.0</b>&nbsp;от клиентов</span>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
-                <Sparkles className="size-3.5 text-secondary shrink-0" />
+                <Headphones className="size-3.5 text-secondary shrink-0" />
                 <span>Поддержка после запуска{"\n\n"}</span>
               </span>
             </motion.div>
