@@ -70,7 +70,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <TrendingUp className="size-3.5 text-secondary shrink-0" />
-                <span>Экономия до{"\n"}<b className="text-foreground">70%</b></span>
+                <span>Экономия до&nbsp;70%</span>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Star className="size-3.5 text-primary shrink-0" />
