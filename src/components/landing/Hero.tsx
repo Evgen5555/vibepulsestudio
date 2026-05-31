@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles, Laptop, Star, TrendingUp, Rocket } from "lucide-react";
+import { Sparkles, Laptop, Star, TrendingUp, Rocket, Headphones } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 import MatrixPortrait from "./MatrixPortrait";
 import { VkIcon } from "./VkIcon";
