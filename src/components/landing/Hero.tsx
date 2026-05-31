@@ -62,7 +62,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mt-6 flex-wrap gap-x-5 gap-y-4 text-xs text-foreground/70 items-center justify-start flex flex-row text-center"
+              className="mt-6 flex-wrap gap-x-5 gap-y-4 text-xs text-foreground/70 text-center flex-row flex items-start justify-start"
             >
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Rocket className="size-3.5 text-primary shrink-0" />
