@@ -39,9 +39,9 @@ export function Hero() {
               transition={{ delay: 0.15, duration: 0.8 }}
             >
               <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,6.5vw,5rem)]">
-                Сайты и автоворонки с{" "}
-                <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))]">
-                  окупаемостью за 30 дней
+                Где идеи оживают{" "}
+                <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))] block sm:inline">
+                  через маркетинг и AI
                 </span>
               </h1>
             </motion.div>
