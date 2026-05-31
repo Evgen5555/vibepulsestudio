@@ -52,7 +52,7 @@ export function Hero() {
               transition={{ delay: 0.3 }}
             >
               <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
-                Запуск под ключ за 5–14 дней от 10 000 ₽. AI-маркетинг, сильная аналитика
+                Запуск под ключ за 5–14 дней от 20 000 ₽. AI-маркетинг, аналитика
                 и эстетика для экспертов, онлайн-школ и продуктовых брендов.
               </p>
             </motion.div>
