@@ -3,7 +3,6 @@ import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
 import { ServicesTeaser } from "@/components/landing/Services";
-import { Pricing } from "@/components/landing/Pricing";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
 
@@ -56,7 +55,6 @@ function Index() {
         <Hero />
         <Marquee />
         <ServicesTeaser />
-        <Pricing />
         <RoiCalculator />
         <TargetAudience />
 
