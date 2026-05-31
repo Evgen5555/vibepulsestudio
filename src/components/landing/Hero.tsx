@@ -78,7 +78,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
                 <Sparkles className="size-3.5 text-secondary shrink-0" />
-                <span>Поддержка после запуска{"\n"}<b className="text-foreground">2.3 мес</b></span>
+                <span>Поддержка после запуска{"\n\n"}</span>
               </span>
             </motion.div>
           </div>
