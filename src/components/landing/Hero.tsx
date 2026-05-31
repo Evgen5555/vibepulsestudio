@@ -62,23 +62,23 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-foreground/70"
+              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4 text-xs text-foreground/70"
             >
-              <span className="inline-flex items-center gap-1.5">
-                <Rocket className="size-3.5 text-primary" />
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+                <Rocket className="size-3.5 text-primary shrink-0" />
                 <b className="text-foreground">AI-интеграции</b>
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <TrendingUp className="size-3.5 text-secondary" />
-                Экономия до <b className="text-foreground">70%</b>
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+                <TrendingUp className="size-3.5 text-secondary shrink-0" />
+                <span>Экономия до{"\n"}<b className="text-foreground">70%</b></span>
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Star className="size-3.5 text-primary" />
-                <b className="text-foreground">5.0</b> от клиентов
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+                <Star className="size-3.5 text-primary shrink-0" />
+                <span><b className="text-foreground">5.0</b>{"\n"}от клиентов</span>
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Sparkles className="size-3.5 text-secondary" />
-                Окупаемость <b className="text-foreground">2.3 мес</b>
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+                <Sparkles className="size-3.5 text-secondary shrink-0" />
+                <span>Поддержка после запуска{"\n"}<b className="text-foreground">2.3 мес</b></span>
               </span>
             </motion.div>
           </div>
