@@ -38,7 +38,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8 }}
             >
-              <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,6.5vw,5rem)]">
+              <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,6.5vw,5rem)] text-center">
                 Где идеи оживают{" "}
                 <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))] block sm:inline">
                   через маркетинг и AI
@@ -62,7 +62,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4 text-xs text-foreground/70 text-left"
+              className="mt-6 flex-wrap gap-x-5 gap-y-4 text-xs text-foreground/70 text-left items-center justify-start flex flex-row"
             >
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Rocket className="size-3.5 text-primary shrink-0" />
