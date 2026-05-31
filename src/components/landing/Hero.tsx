@@ -62,21 +62,21 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4 text-xs text-foreground/70"
+              className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-4 text-xs text-foreground/70 text-left"
             >
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Rocket className="size-3.5 text-primary shrink-0" />
                 <b className="text-foreground">AI-интеграции</b>
               </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <TrendingUp className="size-3.5 text-secondary shrink-0" />
                 <span>Экономия до{"\n"}<b className="text-foreground">70%</b></span>
               </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Star className="size-3.5 text-primary shrink-0" />
                 <span><b className="text-foreground">5.0</b>{"\n"}от клиентов</span>
               </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line">
+              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-center">
                 <Sparkles className="size-3.5 text-secondary shrink-0" />
                 <span>Поддержка после запуска{"\n\n"}</span>
               </span>
