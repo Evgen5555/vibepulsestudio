@@ -66,7 +66,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <Rocket className="size-3.5 text-primary shrink-0" />
-                <b className="text-foreground">AI-интеграции</b>
+                <b className="text-foreground">AI-интеграция</b>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <TrendingUp className="size-3.5 text-secondary shrink-0" />
@@ -74,7 +74,7 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <Star className="size-3.5 text-primary shrink-0" />
-                <span><b className="text-foreground">5.0</b>&nbsp;от клиентов</span>
+                <span>AI-аналитика</span>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <Headphones className="size-3.5 text-secondary shrink-0" />
