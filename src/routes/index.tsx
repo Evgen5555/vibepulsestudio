@@ -13,6 +13,7 @@ import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
+import { PricingCards } from "@/components/landing/PricingCards";
 import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
 import { ScrollToTop } from "@/components/landing/ScrollToTop";
