@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
-import { ServicesTeaser, Services } from "@/components/landing/Services";
+import { ServicesTeaser } from "@/components/landing/Services";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
 
@@ -58,7 +58,7 @@ function Index() {
         <ServicesTeaser />
         <RoiCalculator />
         <TargetAudience />
-        <Services />
+        
 
         <FilmStripPortfolio />
 
