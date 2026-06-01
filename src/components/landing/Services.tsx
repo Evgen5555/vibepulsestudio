@@ -122,13 +122,6 @@ export function ServicesTeaser() {
   return (
     <section id="services" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="max-w-2xl mb-14 mx-auto text-center">
-          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">​</p>
-          <h2 className="font-semibold tracking-[-0.03em] Bird leading-[1] text-[clamp(2rem,5vw,3.75rem)] flex flex-col items-center">
-            <span className="text-gradient-cv text-lg text-cyan-500 bg-emerald-400">​</span>
-            <span className="text-gradient-cv">{"\n"}</span>
-          </h2>
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
