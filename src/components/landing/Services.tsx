@@ -65,7 +65,7 @@ export function Services() {
         <div className="max-w-2xl mb-14 mx-auto text-center">
           <p className="text-secondary mb-3 text-center uppercase tracking-widest text-lg">Услуги</p>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            <span className="text-gradient-cv">Делаю результат</span>
+            <span className="text-gradient-cv">Выберите свой формат</span>
           </h2>
         </div>
 
@@ -124,7 +124,7 @@ export function ServicesTeaser() {
         <div className="max-w-2xl mb-14 mx-auto text-center">
           <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги</p>
           <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            <span className="text-gradient-cv">Делаю результат</span>
+            <span className="text-gradient-cv">Выберите свой формат</span>
           </h2>
         </div>
 
