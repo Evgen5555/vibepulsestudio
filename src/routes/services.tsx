@@ -19,8 +19,9 @@ function ServicesPage() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Link to="/" className="text-sm text-secondary hover:underline">← На главную</Link>
 
-        <h1 className="mt-8 font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(3rem,9vw,7rem)] text-center">
-          <span className="text-gradient-cv">Услуги</span>
+        <p className="text-secondary mt-8 mb-3 text-center uppercase tracking-widest text-lg">УСЛУГИ И ЦЕНЫ</p>
+        <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(3rem,9vw,7rem)] text-center">
+          <span className="text-gradient-cv">Выберите свой формат</span>
         </h1>
 
         <p className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg text-muted-foreground">
