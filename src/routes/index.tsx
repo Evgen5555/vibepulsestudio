@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
-import { ServicesTeaser } from "@/components/landing/Services";
+import { ServicesTeaser, Services } from "@/components/landing/Services";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
 
@@ -13,7 +13,7 @@ import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
 import { RoiCalculator } from "@/components/landing/RoiCalculator";
-import { PricingCards } from "@/components/landing/PricingCards";
+
 import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
 import { ScrollToTop } from "@/components/landing/ScrollToTop";
@@ -58,7 +58,7 @@ function Index() {
         <ServicesTeaser />
         <RoiCalculator />
         <TargetAudience />
-        <PricingCards />
+        <Services />
 
         <FilmStripPortfolio />
 
