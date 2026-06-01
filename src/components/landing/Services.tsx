@@ -124,7 +124,8 @@ export function ServicesTeaser() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="max-w-2xl mb-14 mx-auto text-center">
           <p className="text-secondary mb-3 uppercase tracking-widest text-lg">​</p>
-          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)] flex flex-col items-center">
+            <span className="text-gradient-cv text-sm">Услуги и цены</span>
             <span className="text-gradient-cv">Выберите свой формат</span>
           </h2>
         </div>
