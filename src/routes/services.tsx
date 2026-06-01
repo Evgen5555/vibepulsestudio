@@ -25,7 +25,7 @@ function ServicesPage() {
 
         <p className="mt-6 mx-auto max-w-2xl text-center text-base sm:text-lg text-muted-foreground">
           Полный каталог решений VibePulse studio — от AI-ботов и автоворонок до сайтов,
-          видео, музыки и запуска под ключ.
+          дизайна и запуска под ключ.
         </p>
       </div>
 
