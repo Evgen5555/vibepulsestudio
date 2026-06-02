@@ -98,24 +98,7 @@ export function RoiCalculator() {
   return (
     <section id="calculator" className="relative py-28 sm:py-40">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <span className="inline-block text-[11px] font-semibold tracking-[0.2em] text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
-            Калькулятор эффективности
-          </span>
-          <h2 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)] mt-5">
-            Посчитайте вашу{" "}
-            <span className="text-gradient-cv">выгоду и скорость</span>
-          </h2>
-          <p className="mt-5 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
-            Выберите AI-инструменты и увидите разницу между классической студией
-            и высокоскоростным вайбкодингом.
-          </p>
-        </motion.div>
+
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-7 space-y-4">

@@ -36,8 +36,22 @@ function RoiPage() {
             <ArrowLeft className="w-3.5 h-3.5" /> На главную
           </Link>
         </div>
+        <div className="mx-auto max-w-6xl px-5 sm:px-8 text-center mt-14">
+          <span className="inline-block text-[11px] font-semibold tracking-[0.2em] text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
+            Калькулятор эффективности
+          </span>
+          <h2 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.25rem,6vw,4.5rem)] mt-5">
+            Посчитайте вашу{" "}
+            <span className="text-gradient-cv">выгоду и скорость</span>
+          </h2>
+          <p className="mt-5 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
+            Выберите AI-инструменты и увидите разницу между классической студией
+            и высокоскоростным вайбкодингом.
+          </p>
+        </div>
         <RoiCalculator />
       </main>
     </>
   );
 }
+
