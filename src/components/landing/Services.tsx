@@ -114,6 +114,18 @@ export function ServicesTeaser() {
   return (
     <section id="services" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto text-center mb-12"
+        >
+          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
+          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+            Выберите <span className="text-gradient-cv">свой формат</span>
+          </h2>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -125,12 +137,6 @@ export function ServicesTeaser() {
           <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
 
           <div className="relative z-10 flex flex-col items-center text-center gap-8">
-            <div className="max-w-3xl text-center">
-              <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
-              <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-                Выберите <span className="text-gradient-cv">свой формат</span>
-              </h2>
-            </div>
             <p className="max-w-3xl text-foreground text-lg sm:text-2xl font-medium leading-snug">
               Высокоскоростной вайб - кодинг: запускаю сложные системы от{" "}
               <span className="font-bold">5 дней</span> вместо{" "}
