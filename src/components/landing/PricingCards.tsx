@@ -147,16 +147,6 @@ export function PricingCards() {
   return (
     <section id="services-cards" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
-          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            Выберите <span className="text-gradient-cv">свой формат</span>
-          </h2>
-          <p className="mt-4 text-muted-foreground text-sm sm:text-base">
-            Нажмите на карточку, чтобы посмотреть, что входит в услугу.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {cards.map((c, i) => {
             const Icon = c.icon;

@@ -53,6 +53,16 @@ function Index() {
       <CyberBackground />
       <Nav />
       <main className="relative overflow-x-clip">
+        <section className="py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="max-w-2xl mx-auto text-center">
+              <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
+              <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+                Выберите <span className="text-gradient-cv">свой формат</span>
+              </h2>
+            </div>
+          </div>
+        </section>
         <Hero />
         <Marquee />
         <ServicesTeaser />
