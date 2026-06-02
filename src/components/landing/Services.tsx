@@ -95,7 +95,7 @@ export function Services() {
                 >
                   <Icon className="size-5" />
                 </div>
-                <h3 className="relative text-xl sm:text-2xl font-semibold tracking-tight">
+                <h3 className="relative font-semibold tracking-tight text-lg">
                   {c.title}
                 </h3>
                 <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md flex-1">

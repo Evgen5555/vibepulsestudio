@@ -68,7 +68,7 @@ function Index() {
               <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
 
               <div className="relative z-10 flex flex-col items-center text-center gap-6">
-                <h3 className="text-2xl font-semibold mb-4">Посчитайте окупаемость проекта</h3>
+                <h3 className="font-semibold mb-4 text-lg">Посчитайте окупаемость проекта</h3>
                 <p className="text-muted-foreground mb-6 max-w-xl">Узнайте, сколько вы экономите с VibePulse.</p>
                 <Link
                   to="/roi"
