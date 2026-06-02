@@ -59,6 +59,24 @@ function Index() {
         <section className="relative py-16">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl mx-auto text-center mb-12"
+            >
+              <span className="inline-block text-[11px] font-semibold tracking-[0.2em] text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
+                Калькулятор эффективности
+              </span>
+              <h2 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,5vw,3.5rem)] mt-5">
+                Посчитайте вашу{" "}
+                <span className="text-gradient-cv">выгоду и скорость</span>
+              </h2>
+              <p className="mt-5 text-muted-foreground text-base sm:text-lg">
+                Выберите AI-инструменты и увидите разницу между классической студией и высокоскоростным вайбкодингом.
+              </p>
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -80,6 +98,7 @@ function Index() {
             </motion.div>
           </div>
         </section>
+
         <TargetAudience />
         
 
