@@ -119,12 +119,35 @@ export function ServicesTeaser() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto text-center mb-12"
+          className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] mb-12"
         >
-          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
-          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            Выберите <span className="text-gradient-cv">свой формат</span>
-          </h2>
+          <div className="rounded-[2rem] border border-border bg-card/70 p-6 sm:p-8 shadow-neon-violet">
+            <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-secondary mb-4">
+              <span>1 скрин</span>
+              <span>над разделом</span>
+            </div>
+            <div className="rounded-3xl border border-border/80 bg-slate-950/90 p-6 sm:p-8">
+              <p className="text-secondary uppercase tracking-widest text-sm mb-3">Услуги и цены</p>
+              <h3 className="text-3xl sm:text-4xl font-semibold tracking-[-0.03em] leading-tight">
+                Выберите <span className="text-gradient-cv">свой формат</span>
+              </h3>
+            </div>
+          </div>
+
+          <div className="rounded-[2rem] border border-border bg-card/70 p-6 sm:p-8 shadow-neon-cyan">
+            <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-secondary mb-4">
+              <span>2 скрин</span>
+              <span>превью</span>
+            </div>
+            <div className="rounded-3xl border border-border/80 bg-slate-950/90 p-6 sm:p-8">
+              <p className="text-foreground text-sm sm:text-base font-medium mb-4">
+                Высокоскоростной вайб - кодинг: запускаю сложные системы от 5 дней вместо 2 месяцев нудных согласований.
+              </p>
+              <div className="inline-flex items-center gap-3 rounded-full border border-border px-4 py-3 text-sm text-foreground bg-white/5">
+                Каталог решений VibePulse studio →
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div
