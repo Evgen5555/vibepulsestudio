@@ -112,71 +112,35 @@ export function Services() {
 
 export function ServicesTeaser() {
   return (
-    <section id="services" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] mb-12"
-        >
-          <div className="rounded-[2rem] border border-border bg-card/70 p-6 sm:p-8 shadow-neon-violet">
-            <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-secondary mb-4">
-              <span>1 скрин</span>
-              <span>над разделом</span>
-            </div>
-            <div className="rounded-3xl border border-border/80 bg-slate-950/90 p-6 sm:p-8">
-              <p className="text-secondary uppercase tracking-widest text-sm mb-3">Услуги и цены</p>
-              <h3 className="text-3xl sm:text-4xl font-semibold tracking-[-0.03em] leading-tight">
-                Выберите <span className="text-gradient-cv">свой формат</span>
-              </h3>
-            </div>
-          </div>
+    <section id="services" className="relative py-12 sm:py-24">
+      <div className="text-center mb-10 sm:mb-14 px-4">
+        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-2 sm:mb-4">
+          УСЛУГИ И ЦЕНЫ
+        </p>
+        <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
+          Выберите{' '}
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+            свой формат
+          </span>
+        </h2>
+      </div>
 
-          <div className="rounded-[2rem] border border-border bg-card/70 p-6 sm:p-8 shadow-neon-cyan">
-            <div className="flex items-center justify-between text-xs uppercase tracking-[0.35em] text-secondary mb-4">
-              <span>2 скрин</span>
-              <span>превью</span>
-            </div>
-            <div className="rounded-3xl border border-border/80 bg-slate-950/90 p-6 sm:p-8">
-              <p className="text-foreground text-sm sm:text-base font-medium mb-4">
-                Высокоскоростной вайб - кодинг: запускаю сложные системы от 5 дней вместо 2 месяцев нудных согласований.
-              </p>
-              <div className="inline-flex items-center gap-3 rounded-full border border-border px-4 py-3 text-sm text-foreground bg-white/5">
-                Каталог решений VibePulse studio →
-              </div>
-            </div>
-          </div>
-        </motion.div>
+      <div className="max-w-6xl mx-auto rounded-[32px] sm:rounded-[40px] border border-violet-500/20 bg-[#070B1A]/80 shadow-[0_0_40px_rgba(139,92,246,0.25)] sm:shadow-[0_0_80px_rgba(139,92,246,0.35)] p-6 sm:p-12 md:p-16">
+        <p className="text-base sm:text-xl md:text-2xl text-center text-white/90 max-w-4xl mx-auto leading-relaxed">
+          Высокоскоростной вайб-кодинг: запускаю сложные системы от 5 дней вместо 2 месяцев нудных согласований.
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="relative glass border border-border rounded-3xl p-8 sm:p-14 px-[40px] py-[40px] shadow-neon-violet overflow-hidden"
-        >
-          <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
-
-          <div className="relative z-10 flex flex-col items-center text-center gap-8">
-            <p className="max-w-3xl text-foreground text-lg sm:text-2xl font-medium leading-snug">
-              Высокоскоростной вайб - кодинг: запускаю сложные системы от{" "}
-              <span className="font-bold">5 дней</span> вместо{" "}
-              <span className="font-bold">2 месяцев</span> нудных согласований.
-            </p>
-
-            <MotionLink
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              to="/services"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-card/60 border border-border text-foreground px-8 py-4 text-sm sm:text-base font-bold hover:border-primary transition-colors"
-            >
-              Каталог решений VibePulse studio →
-            </MotionLink>
-          </div>
-
-        </motion.div>
+        <div className="flex justify-center mt-6 sm:mt-10">
+          <MotionLink
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            to="/services"
+            aria-label="Перейти в каталог решений VibePulse studio"
+            className="px-6 py-3 sm:px-8 sm:py-4 rounded-full bg-black text-white text-sm sm:text-base hover:scale-105 transition-all"
+          >
+            Каталог решений VibePulse studio →
+          </MotionLink>
+        </div>
       </div>
     </section>
   );
