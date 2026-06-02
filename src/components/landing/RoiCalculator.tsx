@@ -28,7 +28,7 @@ const services: Service[] = [
   {
     id: "bot",
     title: "Телеграм-боты и автоворонки",
-    myPrice: 15000,
+    myPrice: 8000,
     marketPrice: 80000,
     timeSaving: "24/7 обработка лидов без менеджера",
     icon: <Bot className="w-5 h-5 text-primary" />,
@@ -36,7 +36,7 @@ const services: Service[] = [
   {
     id: "code",
     title: "Вайб-кодинг (сайты и приложения)",
-    myPrice: 50000,
+    myPrice: 20000,
     marketPrice: 120000,
     timeSaving: "Сборка за 3–7 дней вместо месяца",
     icon: <Code className="w-5 h-5 text-secondary" />,
@@ -44,7 +44,7 @@ const services: Service[] = [
   {
     id: "design",
     title: "AI-дизайн и цифровые аватары",
-    myPrice: 25000,
+    myPrice: 15000,
     marketPrice: 90000,
     timeSaving: "Премиум-визуал без фотостудий",
     icon: <Palette className="w-5 h-5 text-primary" />,
