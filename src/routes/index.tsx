@@ -3,6 +3,7 @@ import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
 import { ServicesTeaser } from "@/components/landing/Services";
+import { motion } from "framer-motion";
 import { TargetAudience } from "@/components/landing/TargetAudience";
 import { FilmStripPortfolio } from "@/components/landing/FilmStripPortfolio";
 
@@ -57,16 +58,26 @@ function Index() {
         <ServicesTeaser />
         <section className="relative py-16">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <div className="glass border border-border rounded-3xl p-8 sm:p-12 text-center">
-              <h3 className="text-2xl font-semibold mb-4">Посчитайте окупаемость проекта</h3>
-              <p className="text-muted-foreground mb-6">Узнайте, сколько вы экономите с VibePulse.</p>
-              <Link
-                to="/roi"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv text-background px-8 py-4 font-bold"
-              >
-                Рассчитать ROI
-              </Link>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7 }}
+              className="relative glass border border-border rounded-3xl p-8 sm:p-14 px-[40px] py-[40px] shadow-neon-violet overflow-hidden text-center"
+            >
+              <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
+
+              <div className="relative z-10 flex flex-col items-center text-center gap-6">
+                <h3 className="text-2xl font-semibold mb-4">Посчитайте окупаемость проекта</h3>
+                <p className="text-muted-foreground mb-6 max-w-xl">Узнайте, сколько вы экономите с VibePulse.</p>
+                <Link
+                  to="/roi"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv text-background px-8 py-4 font-bold"
+                >
+                  Рассчитать ROI
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
         <TargetAudience />
