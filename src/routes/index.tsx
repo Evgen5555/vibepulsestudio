@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import { Marquee } from "@/components/landing/Marquee";
@@ -12,7 +12,6 @@ import { Quiz } from "@/components/landing/Quiz";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Faq } from "@/components/landing/Faq";
 import { CtaFooter } from "@/components/landing/CtaFooter";
-import { RoiCalculator } from "@/components/landing/RoiCalculator";
 
 import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
@@ -53,20 +52,23 @@ function Index() {
       <CyberBackground />
       <Nav />
       <main className="relative overflow-x-clip">
-        <section className="py-12 sm:py-16">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <div className="max-w-2xl mx-auto text-center">
-              <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Услуги и цены</p>
-              <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-                Выберите <span className="text-gradient-cv">свой формат</span>
-              </h2>
-            </div>
-          </div>
-        </section>
         <Hero />
         <Marquee />
         <ServicesTeaser />
-        <RoiCalculator />
+        <section className="relative py-16">
+          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+            <div className="glass border border-border rounded-3xl p-8 sm:p-12 text-center">
+              <h3 className="text-2xl font-semibold mb-4">Посчитайте окупаемость проекта</h3>
+              <p className="text-muted-foreground mb-6">Узнайте, сколько вы экономите с VibePulse.</p>
+              <Link
+                to="/roi"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv text-background px-8 py-4 font-bold"
+              >
+                Рассчитать ROI
+              </Link>
+            </div>
+          </div>
+        </section>
         <TargetAudience />
         
 
