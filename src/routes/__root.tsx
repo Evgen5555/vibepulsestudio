@@ -2,10 +2,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
@@ -67,57 +65,39 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VibePulse Studio — Высокоскоростная AI-разработка" },
-      { name: "description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "VibePulse Studio — Высокоскоростная AI-разработка" },
-      { property: "og:description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "VibePulse Studio — Высокоскоростная AI-разработка" },
-      { name: "twitter:description", content: "Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
+const queryClient = new QueryClient();
+
+export const Route = createRootRoute({
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
+function RootComponent() {
   return (
     <html lang="en">
       <head>
-        <HeadContent />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>VibePulse Studio — Высокоскоростная AI-разработка</title>
+        <meta name="description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
+        <meta name="author" content="Lovable" />
+        <meta property="og:title" content="VibePulse Studio — Высокоскоростная AI-разработка" />
+        <meta property="og:description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@Lovable" />
+        <meta name="twitter:title" content="VibePulse Studio — Высокоскоростная AI-разработка" />
+        <meta name="twitter:description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
+        <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" />
+        <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" />
+        <link rel="stylesheet" href={appCss} />
       </head>
       <body>
-        {children}
-        <Scripts />
+        <QueryClientProvider client={queryClient}>
+          <Outlet />
+        </QueryClientProvider>
       </body>
     </html>
-  );
-}
-
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
-
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Outlet />
-    </QueryClientProvider>
   );
 }
