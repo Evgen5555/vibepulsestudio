@@ -76,6 +76,10 @@ function Index() {
                 Выберите AI-инструменты и увидите разницу между классической студией и высокоскоростным вайбкодингом.
               </p>
             </motion.div>
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <h3 className="font-semibold mb-4 text-lg">Посчитайте окупаемость проекта</h3>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Узнайте, сколько вы экономите с VibePulse.</p>
+            </div>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -86,8 +90,6 @@ function Index() {
               <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
 
               <div className="relative z-10 flex flex-col items-center text-center gap-6">
-                <h3 className="font-semibold mb-4 text-lg">Посчитайте окупаемость проекта</h3>
-                <p className="text-muted-foreground mb-6 max-w-xl">Узнайте, сколько вы экономите с VibePulse.</p>
                 <Link
                   to="/roi"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv text-background px-8 py-4 font-bold"
