@@ -70,15 +70,15 @@ export function Hero() {
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <TrendingUp className="size-3.5 text-secondary shrink-0" />
-                <span>Экономия до&nbsp;70%</span>
+                <b className="text-foreground">Экономия до&nbsp;70%</b>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <Star className="size-3.5 text-primary shrink-0" />
-                <span>AI-аналитика</span>
+                <b className="text-foreground">AI-аналитика</b>
               </span>
               <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
                 <Headphones className="size-3.5 text-secondary shrink-0" />
-                <span>Поддержка после запуска</span>
+                <b className="text-foreground">Поддержка после запуска</b>
               </span>
             </motion.div>
           </div>
