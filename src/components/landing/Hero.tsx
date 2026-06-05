@@ -11,9 +11,10 @@ export function Hero() {
   return (
     <section id="top" className="relative pt-32 pb-16 sm:pt-40 sm:pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+        <div className="relative overflow-hidden rounded-[40px] border border-fuchsia-500/30 bg-[radial-gradient(circle_at_left,rgba(0,255,200,0.18),transparent_35%),radial-gradient(circle_at_right,rgba(180,0,255,0.18),transparent_35%),linear-gradient(135deg,#02141d_0%,#020617_35%,#09051a_70%,#160522_100%)] shadow-[0_0_40px_rgba(0,255,200,0.08),0_0_80px_rgba(180,0,255,0.12)] backdrop-blur-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 order-2 lg:order-1"

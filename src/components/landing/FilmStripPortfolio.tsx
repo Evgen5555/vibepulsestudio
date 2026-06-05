@@ -79,13 +79,12 @@ export const FilmStripPortfolio: React.FC = () => {
   return (
     <section id="portfolio" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mb-12 text-center">
-        <p className="text-secondary mb-3 uppercase tracking-widest text-lg">
-          Портфолио
+        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">
+          ПОРТФОЛИО
         </p>
-        <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
           Кинолента{" "}
-          <span className="text-gradient-cv">моих проектов</span>
-
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">моих проектов</span>
         </h2>
       </div>
 

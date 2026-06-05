@@ -114,10 +114,10 @@ export function ServicesTeaser() {
   return (
     <section id="services" className="relative py-12 sm:py-24">
       <div className="text-center mb-10 sm:mb-14 px-4">
-        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-2 sm:mb-4">
+        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">
           УСЛУГИ И ЦЕНЫ
         </p>
-        <h2 className="text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
           Выберите{' '}
           <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
             свой формат

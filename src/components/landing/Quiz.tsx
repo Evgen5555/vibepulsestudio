@@ -87,10 +87,10 @@ export function Quiz() {
     <section id="quiz" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Квиз</p>
-          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
+          <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">КВИЗ</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
             5 шагов — и вы получите{" "}
-            <span className="text-gradient-cv">персональный расчёт</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">персональный расчёт</span>
           </h2>
         </div>
 

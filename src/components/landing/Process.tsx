@@ -118,9 +118,9 @@ export function Process() {
     <section id="process" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-secondary mb-3 uppercase tracking-widest text-lg">Процесс</p>
-          <h2 className="font-semibold tracking-[-0.03em] leading-[1] text-[clamp(2rem,5vw,3.75rem)]">
-            Как я <span className="text-gradient-cv">работаю</span>
+          <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">ПРОЦЕСС</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
+            Как я <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">работаю</span>
           </h2>
           <p className="mt-5 text-muted-foreground text-base sm:text-lg">
             Процесс без подводных камней — вы точно знаете, что получите и когда.

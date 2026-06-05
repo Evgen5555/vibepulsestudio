@@ -56,53 +56,54 @@ function Index() {
         <Hero />
         <Marquee />
         <ServicesTeaser />
+        <TargetAudience />
+        
         <section className="relative py-16">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto text-center mb-12"
-            >
-              <span className="inline-block text-[11px] font-semibold tracking-[0.2em] text-primary uppercase bg-primary/10 px-3 py-1 rounded-full">
-                Калькулятор эффективности
-              </span>
-              <h2 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2rem,5vw,3.5rem)] mt-5">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center rounded-full border border-purple-500/20 bg-purple-500/10 px-4 py-2 mb-6">
+                <span className="text-xs tracking-[0.35em] uppercase text-purple-300">
+                  КАЛЬКУЛЯТОР ЭФФЕКТИВНОСТИ
+                </span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
                 Посчитайте вашу{" "}
-                <span className="text-gradient-cv">выгоду и скорость</span>
+                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+                  выгоду и скорость
+                </span>
               </h2>
-              <p className="mt-5 text-muted-foreground text-base sm:text-lg">
-                Выберите AI-инструменты и увидите разницу между классической студией и высокоскоростным вайбкодингом.
-              </p>
-            </motion.div>
-            <div className="max-w-3xl mx-auto text-center mb-10">
-              <h3 className="font-semibold mb-4 text-lg">Посчитайте окупаемость проекта</h3>
-              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">Узнайте, сколько вы экономите с VibePulse.</p>
             </div>
+
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.7 }}
-              className="relative glass border border-border rounded-3xl p-8 sm:p-14 px-[40px] py-[40px] shadow-neon-violet overflow-hidden text-center"
+              className="max-w-6xl mx-auto rounded-[40px] border border-violet-500/20 bg-[#070B1A]/80 shadow-[0_0_80px_rgba(139,92,246,0.35)] p-10 md:p-16"
             >
-              <div className="pointer-events-none absolute -inset-px rounded-3xl bg-gradient-cvp opacity-20 blur-2xl -z-10" />
+              <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+                <div className="text-center sm:text-left">
+                  <h3 className="text-lg md:text-2xl font-semibold text-white/60 mb-4">
+                    Посчитайте окупаемость проекта
+                  </h3>
+                  <p className="text-white/60 text-lg max-w-2xl">
+                    Узнайте, сколько вы экономите с VibePulse.
+                  </p>
+                </div>
 
-              <div className="relative z-10 flex flex-col items-center text-center gap-6">
-                <Link
-                  to="/roi"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-cv text-background px-8 py-4 font-bold"
-                >
-                  Рассчитать ROI
-                </Link>
+                <div className="flex justify-center sm:justify-end">
+                  <Link
+                    to="/roi"
+                    className="rounded-full px-10 py-5 text-lg font-semibold text-black bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 hover:scale-105 transition-all"
+                  >
+                    Рассчитать ROI
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>
         </section>
-
-        <TargetAudience />
-        
 
         <FilmStripPortfolio />
 
