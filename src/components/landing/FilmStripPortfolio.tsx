@@ -15,14 +15,12 @@ interface Project {
   image?: string;
 }
 
-
 const projects: Project[] = [
   {
     id: "p1",
     number: "01",
     title: "Fleur",
-    description:
-      "Сайт с каталогом, корзиной и кастомной админ-панелью для управления заказами.",
+    description: "Сайт с каталогом, корзиной и кастомной админ-панелью для управления заказами.",
     githubUrl: "https://evgen5555.github.io/petal-posh-moscow/",
     image: fleurImage,
   },
@@ -30,8 +28,7 @@ const projects: Project[] = [
     id: "p2",
     number: "02",
     title: "Продуктивный перерыв",
-    description:
-      "Система для отдыха от работы, предотвращения выгорания и повышения фокуса.",
+    description: "Система для отдыха от работы, предотвращения выгорания и повышения фокуса.",
     githubUrl: "https://evgen5555.github.io/Friendly-reminder/",
     image: friendlyReminderImage,
   },
@@ -79,12 +76,12 @@ export const FilmStripPortfolio: React.FC = () => {
   return (
     <section id="portfolio" className="relative py-24 sm:py-32 overflow-hidden">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mb-12 text-center">
-        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">
-          ПОРТФОЛИО
-        </p>
+        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">ПОРТФОЛИО</p>
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
           Кинолента{" "}
-          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">моих проектов</span>
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+            моих проектов
+          </span>
         </h2>
       </div>
 

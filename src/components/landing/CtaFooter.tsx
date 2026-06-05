@@ -16,7 +16,6 @@ type FormErrors = {
   agreed?: string;
 };
 
-
 const modalConfig = {
   apply: {
     title: "Оставить",
@@ -126,7 +125,6 @@ export function CtaFooter() {
     }
   };
 
-
   const cfg = activeModal ? modalConfig[activeModal] : null;
 
   return (
@@ -148,8 +146,8 @@ export function CtaFooter() {
           transition={{ duration: 0.7 }}
           className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,7vw,5.5rem)]"
         >
-          Превращу вашу идею <br className="hidden sm:block" />
-          в <span className="text-gradient-cv">премиальный продукт</span>
+          Превращу вашу идею <br className="hidden sm:block" />в{" "}
+          <span className="text-gradient-cv">премиальный продукт</span>
         </motion.h2>
 
         <motion.p
@@ -159,7 +157,8 @@ export function CtaFooter() {
           transition={{ delay: 0.15 }}
           className="mt-6 text-muted-foreground text-base sm:text-lg max-w-xl mx-auto"
         >
-          Расскажите о вашей задаче — разработаю индивидуальное решение, определю формат и рассчитаю точную стоимость.
+          Расскажите о вашей задаче — разработаю индивидуальное решение, определю формат и рассчитаю
+          точную стоимость.
         </motion.p>
 
         <motion.div
@@ -177,7 +176,10 @@ export function CtaFooter() {
             rel="noopener noreferrer"
             className="relative inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-cv px-7 py-4 text-base font-semibold text-background shadow-neon-violet w-full"
           >
-            <span aria-hidden className="absolute -inset-1.5 rounded-full bg-gradient-cv opacity-40 blur-xl -z-10" />
+            <span
+              aria-hidden
+              className="absolute -inset-1.5 rounded-full bg-gradient-cv opacity-40 blur-xl -z-10"
+            />
             <TelegramIcon className="size-5" />
             Написать в ТГ
           </motion.a>
@@ -206,16 +208,18 @@ export function CtaFooter() {
             Написать в МАХ
           </motion.a>
         </motion.div>
-
       </div>
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-24">
         <div className="pt-12 border-t border-border/60 text-left">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
             <div className="text-center">
-
               <div className="flex items-center justify-center gap-3">
-                <img src={logo} alt="VibePulse studio" className="h-10 w-10 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
+                <img
+                  src={logo}
+                  alt="VibePulse studio"
+                  className="h-10 w-10 rounded-full drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]"
+                />
                 <span className="text-base font-semibold">
                   <span className="text-gradient-cv">VibePulse</span> studio
                 </span>
@@ -226,26 +230,62 @@ export function CtaFooter() {
             </div>
 
             <div className="text-center">
-
               <h4 className="text-sm font-semibold text-foreground mb-4">Контакты</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li><a href="https://vk.ru/neuro_evgeniya_k" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">ВКонтакте</a></li>
-                <li><a href="https://t.me/evgeniya5_5" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">Telegram</a></li>
-                <li><a href="https://max.ru/id503601616932_biz" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">MAX</a></li>
+                <li>
+                  <a
+                    href="https://vk.ru/neuro_evgeniya_k"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    ВКонтакте
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://t.me/evgeniya5_5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    Telegram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://max.ru/id503601616932_biz"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-foreground"
+                  >
+                    MAX
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div className="text-center">
               <h4 className="text-sm font-semibold text-foreground mb-4">Документы</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
-                <li><Link to="/privacy" className="hover:text-foreground">Политика конфиденциальности</Link></li>
-                <li><Link to="/offer" className="hover:text-foreground">Публичная оферта</Link></li>
+                <li>
+                  <Link to="/privacy" className="hover:text-foreground">
+                    Политика конфиденциальности
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/offer" className="hover:text-foreground">
+                    Публичная оферта
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
 
           <div className="mt-12 pt-6 border-t border-border/40 text-sm text-muted-foreground text-center">
-            © {new Date().getFullYear()} <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права защищены
+            © {new Date().getFullYear()}{" "}
+            <span className="text-gradient-cv font-semibold">VibePulse</span> studio · Все права
+            защищены
           </div>
         </div>
       </div>
@@ -288,7 +328,8 @@ export function CtaFooter() {
                     Заявка <span className="text-gradient-cv">отправлена</span>
                   </h3>
                   <p className="mt-3 text-sm text-muted-foreground max-w-sm mx-auto">
-                    Спасибо! Данные уже улетели ко мне. Разберу вашу задачу и напишу в течение пары часов.
+                    Спасибо! Данные уже улетели ко мне. Разберу вашу задачу и напишу в течение пары
+                    часов.
                   </p>
                   <button
                     onClick={closeModal}
@@ -313,7 +354,9 @@ export function CtaFooter() {
 
                   <form onSubmit={handleSubmit} noValidate className="space-y-4 text-left">
                     <div>
-                      <label className="block text-xs font-medium text-foreground/80 mb-2">{cfg.label}</label>
+                      <label className="block text-xs font-medium text-foreground/80 mb-2">
+                        {cfg.label}
+                      </label>
                       <textarea
                         rows={4}
                         placeholder={cfg.placeholder}
@@ -325,11 +368,15 @@ export function CtaFooter() {
                             : "border-border focus:border-primary focus:ring-primary"
                         }`}
                       />
-                      {errors.message && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.message}</p>}
+                      {errors.message && (
+                        <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.message}</p>
+                      )}
                     </div>
 
                     <div>
-                      <label className="block text-xs font-medium text-foreground/80 mb-2">Имя *</label>
+                      <label className="block text-xs font-medium text-foreground/80 mb-2">
+                        Имя *
+                      </label>
                       <input
                         type="text"
                         placeholder="Ваше имя"
@@ -341,12 +388,16 @@ export function CtaFooter() {
                             : "border-border focus:border-primary focus:ring-primary"
                         }`}
                       />
-                      {errors.name && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.name}</p>}
+                      {errors.name && (
+                        <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.name}</p>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-medium text-foreground/80 mb-2">Мессенджер *</label>
+                        <label className="block text-xs font-medium text-foreground/80 mb-2">
+                          Мессенджер *
+                        </label>
                         <select
                           value={formData.messenger}
                           onChange={(e) => handleInputChange("messenger", e.target.value)}
@@ -358,7 +409,9 @@ export function CtaFooter() {
                         </select>
                       </div>
                       <div>
-                        <label className="block text-xs font-medium text-foreground/80 mb-2">Ник / username *</label>
+                        <label className="block text-xs font-medium text-foreground/80 mb-2">
+                          Ник / username *
+                        </label>
                         <input
                           type="text"
                           placeholder="@username"
@@ -370,7 +423,9 @@ export function CtaFooter() {
                               : "border-border focus:border-primary focus:ring-primary"
                           }`}
                         />
-                        {errors.username && <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.username}</p>}
+                        {errors.username && (
+                          <p className="mt-1.5 pl-1 text-xs text-destructive">{errors.username}</p>
+                        )}
                       </div>
                     </div>
 
@@ -388,11 +443,15 @@ export function CtaFooter() {
                         />
                         <span>
                           Я ознакомлен(а) и согласен(на) с{" "}
-                          <a href="#" className="text-secondary hover:underline">политикой конфиденциальности</a>{" "}
+                          <a href="#" className="text-secondary hover:underline">
+                            политикой конфиденциальности
+                          </a>{" "}
                           и даю согласие на обработку персональных данных.
                         </span>
                       </label>
-                      {errors.agreed && <p className="mt-1.5 pl-7 text-xs text-destructive">{errors.agreed}</p>}
+                      {errors.agreed && (
+                        <p className="mt-1.5 pl-7 text-xs text-destructive">{errors.agreed}</p>
+                      )}
                     </div>
 
                     <motion.button

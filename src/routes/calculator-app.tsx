@@ -2,16 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import {
-  Zap,
-  TrendingUp,
-  ArrowLeft,
-  Sparkles,
-  Plus,
-  Trash2,
-  Check,
-  Gift,
-} from "lucide-react";
+import { Zap, TrendingUp, ArrowLeft, Sparkles, Plus, Trash2, Check, Gift } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/calculator-app")({
@@ -33,14 +24,7 @@ type Item = { id: string; label: string; amount: number };
 const fmt = (n: number) => Math.round(n).toLocaleString("ru-RU");
 
 const INCOME_PRESETS = ["Сайт", "Telegram-канал", "Личный бренд", "Другое"];
-const EXPENSE_PRESETS = [
-  "Рекламный бюджет",
-  "Зарплаты",
-  "Потери на рутине",
-  "Слив заявок",
-];
-
-
+const EXPENSE_PRESETS = ["Рекламный бюджет", "Зарплаты", "Потери на рутине", "Слив заявок"];
 
 function AnimatedNumber({ value }: { value: number }) {
   const mv = useMotionValue(value);
@@ -80,29 +64,15 @@ function CalculatorApp() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-
-
-  const totalIncome = useMemo(
-    () => incomes.reduce((s, i) => s + (i.amount || 0), 0),
-    [incomes],
-  );
-  const totalExpense = useMemo(
-    () => expenses.reduce((s, i) => s + (i.amount || 0), 0),
-    [expenses],
-  );
+  const totalIncome = useMemo(() => incomes.reduce((s, i) => s + (i.amount || 0), 0), [incomes]);
+  const totalExpense = useMemo(() => expenses.reduce((s, i) => s + (i.amount || 0), 0), [expenses]);
   const profit = totalIncome - totalExpense;
   const potential = Math.max(0, Math.round(profit * 0.25));
 
   if (!granted) return null;
 
-  const addItem = (
-    setter: React.Dispatch<React.SetStateAction<Item[]>>,
-    label: string,
-  ) => {
-    setter((prev) => [
-      ...prev,
-      { id: crypto.randomUUID(), label, amount: 0 },
-    ]);
+  const addItem = (setter: React.Dispatch<React.SetStateAction<Item[]>>, label: string) => {
+    setter((prev) => [...prev, { id: crypto.randomUUID(), label, amount: 0 }]);
   };
 
   const updateItem = (
@@ -113,10 +83,7 @@ function CalculatorApp() {
     setter((prev) => prev.map((i) => (i.id === id ? { ...i, ...patch } : i)));
   };
 
-  const removeItem = (
-    setter: React.Dispatch<React.SetStateAction<Item[]>>,
-    id: string,
-  ) => {
+  const removeItem = (setter: React.Dispatch<React.SetStateAction<Item[]>>, id: string) => {
     setter((prev) => prev.filter((i) => i.id !== id));
   };
 
@@ -153,8 +120,8 @@ function CalculatorApp() {
             </span>
           </h1>
           <p className="mt-3 text-sm sm:text-base text-white/60 max-w-lg mx-auto">
-            Внесите статьи доходов и расходов — система покажет вашу чистую
-            прибыль и точки автоматизации.
+            Внесите статьи доходов и расходов — система покажет вашу чистую прибыль и точки
+            автоматизации.
           </p>
         </motion.div>
 
@@ -221,10 +188,10 @@ function CalculatorApp() {
               className="mt-8 space-y-6"
             >
               <p className="text-sm sm:text-[15px] leading-relaxed text-white/65 italic text-center max-w-2xl mx-auto">
-                Этот интерактивный аудит — пример того, как VibePulse превращает
-                сложные бизнес-процессы в работающие цифровые инструменты, а не
-                просто контент. Если откликается такой формат — мы можем собрать
-                кастомное решение под задачи вашего бизнеса.
+                Этот интерактивный аудит — пример того, как VibePulse превращает сложные
+                бизнес-процессы в работающие цифровые инструменты, а не просто контент. Если
+                откликается такой формат — мы можем собрать кастомное решение под задачи вашего
+                бизнеса.
               </p>
 
               {!isSubmitted ? (
@@ -275,9 +242,7 @@ function CalculatorApp() {
                     <Zap className="w-4 h-4" />
                     {submitting ? "Отправка…" : "Окупить слив прибыли"}
                   </motion.button>
-                  {error && (
-                    <p className="text-rose-300 text-xs text-center">{error}</p>
-                  )}
+                  {error && <p className="text-rose-300 text-xs text-center">{error}</p>}
                 </div>
               ) : (
                 <motion.div
@@ -290,9 +255,7 @@ function CalculatorApp() {
                     <Check className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white">
-                      Заявка отправлена
-                    </h3>
+                    <h3 className="text-lg font-semibold text-white">Заявка отправлена</h3>
                     <p className="text-sm text-white/60 mt-1">
                       Свяжемся в течение часа, чтобы согласовать время разбора.
                     </p>
@@ -305,7 +268,6 @@ function CalculatorApp() {
                     <Gift className="w-4 h-4" />
                     Забери калькулятор в подарок по ссылке
                   </Link>
-
                 </motion.div>
               )}
             </motion.div>
@@ -319,7 +281,6 @@ function CalculatorApp() {
     </main>
   );
 }
-
 
 function Section({
   title,
@@ -371,9 +332,7 @@ function Section({
             {title}
           </h2>
         </div>
-        <p className={`text-sm font-semibold tabular-nums ${toneClass.total}`}>
-          {fmt(total)} ₽
-        </p>
+        <p className={`text-sm font-semibold tabular-nums ${toneClass.total}`}>{fmt(total)} ₽</p>
       </div>
 
       <div className="flex flex-wrap gap-2">
@@ -409,9 +368,7 @@ function Section({
                 >
                   <Input
                     value={item.label}
-                    onChange={(e) =>
-                      onUpdate(item.id, { label: e.target.value })
-                    }
+                    onChange={(e) => onUpdate(item.id, { label: e.target.value })}
                     className="flex-1 h-10 bg-transparent border-0 text-sm text-white placeholder:text-white/30 focus-visible:ring-0 focus-visible:ring-offset-0"
                   />
                   <Input

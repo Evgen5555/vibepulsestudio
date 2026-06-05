@@ -1,10 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import {
-  Outlet,
-  Link,
-  createRootRoute,
-  useRouter,
-} from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, useRouter } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 
@@ -80,17 +75,32 @@ function RootComponent() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>VibePulse Studio — Высокоскоростная AI-разработка</title>
-        <meta name="description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
+        <meta
+          name="description"
+          content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов."
+        />
         <meta name="author" content="Lovable" />
         <meta property="og:title" content="VibePulse Studio — Высокоскоростная AI-разработка" />
-        <meta property="og:description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
+        <meta
+          property="og:description"
+          content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов."
+        />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@Lovable" />
         <meta name="twitter:title" content="VibePulse Studio — Высокоскоростная AI-разработка" />
-        <meta name="twitter:description" content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов." />
-        <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" />
-        <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png" />
+        <meta
+          name="twitter:description"
+          content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов."
+        />
+        <meta
+          property="og:image"
+          content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png"
+        />
+        <meta
+          name="twitter:image"
+          content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9beac194-7724-4e05-8dc4-dc3da8ff7afe/id-preview-b0bfaffc--ede0ed0f-0e94-4847-96ad-1adcb108c474.lovable.app-1779637982686.png"
+        />
         <link rel="stylesheet" href={appCss} />
       </head>
       <body>

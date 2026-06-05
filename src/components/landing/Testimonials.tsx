@@ -18,7 +18,8 @@ const reviews: Review[] = [
     role: "Основатель бьюти-бренда",
     text: "Евгения удивила! Создала потрясающий цифровой аватар и упаковала концепт бренда так, что мы выросли в охватах в 1,5 раза за первую неделю. Быстро и стильно!",
     tag: "AI-Дизайн & Аватары",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    avatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
     color: "from-[color:var(--neon-cyan)] to-[color:var(--neon-blue)]",
   },
   {
@@ -27,7 +28,8 @@ const reviews: Review[] = [
     role: "Владелец онлайн-школы",
     text: "Заказал автоворонку и умного Telegram-бота под ключ. Все понравилось, особено скорость разработки на вайбкодинге. За неделю все было сделано!",
     tag: "Телеграм-боты & Сайты",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
     color: "from-[color:var(--neon-violet)] to-[color:var(--neon-blue)]",
   },
   {
@@ -36,7 +38,8 @@ const reviews: Review[] = [
     role: "VibePulse Studio",
     text: " Когда создавались ИИ-агенты, я и подумать не могла, что они полностью будут делать контент и изображения в моем стиле. Экономят часов 15 в неделю.",
     tag: "ИИ агенты",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
     color: "from-[color:var(--neon-pink)] to-[color:var(--neon-violet)]",
   },
   {
@@ -45,7 +48,8 @@ const reviews: Review[] = [
     role: "Эксперт",
     text: "Нужно было протестировать новый продукт за считанные дни. Я в диком восторге от лендоса.",
     tag: "Вайб-кодинг & Сайты",
-    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
+    avatar:
+      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80",
     color: "from-[color:var(--neon-pink)] to-[color:var(--neon-cyan)]",
   },
   {
@@ -54,7 +58,8 @@ const reviews: Review[] = [
     role: "Сеть магазинов",
     text: "Сотрудничаю не первый раз. Скорость сборки проектов поражает, мне в классической студия пилили 1,5 месяца, здесь собрали за неделю. Качество стиля на высоте.",
     tag: "Интеграция & IT",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
     color: "from-[color:var(--neon-cyan)] to-[color:var(--neon-violet)]",
   },
 ];
@@ -62,10 +67,8 @@ const reviews: Review[] = [
 export function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(2);
 
-  const handlePrev = () =>
-    setActiveIndex((p) => (p === 0 ? reviews.length - 1 : p - 1));
-  const handleNext = () =>
-    setActiveIndex((p) => (p === reviews.length - 1 ? 0 : p + 1));
+  const handlePrev = () => setActiveIndex((p) => (p === 0 ? reviews.length - 1 : p - 1));
+  const handleNext = () => setActiveIndex((p) => (p === reviews.length - 1 ? 0 : p + 1));
 
   return (
     <section id="testimonials" className="relative py-24 sm:py-32 overflow-hidden">
@@ -75,7 +78,9 @@ export function Testimonials() {
         <div className="text-center mb-16 relative z-10">
           <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">РЕПУТАЦИЯ</p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">Отзывы</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Отзывы
+            </span>
           </h2>
         </div>
 
@@ -105,9 +110,7 @@ export function Testimonials() {
                     zIndex: 10 - Math.abs(offset),
                   }}
                   className={`absolute w-[300px] md:w-[340px] rounded-3xl p-6 md:p-8 glass transition-all duration-500 ease-out cursor-pointer select-none overflow-hidden border ${
-                    isActive
-                      ? "border-primary/60 shadow-neon-violet"
-                      : "border-border bg-card/40"
+                    isActive ? "border-primary/60 shadow-neon-violet" : "border-border bg-card/40"
                   }`}
                 >
                   <div
@@ -141,12 +144,8 @@ export function Testimonials() {
                       />
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold tracking-tight">
-                        {review.name}
-                      </h4>
-                      <p className="text-[11px] text-muted-foreground mt-0.5">
-                        {review.role}
-                      </p>
+                      <h4 className="text-sm font-semibold tracking-tight">{review.name}</h4>
+                      <p className="text-[11px] text-muted-foreground mt-0.5">{review.role}</p>
                       <div className="flex items-center gap-0.5 mt-1">
                         {[...Array(5)].map((_, i) => (
                           <Star
@@ -194,9 +193,7 @@ export function Testimonials() {
           </div>
 
           <button
-            onClick={() =>
-              document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
             className="flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/30 text-foreground font-medium text-xs tracking-wide hover:bg-primary/20 hover:border-primary/60 transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(99,102,241,0.45)] hover:shadow-[0_0_50px_rgba(168,85,247,0.7)]"
           >
             <span>Пройти квиз → расчёт за 2 минуты</span>

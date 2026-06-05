@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { X, Send, MessageSquareText } from "lucide-react";
 import evaAvatar from "@/assets/eva-avatar.png";
 
-
 type Sender = "ai" | "user";
 interface Message {
   id: string;
@@ -20,8 +19,7 @@ const QUICK_REPLIES = [
 const WELCOME: Message = {
   id: "welcome",
   sender: "ai",
-  text:
-    "Привет! Я Ева — цифровой двойник Евгении в студии VibePulse. ✨Расскажи, какая задача перед тобой стоит, или выбери один из вариантов ниже.",
+  text: "Привет! Я Ева — цифровой двойник Евгении в студии VibePulse. ✨Расскажи, какая задача перед тобой стоит, или выбери один из вариантов ниже.",
   timestamp: Date.now(),
 };
 
@@ -111,12 +109,9 @@ export function AiChatWidget() {
         </button>
       )}
 
-
       {/* Chat panel */}
       {open && (
-        <div
-          className="fixed z-50 bottom-0 right-0 sm:bottom-5 sm:right-5 w-full sm:w-[380px] h-[100dvh] sm:h-[600px] sm:max-h-[85vh] origin-bottom-right animate-in fade-in zoom-in-95 duration-200"
-        >
+        <div className="fixed z-50 bottom-0 right-0 sm:bottom-5 sm:right-5 w-full sm:w-[380px] h-[100dvh] sm:h-[600px] sm:max-h-[85vh] origin-bottom-right animate-in fade-in zoom-in-95 duration-200">
           <div className="flex flex-col h-full sm:rounded-2xl overflow-hidden bg-gradient-to-b from-[#0a0a0f] to-[#13131c] border border-[#d4af37]/20 shadow-[0_24px_80px_rgba(0,0,0,0.8)] backdrop-blur-xl">
             {/* Header */}
             <div className="flex items-center gap-3 px-4 py-3.5 border-b border-white/5 bg-black/40">
@@ -124,20 +119,18 @@ export function AiChatWidget() {
                 <div className="absolute -inset-0.5 rounded-full bg-gradient-to-tr from-[#3b82f6] via-[#6d28d9] to-[#d4af37] opacity-70 blur-[2px]" />
                 <div className="relative h-12 w-12 rounded-full overflow-hidden border border-[#d4af37]/40 bg-[#0a0a0f]">
                   {/* TODO: Замените src на URL фотографии Евы */}
-                  <img
-                    src={evaAvatar}
-                    alt="Ева"
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={evaAvatar} alt="Ева" className="h-full w-full object-cover" />
                 </div>
-                
               </div>
               <div className="flex-1 min-w-0">
-                <div className="text-white font-semibold text-lg leading-tight tracking-tight">Ева</div>
-                <div className="text-[12px] text-white/60 leading-tight">Цифровой двойник Евгении</div>
+                <div className="text-white font-semibold text-lg leading-tight tracking-tight">
+                  Ева
+                </div>
+                <div className="text-[12px] text-white/60 leading-tight">
+                  Цифровой двойник Евгении
+                </div>
                 <div className="flex items-center gap-1.5 text-[11px] text-green-400/90 mt-0.5">
-                  <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
-                  В сети
+                  <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />В сети
                 </div>
               </div>
               <button
@@ -162,11 +155,7 @@ export function AiChatWidget() {
                   {m.sender === "ai" && (
                     <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
                       {/* TODO: Замените src на URL фотографии Евы */}
-                      <img
-                        src={evaAvatar}
-                        alt=""
-                        className="h-full w-full object-cover"
-                      />
+                      <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
                     </div>
                   )}
                   <div
@@ -200,11 +189,7 @@ export function AiChatWidget() {
                 <div className="flex justify-start gap-2">
                   <div className="h-7 w-7 rounded-full overflow-hidden border border-[#d4af37]/30 shrink-0 mt-auto">
                     {/* TODO: Замените src на URL фотографии Евы */}
-                    <img
-                      src={evaAvatar}
-                      alt=""
-                      className="h-full w-full object-cover"
-                    />
+                    <img src={evaAvatar} alt="" className="h-full w-full object-cover" />
                   </div>
                   <div className="rounded-2xl rounded-bl-sm px-4 py-3 bg-[#0f1424]/80 border border-[#3b82f6]/40">
                     <div className="flex gap-1">

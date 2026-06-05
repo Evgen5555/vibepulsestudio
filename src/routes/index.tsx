@@ -18,7 +18,6 @@ import CyberBackground from "@/components/landing/CyberBackground";
 import { AiChatWidget } from "@/components/landing/AiChatWidget";
 import { ScrollToTop } from "@/components/landing/ScrollToTop";
 
-
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -57,7 +56,7 @@ function Index() {
         <Marquee />
         <ServicesTeaser />
         <TargetAudience />
-        
+
         <section className="relative py-16">
           <div className="mx-auto max-w-7xl px-5 sm:px-8">
             <div className="text-center mb-16">
@@ -112,7 +111,6 @@ function Index() {
         <Quiz />
         <Faq />
         <CtaFooter />
-
       </main>
       <AiChatWidget />
       <ScrollToTop />

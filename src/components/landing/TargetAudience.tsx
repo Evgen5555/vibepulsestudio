@@ -50,7 +50,9 @@ export const TargetAudience: React.FC = () => {
           <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">ДЛЯ КОГО</p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
             Кому подойдёт{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">сотрудничество</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              сотрудничество
+            </span>
           </h2>
         </div>
 
@@ -59,14 +61,12 @@ export const TargetAudience: React.FC = () => {
           className="relative w-full rounded-[32px] border border-white/10 p-8 md:p-12 overflow-hidden shadow-[0_25px_50px_rgba(0,0,0,0.8)]"
           style={{
             background: "linear-gradient(135deg, #012226 0%, #030812 50%, #1e091e 100%)",
-            boxShadow:
-              "0 0 45px rgba(168, 85, 247, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)",
+            boxShadow: "0 0 45px rgba(168, 85, 247, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1)",
           }}
         >
           {/* Дополнительная фоновая подсветка для сочности переливов */}
           <div className="absolute top-0 left-0 w-[400px] h-[300px] bg-cyan-500/10 rounded-full filter blur-[100px] pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-purple-600/15 rounded-full filter blur-[100px] pointer-events-none" />
-
 
           {/* Сетка белых карточек */}
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

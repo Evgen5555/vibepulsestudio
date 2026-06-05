@@ -59,8 +59,7 @@ const steps: Step[] = [
     title: "Результат",
     desc: "Запускаю проект и передаю его вам. Остаюсь на связи.",
     icon: Check,
-    badgeClass:
-      "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
+    badgeClass: "border-[var(--neon-pink)]/70 bg-[var(--neon-pink)]/15 text-[var(--neon-pink)]",
     ringClass: "border-[var(--neon-pink)]/50",
     iconClass: "text-[var(--neon-pink)]",
     glow: "shadow-neon-pink",
@@ -87,8 +86,7 @@ export function Process() {
   useEffect(() => {
     if (!inView) return;
     let cancelled = false;
-    const wait = (ms: number) =>
-      new Promise<void>((resolve) => setTimeout(resolve, ms));
+    const wait = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
     const run = async () => {
       while (!cancelled) {
@@ -120,7 +118,10 @@ export function Process() {
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">ПРОЦЕСС</p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
-            Как я <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">работаю</span>
+            Как я{" "}
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              работаю
+            </span>
           </h2>
           <p className="mt-5 text-muted-foreground text-base sm:text-lg">
             Процесс без подводных камней — вы точно знаете, что получите и когда.
@@ -230,9 +231,7 @@ export function Process() {
                   key={s.title}
                   initial={{ opacity: 0, y: 24, scale: 0.9 }}
                   animate={
-                    inView
-                      ? { opacity: 1, y: 0, scale: 1 }
-                      : { opacity: 0, y: 24, scale: 0.9 }
+                    inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 24, scale: 0.9 }
                   }
                   transition={{
                     delay: 0.3 + i * 0.18,
@@ -294,9 +293,7 @@ export function Process() {
                   </div>
 
                   <div className="md:mt-2">
-                    <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
-                      {s.title}
-                    </h3>
+                    <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">{s.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground max-w-xs text-center">
                       {s.desc}
                     </p>

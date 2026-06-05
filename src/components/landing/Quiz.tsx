@@ -90,7 +90,9 @@ export function Quiz() {
           <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">КВИЗ</p>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
             5 шагов — и вы получите{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">персональный расчёт</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+              персональный расчёт
+            </span>
           </h2>
         </div>
 
@@ -113,8 +115,8 @@ export function Quiz() {
                 Анализирую ваши ответы…
               </h3>
               <p className="mt-4 text-muted-foreground max-w-md">
-                Стратегия почти готова. Уже вижу, какую архитектуру и AI-инструменты можно
-                внедрить в ваш проект.
+                Стратегия почти готова. Уже вижу, какую архитектуру и AI-инструменты можно внедрить
+                в ваш проект.
               </p>
               <p className="mt-6 text-secondary text-sm">
                 Свяжусь с вами в Telegram в течение пары часов.
@@ -202,9 +204,7 @@ export function Quiz() {
                           required
                           type="text"
                           value={formData.name}
-                          onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           placeholder="Анна"
                           className="w-full bg-card/60 border border-border rounded-2xl px-5 py-4 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors"
                         />
@@ -217,9 +217,7 @@ export function Quiz() {
                           required
                           type="text"
                           value={formData.contact}
-                          onChange={(e) =>
-                            setFormData({ ...formData, contact: e.target.value })
-                          }
+                          onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
                           placeholder="@username или +7…"
                           className="w-full bg-card/60 border border-border rounded-2xl px-5 py-4 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors"
                         />

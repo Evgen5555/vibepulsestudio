@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 interface Dot {
   x: number;
@@ -14,7 +14,7 @@ export default function CyberBackground() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let animationFrameId: number;
@@ -25,7 +25,7 @@ export default function CyberBackground() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
     // density-based count covering full viewport
@@ -73,10 +73,9 @@ export default function CyberBackground() {
       for (const d of dots) {
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(217, 119, 6, 0.55)';
+        ctx.fillStyle = "rgba(217, 119, 6, 0.55)";
         ctx.fill();
       }
-
 
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -84,7 +83,7 @@ export default function CyberBackground() {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

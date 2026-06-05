@@ -115,11 +115,13 @@ export function Pricing() {
                   </div>
                 )}
 
-                <div className={`inline-flex items-center justify-center size-12 rounded-2xl border mb-5 ${
-                  plan.highlighted
-                    ? "border-primary/60 bg-primary/10 text-primary"
-                    : "border-secondary/60 bg-secondary/10 text-secondary"
-                }`}>
+                <div
+                  className={`inline-flex items-center justify-center size-12 rounded-2xl border mb-5 ${
+                    plan.highlighted
+                      ? "border-primary/60 bg-primary/10 text-primary"
+                      : "border-secondary/60 bg-secondary/10 text-secondary"
+                  }`}
+                >
                   <Icon className="size-5" />
                 </div>
 
@@ -134,7 +136,9 @@ export function Pricing() {
                 <ul className="mt-6 space-y-2.5 flex-1">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm text-foreground/90">
-                      <Check className={`size-4 mt-0.5 flex-shrink-0 ${plan.highlighted ? "text-primary" : "text-secondary"}`} />
+                      <Check
+                        className={`size-4 mt-0.5 flex-shrink-0 ${plan.highlighted ? "text-primary" : "text-secondary"}`}
+                      />
                       <span>{f}</span>
                     </li>
                   ))}

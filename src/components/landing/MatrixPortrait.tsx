@@ -22,13 +22,16 @@ export default function MatrixPortrait() {
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
       columns = Math.floor(rect.width / fontSize);
-      drops = Array(columns).fill(0).map(() => Math.random() * rect.height / fontSize);
+      drops = Array(columns)
+        .fill(0)
+        .map(() => (Math.random() * rect.height) / fontSize);
     };
     resize();
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
 
-    const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF{}[]<>=+*/".split("");
+    const chars =
+      "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF{}[]<>=+*/".split("");
 
     const draw = () => {
       const rect = canvas.getBoundingClientRect();
@@ -62,8 +65,7 @@ export default function MatrixPortrait() {
     <div
       className="relative mx-auto w-full max-w-[380px] aspect-square rounded-[28px] overflow-hidden border border-white/5 bg-black"
       style={{
-        boxShadow:
-          "0 0 35px rgba(34, 197, 94, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05)",
+        boxShadow: "0 0 35px rgba(34, 197, 94, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05)",
       }}
     >
       {/* Реальное фото с мягкой пост-обработкой */}
@@ -79,10 +81,8 @@ export default function MatrixPortrait() {
         className="absolute inset-0 w-full h-full pointer-events-none"
         style={{
           opacity: 0.35,
-          maskImage:
-            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
-          WebkitMaskImage:
-            "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
+          maskImage: "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
+          WebkitMaskImage: "radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 80%)",
           mixBlendMode: "screen",
         }}
       />

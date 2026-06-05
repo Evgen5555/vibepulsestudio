@@ -95,9 +95,7 @@ export function Services() {
                 >
                   <Icon className="size-5" />
                 </div>
-                <h3 className="relative font-semibold tracking-tight text-lg">
-                  {c.title}
-                </h3>
+                <h3 className="relative font-semibold tracking-tight text-lg">{c.title}</h3>
                 <p className="relative mt-3 text-sm sm:text-base text-muted-foreground max-w-md flex-1">
                   {c.desc}
                 </p>
@@ -114,11 +112,9 @@ export function ServicesTeaser() {
   return (
     <section id="services" className="relative py-12 sm:py-24">
       <div className="text-center mb-10 sm:mb-14 px-4">
-        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">
-          УСЛУГИ И ЦЕНЫ
-        </p>
+        <p className="text-cyan-400 uppercase tracking-[0.3em] text-sm mb-4">УСЛУГИ И ЦЕНЫ</p>
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.05]">
-          Выберите{' '}
+          Выберите{" "}
           <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
             свой формат
           </span>
@@ -127,7 +123,8 @@ export function ServicesTeaser() {
 
       <div className="max-w-6xl mx-auto rounded-[32px] sm:rounded-[40px] border border-violet-500/20 bg-[#070B1A]/80 shadow-[0_0_40px_rgba(139,92,246,0.25)] sm:shadow-[0_0_80px_rgba(139,92,246,0.35)] p-6 sm:p-12 md:p-16">
         <p className="text-base sm:text-xl md:text-2xl text-center text-white/90 max-w-4xl mx-auto leading-relaxed">
-          Высокоскоростной вайб-кодинг: запускаю сложные системы от 5 дней вместо 2 месяцев нудных согласований.
+          Высокоскоростной вайб-кодинг: запускаю сложные системы от 5 дней вместо 2 месяцев нудных
+          согласований.
         </p>
 
         <div className="flex justify-center mt-6 sm:mt-10">

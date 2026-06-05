@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 function TelegramIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
-      <path d="M21.944 3.244a1.2 1.2 0 0 0-1.262-.2L2.92 10.51c-.86.34-.85 1.56.014 1.887l4.36 1.65 1.69 5.27a1.2 1.2 0 0 0 1.97.49l2.43-2.27 4.45 3.27c.68.5 1.65.13 1.83-.7l3.05-14.6a1.2 1.2 0 0 0-.77-1.263Zm-4.32 4.05-7.86 6.95a.6.6 0 0 0-.19.34l-.46 2.62-1.31-4.09 9.45-5.74c.36-.22.71.24.37.54Z"/>
+      <path d="M21.944 3.244a1.2 1.2 0 0 0-1.262-.2L2.92 10.51c-.86.34-.85 1.56.014 1.887l4.36 1.65 1.69 5.27a1.2 1.2 0 0 0 1.97.49l2.43-2.27 4.45 3.27c.68.5 1.65.13 1.83-.7l3.05-14.6a1.2 1.2 0 0 0-.77-1.263Zm-4.32 4.05-7.86 6.95a.6.6 0 0 0-.19.34l-.46 2.62-1.31-4.09 9.45-5.74c.36-.22.71.24.37.54Z" />
     </svg>
   );
 }
@@ -51,8 +51,15 @@ export function Nav() {
       <div className="glass border-b border-border/60">
         <nav className="mx-auto max-w-7xl px-5 sm:px-8 h-16 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 font-semibold tracking-tight text-lg">
-            <img src={logo} alt="VibePulse studio" className="h-10 w-10 rounded-full drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]" />
-            <span className="hidden sm:inline"><span className="text-gradient-cv">Vibe</span>Pulse<span className="text-foreground/60"> studio</span></span>
+            <img
+              src={logo}
+              alt="VibePulse studio"
+              className="h-10 w-10 rounded-full drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]"
+            />
+            <span className="hidden sm:inline">
+              <span className="text-gradient-cv">Vibe</span>Pulse
+              <span className="text-foreground/60"> studio</span>
+            </span>
           </a>
 
           <ul className="hidden md:flex items-center gap-8 text-sm">

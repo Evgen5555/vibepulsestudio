@@ -81,11 +81,14 @@
     var(--neon-pink) 100%
   );
 
-  --shadow-neon-violet: 0 0 24px color-mix(in oklab, var(--neon-violet) 55%, transparent),
+  --shadow-neon-violet:
+    0 0 24px color-mix(in oklab, var(--neon-violet) 55%, transparent),
     0 0 60px color-mix(in oklab, var(--neon-violet) 30%, transparent);
-  --shadow-neon-cyan: 0 0 24px color-mix(in oklab, var(--neon-cyan) 50%, transparent),
+  --shadow-neon-cyan:
+    0 0 24px color-mix(in oklab, var(--neon-cyan) 50%, transparent),
     0 0 60px color-mix(in oklab, var(--neon-cyan) 25%, transparent);
-  --shadow-neon-pink: 0 0 24px color-mix(in oklab, var(--neon-pink) 55%, transparent),
+  --shadow-neon-pink:
+    0 0 24px color-mix(in oklab, var(--neon-pink) 55%, transparent),
     0 0 60px color-mix(in oklab, var(--neon-pink) 30%, transparent);
 }
 
@@ -102,8 +105,16 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     background-image:
-      radial-gradient(ellipse 60% 50% at 15% 0%, color-mix(in oklab, var(--neon-violet) 18%, transparent), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 90% 30%, color-mix(in oklab, var(--neon-cyan) 12%, transparent), transparent 60%);
+      radial-gradient(
+        ellipse 60% 50% at 15% 0%,
+        color-mix(in oklab, var(--neon-violet) 18%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 90% 30%,
+        color-mix(in oklab, var(--neon-cyan) 12%, transparent),
+        transparent 60%
+      );
     background-attachment: fixed;
   }
 }
@@ -143,9 +154,7 @@
   }
   .border-gradient-cv {
     border: 1px solid transparent;
-    background-image:
-      linear-gradient(var(--card), var(--card)),
-      var(--gradient-cv);
+    background-image: linear-gradient(var(--card), var(--card)), var(--gradient-cv);
     background-origin: border-box;
     background-clip: padding-box, border-box;
   }
@@ -156,12 +165,20 @@
     animation-play-state: paused;
   }
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
   @keyframes wobble {
-    0%, 100% { transform: rotate(-6deg); }
-    50% { transform: rotate(6deg); }
+    0%,
+    100% {
+      transform: rotate(-6deg);
+    }
+    50% {
+      transform: rotate(6deg);
+    }
   }
 }
-

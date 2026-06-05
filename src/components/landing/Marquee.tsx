@@ -10,7 +10,15 @@ const metrics = [
   { label: "30 дней техподдержки в подарок", icon: ShieldCheck, tone: "violet" as const },
 ];
 
-function Badge({ label, tone, Icon }: { label: string; tone: "violet" | "cyan"; Icon: typeof Rocket }) {
+function Badge({
+  label,
+  tone,
+  Icon,
+}: {
+  label: string;
+  tone: "violet" | "cyan";
+  Icon: typeof Rocket;
+}) {
   const isViolet = tone === "violet";
   return (
     <span
@@ -29,7 +37,10 @@ function Badge({ label, tone, Icon }: { label: string; tone: "violet" | "cyan"; 
 export function Marquee() {
   const items = [...metrics, ...metrics, ...metrics];
   return (
-    <section className="relative py-10 border-y border-border/60 overflow-hidden marquee-pause" aria-label="Ключевые цифры">
+    <section
+      className="relative py-10 border-y border-border/60 overflow-hidden marquee-pause"
+      aria-label="Ключевые цифры"
+    >
       <div className="absolute inset-y-0 left-0 w-24 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent" />
       <div className="absolute inset-y-0 right-0 w-24 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent" />
       <div className="flex w-max marquee-track gap-5">

@@ -5,7 +5,11 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Услуги — VibePulse studio" },
-      { name: "description", content: "Каталог решений VibePulse studio: сайты, автоворонки, боты, AI-дизайн, видео, музыка." },
+      {
+        name: "description",
+        content:
+          "Каталог решений VibePulse studio: сайты, автоворонки, боты, AI-дизайн, видео, музыка.",
+      },
       { property: "og:title", content: "Услуги — VibePulse studio" },
       { property: "og:description", content: "Полный каталог услуг VibePulse studio." },
     ],
@@ -17,7 +21,9 @@ function ServicesPage() {
   return (
     <main className="relative min-h-screen pt-24 pb-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <Link to="/" className="text-sm text-secondary hover:underline">← На главную</Link>
+        <Link to="/" className="text-sm text-secondary hover:underline">
+          ← На главную
+        </Link>
       </div>
 
       <PricingCards />

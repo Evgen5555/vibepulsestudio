@@ -4,7 +4,6 @@ import { useNavigate } from "@tanstack/react-router";
 import MatrixPortrait from "./MatrixPortrait";
 import { VkIcon } from "./VkIcon";
 
-
 export function Hero() {
   const navigate = useNavigate();
 
@@ -15,73 +14,74 @@ export function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-5 order-2 lg:order-1"
-          >
-            <MatrixPortrait />
-          </motion.div>
-
-          {/* Copy */}
-          <div className="lg:col-span-7 order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground/70 mb-6"
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-5 order-2 lg:order-1"
             >
-              <Sparkles className="size-3.5 text-secondary" />
-              AI-маркетинг · Premium-сайты · Автоворонки
+              <MatrixPortrait />
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.8 }}
-            >
-              <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,6.5vw,5rem)] text-center">
-                Где идеи оживают{" "}
-                <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))] block sm:inline">
-                  через маркетинг и AI
+            {/* Copy */}
+            <div className="lg:col-span-7 order-1 lg:order-2">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1.5 text-xs text-foreground/70 mb-6"
+              >
+                <Sparkles className="size-3.5 text-secondary" />
+                AI-маркетинг · Premium-сайты · Автоворонки
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.8 }}
+              >
+                <h1 className="font-semibold tracking-[-0.04em] leading-[0.95] text-[clamp(2.5rem,6.5vw,5rem)] text-center">
+                  Где идеи оживают{" "}
+                  <span className="bg-clip-text text-transparent bg-[linear-gradient(90deg,var(--neon-blue),var(--neon-violet))] block sm:inline">
+                    через маркетинг и AI
+                  </span>
+                </h1>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
+                  Запуск под ключ за 5–14 дней. AI-маркетинг, аналитика и эстетика для экспертов,
+                  онлайн-школ и продуктовых брендов.
+                </p>
+              </motion.div>
+
+              {/* Trust strip */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-6 flex-wrap gap-x-5 gap-y-4 text-xs text-foreground/70 flex-row flex items-start justify-start"
+              >
+                <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
+                  <Rocket className="size-3.5 text-primary shrink-0" />
+                  <b className="text-foreground">AI-интеграция</b>
                 </span>
-              </h1>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <p className="mt-6 max-w-xl text-base sm:text-lg text-muted-foreground">
-                Запуск под ключ за 5–14 дней. AI-маркетинг, аналитика
-                и эстетика для экспертов, онлайн-школ и продуктовых брендов.
-              </p>
-            </motion.div>
-
-            {/* Trust strip */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="mt-6 flex-wrap gap-x-5 gap-y-4 text-xs text-foreground/70 flex-row flex items-start justify-start"
-            >
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
-                <Rocket className="size-3.5 text-primary shrink-0" />
-                <b className="text-foreground">AI-интеграция</b>
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
-                <TrendingUp className="size-3.5 text-secondary shrink-0" />
-                <b className="text-foreground">Экономия до&nbsp;70%</b>
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
-                <Star className="size-3.5 text-primary shrink-0" />
-                <b className="text-foreground">AI-аналитика</b>
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
-                <Headphones className="size-3.5 text-secondary shrink-0" />
-                <b className="text-foreground">Поддержка после запуска</b>
-              </span>
-            </motion.div>
+                <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
+                  <TrendingUp className="size-3.5 text-secondary shrink-0" />
+                  <b className="text-foreground">Экономия до&nbsp;70%</b>
+                </span>
+                <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
+                  <Star className="size-3.5 text-primary shrink-0" />
+                  <b className="text-foreground">AI-аналитика</b>
+                </span>
+                <span className="inline-flex items-center gap-1.5 whitespace-pre-line text-left">
+                  <Headphones className="size-3.5 text-secondary shrink-0" />
+                  <b className="text-foreground">Поддержка после запуска</b>
+                </span>
+              </motion.div>
+            </div>
           </div>
         </div>
 
@@ -95,9 +95,7 @@ export function Hero() {
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() =>
-              document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => document.getElementById("quiz")?.scrollIntoView({ behavior: "smooth" })}
             className="relative group inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full bg-gradient-to-r from-[#3b82f6] via-[#6366f1] to-[#a855f7] text-white font-bold text-base transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.45)] hover:shadow-[0_0_50px_rgba(168,85,247,0.7)] w-full"
           >
             <span className="relative flex h-3 w-3">

@@ -81,9 +81,7 @@ export function RoiCalculator() {
   const [selected, setSelected] = useState<ServiceId[]>([]);
 
   const toggle = (id: ServiceId) =>
-    setSelected((prev) =>
-      prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id],
-    );
+    setSelected((prev) => (prev.includes(id) ? prev.filter((s) => s !== id) : [...prev, id]));
 
   const totalMy = selected.reduce(
     (sum, id) => sum + (services.find((s) => s.id === id)?.myPrice ?? 0),
@@ -98,8 +96,6 @@ export function RoiCalculator() {
   return (
     <section id="calculator" className="relative py-28 sm:py-40">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-7 space-y-4">
             <p className="text-[11px] font-bold uppercase text-muted-foreground tracking-[0.2em]">
@@ -126,14 +122,10 @@ export function RoiCalculator() {
                       </div>
                       <div
                         className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
-                          isSelected
-                            ? "border-primary bg-primary"
-                            : "border-border"
+                          isSelected ? "border-primary bg-primary" : "border-border"
                         }`}
                       >
-                        {isSelected && (
-                          <div className="w-1.5 h-1.5 bg-background rounded-full" />
-                        )}
+                        {isSelected && <div className="w-1.5 h-1.5 bg-background rounded-full" />}
                       </div>
                     </div>
                     <div className="mt-4">
@@ -163,8 +155,8 @@ export function RoiCalculator() {
               {selected.length === 0 ? (
                 <div className="text-center py-12 border border-dashed border-border rounded-2xl bg-background/20">
                   <p className="text-sm text-muted-foreground px-4">
-                    Вы ещё не выбрали ни одной услуги. Кликните на карточки
-                    слева, чтобы рассчитать окупаемость.
+                    Вы ещё не выбрали ни одной услуги. Кликните на карточки слева, чтобы рассчитать
+                    окупаемость.
                   </p>
                 </div>
               ) : (
@@ -183,9 +175,7 @@ export function RoiCalculator() {
                         >
                           <div className="flex items-center gap-2">
                             {s.icon}
-                            <h4 className="text-xs font-semibold leading-snug flex-1">
-                              {s.title}
-                            </h4>
+                            <h4 className="text-xs font-semibold leading-snug flex-1">{s.title}</h4>
                           </div>
                           <div>
                             <div className="flex justify-between text-[11px] text-muted-foreground mb-1">
@@ -199,7 +189,9 @@ export function RoiCalculator() {
                           <div>
                             <div className="flex justify-between text-[11px] font-semibold text-secondary mb-1">
                               <span>Vibecoding</span>
-                              <span className="text-foreground font-bold">от {fmt(s.myPrice)} ₽</span>
+                              <span className="text-foreground font-bold">
+                                от {fmt(s.myPrice)} ₽
+                              </span>
                             </div>
                             <div className="w-full h-1.5 bg-background/60 rounded-full overflow-hidden">
                               <motion.div
@@ -224,14 +216,15 @@ export function RoiCalculator() {
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-muted-foreground">Итого агентство:</span>
-                      <span className="line-through text-muted-foreground">от {fmt(totalMarket)} ₽</span>
+                      <span className="line-through text-muted-foreground">
+                        от {fmt(totalMarket)} ₽
+                      </span>
                     </div>
                     <div className="flex justify-between items-center text-sm">
                       <span className="font-semibold text-secondary">Итого Vibecoding:</span>
                       <span className="font-bold text-foreground">от {fmt(totalMy)} ₽</span>
                     </div>
                   </div>
-
 
                   <hr className="border-border" />
 
@@ -244,9 +237,8 @@ export function RoiCalculator() {
                       от {fmt(economy)} ₽
                     </p>
                     <p className="text-[11px] text-muted-foreground mt-3 leading-relaxed">
-                      * Экономия за счёт нейросетей премиум-уровня и высокой
-                      скорости ручной кастомизации кода. Никаких переплат за
-                      раздутый штат менеджеров.
+                      * Экономия за счёт нейросетей премиум-уровня и высокой скорости ручной
+                      кастомизации кода. Никаких переплат за раздутый штат менеджеров.
                     </p>
                   </div>
 
