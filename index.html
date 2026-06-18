@@ -1,8 +1,22 @@
 <!doctype html>
-<html lang="ru" translate="no">
+<html lang="ru" translate="no" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="google" content="notranslate" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("vibepulse-theme");
+          var dark =
+            theme === "dark" ||
+            (theme !== "light" &&
+              (!theme || window.matchMedia("(prefers-color-scheme: dark)").matches));
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="/vibepulsestudio/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -41,8 +55,8 @@
       name="twitter:description"
       content="Создание премиальных сайтов на базе AI за 3–7 дней, умных Telegram-ботов и автоворонок под ключ. Автоматизация бизнес-процессов для экспертов и брендов."
     />
-    <script type="module" crossorigin src="/vibepulsestudio/assets/index-DymNGNk1.js"></script>
-    <link rel="stylesheet" crossorigin href="/vibepulsestudio/assets/index-BehQQY3L.css">
+    <script type="module" crossorigin src="/vibepulsestudio/assets/index-BBxBpyXz.js"></script>
+    <link rel="stylesheet" crossorigin href="/vibepulsestudio/assets/index-BTYaulg8.css">
   </head>
   <body translate="no">
     <div id="root"></div>
