@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+Sitemap: https://evgen5555.github.io/vibepulsestudio/sitemap.xml
